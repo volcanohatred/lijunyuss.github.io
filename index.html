@@ -19,7 +19,7 @@
         </div>
         <div class="ui-video-wrap">
             <div class="ui-video-panel">
-                <video height="320" width="320" class="video"></video>
+                <video class="video"></video>
             </div>
         </div>
         <div class="ui-btn-wrap">
@@ -33,6 +33,10 @@
 
             var panel = $('#videoDemo');
             var video = panel.find('.video');
+            video.css({
+                height: $(window).height(),
+                width: $(window).width()
+            })
             var videoDom = video[0];
             $('.collect').on('click', function () {
                 if (!"mediaDevices" in navigator || !"getUserMedia" in navigator.mediaDevices) {
