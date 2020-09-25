@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="format-detection" content="telephone=no">
+    <title>精确识别，速度慢</title>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <script src="./jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="./vconsole.min.js"></script>
+</head>
+
+<body>
+    <div id="videoDemo">
+        <div class="ui-btn-wrap">
+            <button class="ui-btn ui-btn-lg ui-btn-primary collect">开始采集</button>
+        </div>
+        <div class="ui-video-wrap">
+            <div class="ui-video-panel">
+                <video class="video"></video>
+            </div>
+        </div>
+        <div class="ui-btn-wrap">
+            <button class="ui-btn ui-btn-lg ui-btn-primary submit">发送采集信息</button>
+        </div>
+    </div>
+
+    <script>
+
+        $(function () {
+
+            var panel = $('#videoDemo');
+            var video = panel.find('.video');
+            var videoDom = video[0];
+            $('.collect').on('click', function () {
+                if (!"mediaDevices" in navigator || !"getUserMedia" in navigator.mediaDevices) {
+                    alert('当前浏览器不支持Camera API！')
+                    return false;
+                }
+                var constraints = {
+                    video: {
+                        width: {
+                            min: 1280,
+                            ideal: 1920,
+                            max: 2560,
+                        },
+                        height: {
+                            min: 720,
+                            ideal: 1080,
+                            max: 1440,
+                        },
+                        facingMode: 'user'
+                    }
+                }
+                try {
+                    navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+                        videoDom.srcObject = videoStream = stream;
+                        videoDom.play()
+                    })
+                } catch (e) {
+                    console.error(e);
+                }
+            })
+            $('.submit').on('click', function () {
+                videoDom.pause()
+                console.log(video)
+            })
+        })
+
+    </script>
+</body>
+
+</html>
