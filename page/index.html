@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="">
+	<title>柳州银行</title>
+	<script type="text/javascript" src="../assets/js/ytfw/module/loadingPage.js"></script>
+	<link rel="shortcut icon" href="../assets/ico/favicon.ico" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/core/frozen.css" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/core/core.css" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/core/web.css" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/func/date-time-picker.min.css" />
+	<style>
+		.views {
+			padding-top: 0px
+		}
+	</style>
+	<script type="text/javascript">
+		window.DEBUG = 0; //0:非档板; 1:全挡板; 2:半档板;
+		window.LOG_DEBUG = true;//判断是否打印日志
+	</script>
+</head>
+
+<body id="mainBody">
+	<div class="ui-view-overlay"></div>
+	<div class="ui-view-left ui-layout-view"></div>
+	<div class="ui-view-right ui-layout-view"></div>
+	<div class="views navbar-views">
+		<div class="ui-toolbar"></div>
+		<div class="navbar-pages pages ui-navbar-through"></div>
+	</div>
+</body>
+<script type="text/javascript" src="../assets/js/plugin/jquery/jquery-2.1.1.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/plugin/snabbdom/snabbdom-bundles.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/all/plugin.1.0.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/boot.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/ns/NS.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/core/YT.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/Observable.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/AjaxUtil.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/Format.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/Form.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/Input.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/NavUtil.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/DateUtils.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/NumberUtils.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/Collection.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/Session.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/HtmlParse.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/device/web/web.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Tab.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Sms.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Component.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Tips.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Layer.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/MsgBox.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Titlebar.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Ajax.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Checkbox.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Radiobox.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Upload.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Slider.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Popup.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Logger.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/plugin/datePicker/date-picker.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/extend/ns/NS_EXT_LIBS.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/extend/ns/NS_EXT_TYPE.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/extend/device/core/extend-core.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/extend/device/web/extend-web.js" charset="utf-8"></script>
+<!-- <script type="text/javascript" src="../assets/H5Keyboard/js/jquery-2.1.4.min.js" charset="utf-8"></script> -->
+<script type="text/javascript" src="../assets/js/ytfw/module/cityJson.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/module/citySet.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/module/Popt.js" charset="utf-8"></script>
+
+<!-- <script type="text/javascript" src="web-min.js" charset="utf-8" ></script> -->
+<script type="text/javascript" src="index.js" charset="utf-8"></script>
+<script type="text/javascript">
+	/* adaptVP({ uWidth: 1024}); */
+</script>
+
+</html>

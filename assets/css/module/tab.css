@@ -1,0 +1,387 @@
+@charset "UTF-8";
+/****----tab基础样式----****/
+.ui-tab-nav li.current {
+  color: #09a991;
+  border-bottom: 2px #09a991 solid;
+}
+
+.yui-tab {
+  overflow: hidden;
+}
+.yui-tab .yui-tab-nav {
+  margin: 10px 20px;
+}
+.yui-tab .yui-tab-nav-time {
+  margin: 5px 0 5px 80px;
+}
+.yui-tab .ui-tab-nav {
+  border-radius: 7px;
+  border: 1px solid #f1f1f1;
+  height: 30px;
+}
+.yui-tab .ui-tab-nav li {
+  height: 28px;
+  line-height: 28px;
+  color: #909090;
+}
+.yui-tab .ui-tab-nav li.current {
+  color: #fff;
+  border: 0 !important;
+  background-color: #eb9500;
+}
+.yui-tab .ui-tab-nav li:first-child {
+  border-radius: 5px 0 0 5px;
+  border-right: 1px solid #f1f1f1;
+}
+.yui-tab .ui-tab-nav li:last-child {
+  border-radius: 0 5px 5px 0;
+  border-left: 1px solid #f1f1f1;
+}
+
+.yui-tab-sort .yui-tab-sort-item,
+.ui-tab .yui-tab-select {
+  position: relative;
+  padding: 0 13px;
+}
+
+.yui-tab-sort .yui-tab-sort-item:before {
+  content: "";
+  position: absolute;
+  background: url("../../img/tab/tab-sort.png") no-repeat;
+  background-size: 6px 13px;
+  width: 6px;
+  height: 13px;
+  right: 0;
+  top: 50%;
+  margin-top: -6px;
+}
+.yui-tab-sort .yui-tab-sort-item.sort-asc:before {
+  background: url("../../img/tab/tab-sort-asc.png") no-repeat;
+  background-size: 6px 13px;
+}
+.yui-tab-sort .yui-tab-sort-item.sort-desc:before {
+  background: url("../../img/tab/tab-sort-desc.png") no-repeat;
+  background-size: 6px 13px;
+}
+
+.ui-tab .yui-tab-select:before {
+  content: "";
+  position: absolute;
+  background: url("../../img/tab/tab-select.png") no-repeat;
+  background-size: 10px 7px;
+  width: 10px;
+  height: 7px;
+  right: -15px;
+  top: 50%;
+  margin-top: -4px;
+}
+
+.ui-tab-nav.ui-tab-sort li p {
+  position: relative;
+}
+.ui-tab-nav.ui-tab-sort li p:after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: url("../../img/tab/icon-select.png") no-repeat;
+  background-size: 12px 12px;
+  top: 13px;
+  right: -15px;
+}
+.ui-tab-nav.ui-tab-sort li.ui-tab-sort-desc p:after {
+  background: url("../../img/tab/icon-select2.png") no-repeat;
+  background-size: 11px 6px;
+  top: 16px;
+}
+
+.ui-tab-s {
+  width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+}
+
+.ui-tab-nav-s {
+  display: box;
+  display: -webkit-box;
+  font-size: 0.14;
+  height: 25px;
+  line-height: 25px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  border-radius: 3px;
+}
+
+.ui-tab-nav-s li,
+.yui-tab-nav li {
+  height: 0.25rem;
+  line-height: 0.25rem;
+  text-align: center;
+  min-width: 0.6rem;
+  padding: 0 0.06rem;
+  font-size: 0.12rem;
+  border-radius: 3px;
+  color: #eb9500;
+}
+
+.ui-tab-nav-s li.current {
+  background-color: #eb9500;
+  color: #fff;
+}
+
+/****---add---***/
+.yui-tab-wrap {
+  width: 100%;
+  overflow-x: scroll;
+}
+.yui-tab-wrap::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.yui-tab-decorate-b .yui-tab-menu {
+  background: #dee3e1;
+  display: -webkit-box;
+}
+.yui-tab-decorate-b .yui-tab-menu > ul {
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  background-color: white;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  -webkit-box-flex: 1;
+}
+.yui-tab-decorate-b .yui-tab-menu > ul:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #2cc185;
+  content: "";
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  -webkit-transform: translate3d(0, 150%, 0);
+  transform: translate3d(0, 150%, 0);
+}
+.yui-tab-decorate-b .yui-tab-menu .yui-icon-left {
+  margin-right: 10px;
+  font-size: 22px;
+}
+.yui-tab-decorate-b .yui-tab-menu > .active:after {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.yui-tab-decorate-b .yui-tab-content {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background: white;
+}
+.yui-tab-decorate-b .yui-tab-content > [data-name="tab-ele-content"] {
+  float: left;
+  display: none;
+  width: 100%;
+}
+.yui-tab-decorate-b .yui-tab-content > .active {
+  display: block;
+}
+
+.yui-tab-box .active {
+  color: #2cc185;
+}
+
+.yui-tab-slide {
+  position: relative;
+  display: -webkit-box;
+}
+.yui-tab-slide > ul {
+  display: block;
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
+/****----多tab过滤查询----****/
+.y-select-change-tab {
+  padding-bottom: 50px;
+  padding-left: 0;
+}
+.y-select-change-tab .y-shandow {
+  height: 600px;
+  position: absolute;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+}
+.y-select-change-tab .y-select-tab {
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  background: #fff;
+}
+.y-select-change-tab .y-select-change {
+  display: -webkit-box;
+}
+.y-select-change-tab .y-select-change > div {
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-weight: bold;
+  border-bottom: 1px solid #d6cece;
+  -webkit-box-flex: 1;
+}
+.y-select-change-tab .y-select-change > div span:nth-child(2) {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+.y-select-change-tab .y-select-change-item div {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+}
+.y-select-change-tab .y-select-change-item .current {
+  background: rgba(210, 203, 203, 0.18);
+  color: #066ac1;
+}
+.y-select-change-tab .makesoft {
+  color: rgba(22, 22, 23, 0.64);
+}
+.y-select-change-tab .makesoft span:nth-child(2) {
+  top: 13px;
+  border-top: 9px solid rgba(22, 22, 23, 0.64);
+}
+.y-select-change-tab .makesoft1 {
+  color: #066ac1;
+}
+.y-select-change-tab .makesoft1 span:nth-child(2) {
+  top: -11px;
+  border-bottom: 9px solid #066ac1;
+}
+
+.yui-tab-step {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.yui-tab-step-nav {
+  display: -webkit-box;
+}
+.yui-tab-step-nav li {
+  min-width: 100px;
+  height: 50px;
+  line-height: 50px;
+  -webkit-box-flex: 1;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+}
+.yui-tab-step-nav li > div {
+  position: relative;
+  white-space: nowrap;
+  overflow: visible;
+  background-color: #fff;
+}
+.yui-tab-step-nav li > div > span {
+  position: relative;
+  padding-left: 15px;
+  color: #999;
+  font-size: 16px;
+}
+.yui-tab-step-nav li > div > span:before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+  position: absolute;
+  left: 0;
+  top: 5px;
+}
+.yui-tab-step-nav li > div .over {
+  background-color: #eef0f3;
+}
+.yui-tab-step-nav li > div .over > span {
+  color: #333;
+}
+.yui-tab-step-nav li > div .over > span:before {
+  content: "";
+  background-color: #4183ec;
+}
+.yui-tab-step-nav li > div .over:before {
+  content: "";
+  border-color: transparent transparent transparent #eef0f3;
+}
+.yui-tab-step-nav li > div:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 24px 0 24px 24px;
+  border-color: transparent transparent transparent #fff;
+  position: absolute;
+  right: -22px;
+  top: 1px;
+  z-index: 2;
+}
+.yui-tab-step-nav li > div:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 24px 0 24px 24px;
+  border-color: transparent transparent transparent #d2d2d2;
+  position: absolute;
+  right: -23px;
+  top: 1px;
+  z-index: 1;
+}
+.yui-tab-step-nav li:last-child > div:before, .yui-tab-step-nav li:last-child > div:after {
+  content: "";
+  border: 0 none;
+}
+
+.yui-tab-s {
+  width: 100%;
+  overflow: hidden;
+}
+
+.yui-tab-s-nav {
+  width: 100%;
+  background-color: #fff;
+  display: box;
+  display: -webkit-box;
+  font-size: 14px;
+  height: 45px;
+  line-height: 45px;
+  box-sizing: border-box;
+}
+.yui-tab-s-nav > li {
+  width: 140px;
+  text-align: center;
+  color: #666;
+}
+.yui-tab-s-nav > li.current {
+  color: #4183ec;
+  border-bottom: 2px #4183ec solid;
+}
+
+.ui-tab .ui-tab-nav {
+  font-size: 15px;
+  line-height: 15px;
+  height: 45px;
+}
+.ui-tab .ui-tab-nav li {
+  height: 45px;
+  line-height: 45px;
+}

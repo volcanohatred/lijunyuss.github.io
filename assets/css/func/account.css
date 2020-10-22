@@ -1,0 +1,210 @@
+.yui-acc-header {
+  background-color: #393939;
+  padding: 0 15px;
+  font-size: 0.14rem;
+}
+
+.yui-acct-type-select {
+  padding: 0.4rem 0 0.2rem;
+  overflow: hidden;
+  border: 0;
+  background-repeat: repeat-x;
+  -webkit-background-size: 100% 1px;
+  background-position: left bottom;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, transparent), color-stop(0.5, #999));
+}
+
+.yui-acct-type, .yui-acct-fun-type {
+  text-align: center;
+  width: 50%;
+  float: left;
+}
+
+.yui-acct-type img {
+  width: 0.3rem;
+  height: 0.3rem;
+  padding-bottom: 0.1rem;
+}
+
+.yui-acct-fun {
+  position: relative;
+  overflow: hidden;
+  height: 0.45rem;
+  line-height: 0.45rem;
+}
+
+.yui-acct-fun-line {
+  position: absolute;
+  width: 1px;
+  height: 0.2rem;
+  background-color: #999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.yui-acct-fun-type p {
+  background: url("../../img/goods/default-icon.png") no-repeat left center;
+  background-size: 0.2rem 0.15rem;
+}
+
+.yui-acct-fun-type:first-child p {
+  background: url("../../img/goods/default-icon.png") no-repeat left center;
+  background-size: 0.2rem 0.15rem;
+}
+
+.yui-acct-fun-type p {
+  display: inline-block;
+  padding-left: 0.3rem;
+}
+
+.yui-acct-select {
+  margin-top: 0.1rem;
+  font-size: 0.14rem;
+  background-color: #fff;
+}
+
+.yui-acct-all {
+  padding: 0 15px;
+  height: 0.45rem;
+  line-height: 0.45rem;
+}
+
+.yui-acct-all p {
+  float: left;
+}
+
+.yui-acct-all div {
+  float: right;
+  padding-right: 0.2rem;
+}
+
+.yui-acct-all div span {
+  display: inline-block;
+  font-size: 0.12rem;
+  margin-left: 5px;
+  color: #fff;
+  padding: 0 0.1rem;
+  height: 0.18rem;
+  line-height: 0.18rem;
+  background-color: blue;
+  border-radius: 0.09rem;
+}
+
+.yui-down-arrow {
+  position: relative;
+}
+
+.yui-down-arrow:after {
+  font-family: "iconfont" !important;
+  font-size: 0.32rem;
+  line-height: 44px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  display: block;
+  color: #909090;
+  content: "\f600";
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  margin-top: -22px;
+  margin-right: -15px;
+  border: 0;
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+}
+
+.yui-user-icon {
+  background: url(../../img/reg-error.png) no-repeat;
+  background-size: 36px 36px;
+}
+
+.ui-list > li {
+  margin-left: 0;
+}
+
+.ui-select {
+  margin-right: 0;
+}
+
+.ui-select:after {
+  right: 19px;
+}
+
+.ui-silder-cell {
+  padding-right: 0;
+}
+
+.ui-silder-cell {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.ui-form-transfer input::-webkit-input-placeholder {
+  font-size: 0.14rem;
+}
+
+.ui-form-transfer input {
+  font-size: 0.3rem;
+  line-height: 0.35rem;
+  height: 0.35rem;
+  float: left;
+  width: 80%;
+  border: 0;
+  outline: none;
+}
+
+.ui-form-font {
+  font-size: 0.3rem;
+  height: 0.35rem;
+  float: left;
+}
+
+.ui-form-div {
+  position: relative;
+  font-size: 14px;
+  line-height: 40px;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 5px;
+}
+
+.ui-form-amt {
+  overflow: hidden;
+}
+
+.yui-payee-panel {
+  background: #fff;
+  display: -webkit-box;
+  margin: 0.1rem 0.1rem;
+  padding: 15px 0 10px 15px;
+  hight: 80px;
+  height: 80px;
+}
+
+.ui-form-payee {
+  position: relative;
+}
+
+.ui-form-payee label {
+  font-size: 16px;
+  position: absolute;
+  height: 20px;
+  line-height: 20px;
+  padding-left: 0.1rem;
+}
+
+.ui-form-payee p {
+  padding-left: 0.6rem;
+  font-size: 12px;
+  color: #909090;
+  height: 20px;
+  line-height: 20px;
+}
+
+.ui-payee-accno {
+  font-size: 12px !important;
+}

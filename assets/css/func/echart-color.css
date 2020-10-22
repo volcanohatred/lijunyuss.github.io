@@ -1,0 +1,66 @@
+.y-charts-icon:before {
+  content: '';
+  position: absolute;
+  height: 14px;
+  width: 3px;
+  left: -10px;
+  top: 13px;
+  background: #52B4F4;
+  border-radius: 12px;
+}
+
+.y-charts-icon-0:before {
+  background: #C1232B;
+}
+
+.y-charts-icon-1:before {
+  background: #B5C334;
+}
+
+.y-charts-icon-2:before {
+  background: #FCCE10;
+}
+
+.y-charts-icon-3:before {
+  background: #E87C25;
+}
+
+.y-charts-icon-4:before {
+  background: #FE8463;
+}
+
+.y-charts-icon-5:before {
+  background: #9BCA63;
+}
+
+.y-charts-icon-6:before {
+  background: #FAD860;
+}
+
+.y-charts-icon-7:before {
+  background: #F3A43B;
+}
+
+.y-charts-icon-8:before {
+  background: #60C0DD;
+}
+
+.y-charts-icon-9:before {
+  background: #D7504B;
+}
+
+.y-charts-icon-10:before {
+  background: #C6E579;
+}
+
+.y-charts-icon-11:before {
+  background: #F4E001;
+}
+
+.y-charts-icon-12:before {
+  background: #F0805A;
+}
+
+.y-charts-icon-13:before {
+  background: #26C0C0;
+}

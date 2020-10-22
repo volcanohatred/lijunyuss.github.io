@@ -1,0 +1,175 @@
+@charset "UTF-8";
+.ui-card-slide-warp {
+  overflow: hidden;
+}
+
+.ui-card-slide {
+  display: -webkit-box;
+  transition: transform 300ms ease;
+}
+
+.ui-card-slide-item {
+  width: 100%;
+}
+
+/****----卡片基础样式----*****/
+.ui-card {
+  margin: 15px;
+  border-radius: 5px;
+  padding: 0 0 5px 0;
+  background-size: 100% 141px;
+}
+.ui-card .ui-card-header {
+  background: #f36969;
+  color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.ui-card .ui-card-line {
+  border-bottom: 1px dashed #e3e3e3;
+}
+
+.ui-card-section .ui-card-item > .ui-display-field,
+.ui-card-section .ui-card-item > .ui-date-field {
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  padding-left: 70px;
+  text-align: right;
+  padding-right: 20px;
+}
+
+.ui-card-header .ui-card-item > .ui-display-field {
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  padding-right: 15px;
+  text-align: right;
+}
+
+.ui-card-item {
+  height: 35px;
+  line-height: 35px;
+  position: relative;
+}
+
+.ui-card-item label + p,
+.ui-card-item label + span {
+  padding-right: 15px;
+}
+
+.ui-card .ui-card-item label {
+  text-align: left;
+  position: absolute;
+  padding-left: 16px;
+}
+
+.ui-card-header .ui-card-item {
+  height: 40px;
+  line-height: 40px;
+}
+
+.ui-card-section {
+  margin-top: 5px;
+}
+
+.ui-card-footer .ui-card-tab {
+  display: -webkit-box;
+  box-sizing: border-box;
+}
+
+.ui-card-tab li {
+  height: 30px;
+  line-height: 35px;
+  min-width: 70px;
+  box-flex: 1;
+  -webkit-box-flex: 1;
+  text-align: center;
+  color: #909090;
+  box-sizing: border-box;
+  width: 100%;
+  cursor: pointer;
+}
+
+.ui-card .ui-switch,
+.ui-card .ui-switch input {
+  height: 26px;
+}
+
+.ui-card .ui-switch input:before,
+.ui-card .ui-switch input:after {
+  height: 24px;
+}
+
+.ui-card .ui-switch input:after {
+  width: 26px;
+}
+
+.yui-card-icon {
+  background: url(../../img/acct/card_icon.png) no-repeat;
+  width: 20px;
+  height: 20px;
+  background-size: 100%;
+  position: absolute;
+  top: 9px;
+  left: 20px;
+}
+
+.yui-cmbc-icon {
+  background: url(../../img/bankIcon/308584000013.png) no-repeat;
+  background-size: 25px 25px;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 7px;
+  left: 15px;
+}
+
+.ui-card.ui-eCard-bg {
+  background: #ffffff;
+  background-size: 100px;
+  background-position-y: 65px;
+}
+
+.ui-card.ui-card-add {
+  display: -webkit-box;
+  height: 50px;
+  line-height: 50px;
+  border: 1px dashed #bababa;
+  margin-top: 15px;
+}
+
+.yui-card-add {
+  display: -webkit-box;
+  height: 50px;
+  line-height: 50px;
+  border: 1px dashed #bababa;
+  margin: 20px 15px;
+  border-radius: 5px;
+  color: #bababa;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.yui-card-add .ui-card-add-icon {
+  background: url("../../img/icon-card-add.png") center no-repeat;
+  background-size: 12px 12px;
+  width: 12px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+/****----卡片滑动基础样式----*****/
+.y-acct-card.ui-acct {
+  overflow: hidden;
+}
+
+.y-acct-card .ui-acct-con {
+  display: flex;
+  flex-wrap: nowrap;
+  transform: translate3d(0px, 0px, 0px);
+}
+
+.y-acct-card .ui-acct-item {
+  flex: 0 0 100%;
+}

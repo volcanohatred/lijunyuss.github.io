@@ -1,0 +1,18 @@
+.ui-form-item-checkbox .ui-checkbox,
+.ui-form-item-checkbox .ui-checkbox-s {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.ui-checkbox input:before,
+.ui-checkbox-s input:before {
+  content: "\e6da";
+  font-size: 18px;
+  left: 8px;
+  top: -21px;
+}
+.ui-checkbox input:checked:before,
+.ui-checkbox-s input:checked:before {
+  content: "\e6da";
+}

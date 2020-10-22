@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+/*********蓝色风格*********/
+
+.theme-blue #web_titlebar.theme-def{
+	background-color: #18b4ed;
+}
+.theme-blue .yui-bank-icon:before{
+	color: #18b4ed;
+}
+.theme-blue div.sixDigitPassword{
+	border:1px solid #18b4ed;
+}
+.theme-blue .ui-tab-nav li p.current{
+	color: #18b4ed;
+    border-bottom: 2px solid #18b4ed;
+}
+.theme-blue .ui-btn-group button:first-child{
+	margin-left:0;
+}
+.theme-blue .yui-auth-form .ui-btn-primary{
+	background:#18b4ed;
+}
+/* --按钮-- */
+.theme-blue .ui-btn, .theme-blue .ui-btn-lg, .theme-blue .ui-btn-s{
+	color: #18b4ed;
+	border-color: #18b4ed;
+}
+.theme-blue .ui-btn:not(.disabled):not(:disabled):active,
+.theme-blue .ui-btn.active,
+.theme-blue .ui-btn-lg:not(.disabled):not(:disabled):active,
+.theme-blue .ui-btn-lg.active,
+.theme-blue .ui-btn-s:not(.disabled):not(:disabled):active,
+.theme-blue .ui-btn-s.active{
+	color: #18b4ed;
+}
+.theme-blue .ui-btn-primary{
+	color: #fff;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #18b4ed), to(#18b4ed));
+}
+.theme-blue .ui-btn-primary:not(.disabled):not(:disabled):active,
+.theme-blue .ui-btn-primary.active{
+	border-color: #18b4ed;
+	background: #18b4ed;
+	color: rgba(255, 255, 255, 0.5);
+}
+.theme-blue .ui-btn-warning{
+	color: #fff;
+	border-color: #f1ba4e;
+}
+.theme-blue .ui-btn-warning:not(.disabled):not(:disabled):active,
+.theme-blue .ui-btn-warning.active{
+	color: rgba(255, 255, 255, 0.5);
+}
+.theme-blue .ui-btn-danger{
+	color: #fff;
+	border-color: #f65246;
+}
+.theme-blue .ui-btn-danger:not(.disabled):not(:disabled):active,
+.theme-blue .ui-btn-danger.active{
+	color: rgba(255, 255, 255, 0.5);
+}
+/* --单选框-- */
+.theme-blue .ui-radio input:checked:after{
+	background:#18b4ed;
+}
+.theme-blue .ui-radio{
+	padding-right:5px;
+}
+.theme-blue .ui-radio input{
+	margin-right:0;
+}
+/* --复选框-- */
+.theme-blue .ui-checkbox input:checked:before,
+.theme-blue .ui-checkbox-s input:checked:before
+{
+	color: #18b4ed;
+}
+.theme-blue .ui-checkbox,.page-style-blue .ui-checkbox-s{
+	padding-right:5px;
+}
+.theme-blue .ui-checkbox input,.page-style-blue .ui-checkbox-s input{
+	margin-right:0;
+}
+/* --开关-- */
+.theme-blue .ui-switch input:checked:before{
+	border-color:#18b4ed;
+	background-color:#18b4ed;
+	-webkit-box-shadow: #18b4ed 0px 0px 0px 16px inset;
+}
+/* --获取验证码-- */
+.theme-blue .yui-btn-code{
+	color:#fff;
+	border-color: #18b4ed;
+	background: #18b4ed -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #18b4ed), to(#18b4ed));
+}
+.theme-blue .yui-btn-code:not(.disabled):not(:disabled):active,.theme-blue .yui-btn-code.active{
+	color:#fff;
+	border-color: #18b4ed;
+	background: #18b4ed -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #18b4ed), to(#18b4ed));
+}
+/* --勾选框-- */
+.theme-blue .ui-checkbox-sq input:checked:before{
+	/* font-family: 'iconfont';
+    content: "\e640"; */
+    color: #18b4ed;
+}
+.theme-blue .ui-txt-success{
+	color:#18b4ed;
+}
+/* --转账成功-- */
+.theme-blue .yui-result-success
+{
+	color:#18b4ed;
+}
+.theme-blue .ui-radio-s input+span{
+	border:1px solid #18b4ed;
+	border-radius:4px;
+	color:#18b4ed;
+}
+.theme-blue .ui-radio-s input:checked+span{
+	border:1px solid #18b4ed;
+	color:#fff;
+	background:#18b4ed;
+}
+.theme-blue .yui-auth-form-item a{
+	color: #18b4ed;
+}
+.theme-blue .ui-letter{
+	color: #18b4ed;
+}

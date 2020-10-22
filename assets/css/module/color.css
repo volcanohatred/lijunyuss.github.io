@@ -1,0 +1,33 @@
+@charset "UTF-8";
+.ui-txt-default {
+  color: #333333;
+}
+
+.ui-txt-white {
+  color: white;
+}
+
+.ui-txt-muted {
+  color: #aaaaaa;
+}
+
+.ui-txt-warning, .ui-txt-red {
+  color: #ff4222;
+}
+
+.yui-txt-amt {
+  color: #ff4222;
+}
+
+.ui-txt-feeds {
+  color: #314c83;
+}
+
+.ui-txt-success {
+  color: #156be4;
+}
+
+/* 同em */
+.ui-txt-highlight {
+  color: #f1ba4e;
+}

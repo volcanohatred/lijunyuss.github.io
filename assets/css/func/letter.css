@@ -1,0 +1,57 @@
+.ui-letter-box {
+  padding-top: 0.55rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.ui-letter {
+  position: fixed;
+  width: 20px;
+  right: 3px;
+  text-align: center;
+  z-index: 10;
+  font-size: 0.12rem;
+  color: #166ae4;
+  /* padding: 0.05rem 0; */
+}
+
+.ui-letter ul.current {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.06rem;
+  color: #fff;
+}
+
+.ui-letter ul li {
+  height: 0.18rem;
+  line-height: 0.18rem;
+}
+
+.ui-letter-cap {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  margin-left: -0.2rem;
+  margin-top: -0.2rem;
+  display: none;
+  text-align: center;
+  line-height: 0.4rem;
+  color: #fff;
+  z-index: 10;
+}
+
+.ui-letter-fixed {
+  position: fixed;
+  z-index: 6;
+  width: 100%;
+  top: 0;
+  background-color: #f6f6f6;
+}
+
+.ui-letter-padding {
+  padding-top: 35px;
+}

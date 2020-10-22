@@ -1,0 +1,289 @@
+.yui-trans .yui-trans-header {
+  background: url(../../img/transfer/icon-trans-bg.png) no-repeat;
+  background-size: 100% 218px;
+  height: 160px;
+  background-position-y: -58px;
+}
+.yui-trans .yui-trans-header .content {
+  display: -webkit-box;
+  font-size: 13px;
+}
+.yui-trans .yui-trans-header .content > div {
+  -webkit-box-flex: 1;
+  width: 0;
+  min-width: 100px;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 20px;
+}
+.yui-trans .yui-trans-header .content > div > a {
+  display: inline-block;
+  min-width: 80px;
+  height: 70px;
+  color: #fff;
+}
+.yui-trans .yui-trans-header .content .icon-trans {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+}
+.yui-trans .yui-trans-header .content .icon-trans-card {
+  background: url("../../img/transfer/icon-trans-card.png") no-repeat center center;
+  background-size: 32px 24px;
+}
+.yui-trans .yui-trans-header .content .icon-trans-book {
+  background: url("../../img/transfer/icon-trans-book.png") no-repeat center center;
+  background-size: 24px 32px;
+}
+.yui-trans .yui-trans-header .footer {
+  display: -webkit-box;
+}
+.yui-trans .yui-trans-header .footer > div {
+  -webkit-box-flex: 1;
+  width: 0;
+  min-width: 100px;
+  text-align: center;
+  color: #fff;
+  height: 45px;
+  line-height: 45px;
+  position: relative;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.yui-trans-history {
+  background-color: #fff;
+}
+.yui-trans-history .yui-trans-title {
+  height: 40px;
+  line-height: 40px;
+  display: -webkit-box;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 15px;
+}
+.yui-trans-history .yui-trans-title label {
+  -webkit-box-flex: 1;
+  min-width: 100px;
+  display: block;
+}
+.yui-trans-history .yui-trans-title span {
+  width: 100px;
+  display: inline-block;
+  text-align: right;
+}
+.yui-trans-history .group {
+  height: 60px;
+  line-height: 60px;
+  display: -webkit-box;
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.yui-trans-history .group:after {
+  content: "\e6a6";
+  font-family: "iconfont", serif !important;
+  font-size: 22px;
+  right: 5px;
+  position: absolute;
+  color: #909090;
+  -webkit-transition: all 0.2s;
+}
+.yui-trans-history .group > label {
+  width: 40px;
+  height: 36px;
+  padding-top: 10px;
+  display: inline-block;
+}
+.yui-trans-history .group > label > a {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #6f6f6f;
+}
+.yui-trans-history .group-list {
+  padding-right: 10px;
+  display: none;
+}
+.yui-trans-history .group-list .ui-silder-cell {
+  background: none;
+}
+.yui-trans-history .group-list .item {
+  height: 45px;
+  line-height: 45px;
+  display: -webkit-box;
+  color: #999999;
+  background-color: #f8f8f8;
+  padding-left: 40px;
+}
+.yui-trans-history .group-list .item > label {
+  width: 40px;
+  height: 30px;
+  padding-top: 8px;
+  display: inline-block;
+}
+.yui-trans-history .group-list .item > label > img {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  border-radius: 50%;
+  font-size: 13px;
+}
+.yui-trans-history .group-list .item.ui-list-link {
+  position: relative;
+}
+.yui-trans-history .group-list .item.ui-list-link:after {
+  font-family: "iconfont" !important;
+  font-size: 32px;
+  line-height: 40px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  display: block;
+  color: rgba(0, 0, 0, 0.5);
+  color: #c7c7c7;
+  content: "\e6a7";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  margin-top: -22px;
+  margin-right: -10px;
+}
+.yui-trans-history .history-list {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.yui-trans-history .history-list .item {
+  display: -webkit-box;
+}
+.yui-trans-history .history-list .item > label {
+  width: 40px;
+  height: 36px;
+  padding-top: 13px;
+  display: inline-block;
+}
+.yui-trans-history .history-list .item > label > img {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  border-radius: 50%;
+}
+.yui-trans-history .history-list .item > div {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  -webkit-box-flex: 1;
+}
+.yui-trans-history .history-list .item p {
+  color: #737373;
+  padding-top: 4px;
+}
+
+.history-group.current .group:after {
+  -webkit-transform: rotate(180deg);
+}
+.history-group.current .group-list {
+  display: block;
+}
+
+.yui-picker-recbank {
+  position: relative;
+}
+.yui-picker-recbank .yui-picker-recbank-mask {
+  position: absolute;
+  height: 50px;
+  width: 100%;
+  z-index: 10;
+  left: 90px;
+  top: 0;
+  display: none;
+}
+
+.ui-tran-histroy-mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  top: 0;
+  display: none;
+}
+
+.ui-tran-histroy-panel {
+  position: absolute;
+  width: 280px;
+  max-height: 300px;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  margin-left: -140px;
+  margin-top: -150px;
+  padding: 10px;
+  overflow-y: scroll;
+  border: 1px solid #dddd;
+  border-radius: 7px;
+  box-shadow: #dfdfdf 0px 0px 3px 0px inset;
+  z-index: 1001;
+}
+
+.ui-tran-histroy {
+  height: 100%;
+  width: 100%;
+}
+.ui-tran-histroy .title {
+  font-size: 15px;
+  height: 30px;
+  text-align: center;
+}
+.ui-tran-histroy .item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.ui-tran-histroy .item p {
+  color: #737373;
+  padding-top: 4px;
+}
+
+.ui-trans-payee-panel {
+  padding: 10px 10px 0 10px;
+  display: none;
+  overflow: hidden;
+}
+
+.ui-trans-payee {
+  background-color: #fff;
+  display: -webkit-box;
+  padding: 14px;
+  border-radius: 6px;
+  position: relative;
+}
+.ui-trans-payee .bank-logo {
+  width: 50px;
+  padding-top: 6px;
+}
+.ui-trans-payee .bank-logo img {
+  width: 35px;
+  height: 35px;
+}
+.ui-trans-payee .payee-info p {
+  padding-bottom: 5px;
+}
+.ui-trans-payee .payee-info i {
+  font-size: 12px;
+}
+.ui-trans-payee .payee-bank-watermark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+}
+.ui-trans-payee .payee-bank-watermark img {
+  width: 150px;
+  height: 150px;
+  opacity: 0.05;
+}
+
+.yui-trans-history-tool {
+  padding: 8px 15px;
+  text-align: right;
+}

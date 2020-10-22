@@ -1,0 +1,52 @@
+.yui-payment-home {
+  background-color: #fff;
+  padding: 5px 0;
+}
+.yui-payment-home .yui-payment-list {
+  padding: 5px;
+}
+.yui-payment-home .yui-payment-list:after, .yui-payment-home .yui-payment-list:before {
+  content: "";
+  display: table;
+  clear: both;
+}
+.yui-payment-home .yui-payment-list .item {
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+.yui-payment-home .yui-payment-list .item i {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+}
+
+.yui-payment-icon-water {
+  background: url(../../img/payment/icon-water.png) no-repeat;
+  background-size: 32px 32px;
+}
+
+.yui-payment-icon-power {
+  background: url(../../img/payment/icon-power.png) no-repeat;
+  background-size: 32px 32px;
+}
+
+.yui-payment-icon-gas {
+  background: url(../../img/payment/icon-gas.png) no-repeat;
+  background-size: 32px 32px;
+}
+
+.yui-org-item {
+  position: relative;
+}
+.yui-org-item.checked:after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  height: 22px;
+  width: 22px;
+  top: 50%;
+  margin-top: -11px;
+  background: url("../../img/payment/icon-org-checked.png") no-repeat;
+  background-size: 22px 22px;
+}

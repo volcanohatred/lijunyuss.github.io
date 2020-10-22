@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+/*********红色风格*********/
+.theme-red #web_titlebar.theme-def{
+	background-color:#f65246;
+}
+.theme-red .yui-bank-icon:before{
+	color: #f65246;
+}
+.theme-red div.sixDigitPassword{
+	border:1px solid #f65246;
+}
+.theme-red .ui-tab-nav li p.current{
+	color: #f65246;
+    border-bottom: 2px solid #f65246;	
+}
+.theme-red .ui-btn-group button:first-child{
+	margin-left:0;
+}
+.theme-red .yui-auth-form .ui-btn-primary{
+	background:#f65246;
+}
+/* --按钮-- */
+.theme-red .ui-btn, .theme-red .ui-btn-lg, .theme-red .ui-btn-s{
+	color: #f65246;
+	border-color: #f65246;
+}
+.theme-red .ui-btn:not(.disabled):not(:disabled):active, 
+.theme-red .ui-btn.active, 
+.theme-red .ui-btn-lg:not(.disabled):not(:disabled):active, 
+.theme-red .ui-btn-lg.active, 
+.theme-red .ui-btn-s:not(.disabled):not(:disabled):active, 
+.theme-red .ui-btn-s.active{
+	color: #f65246;
+}
+.theme-red .ui-btn-primary{
+	color: #fff;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #f65246), to(#f65246));
+}
+.theme-red .ui-btn-primary:not(.disabled):not(:disabled):active, 
+.theme-red .ui-btn-primary.active{
+	border-color: #e64e43;
+	background: #e64e43;
+	color: rgba(255, 255, 255, 0.5);
+}
+.theme-red .ui-btn-warning{
+	color: #fff;
+	border-color: #f1ba4e;
+}
+.theme-red .ui-btn-warning:not(.disabled):not(:disabled):active, 
+.theme-red .ui-btn-warning.active{
+	color: rgba(255, 255, 255, 0.5);
+}
+.theme-red .ui-btn-danger{
+	color: #fff;
+	border-color: #f65246;
+}
+.theme-red .ui-btn-danger:not(.disabled):not(:disabled):active, 
+.theme-red .ui-btn-danger.active{
+	color: rgba(255, 255, 255, 0.5);
+}
+/* --单选框-- */
+.theme-red .ui-radio input:checked:after{
+	background:#f65246;
+}
+.theme-red .ui-radio{
+	padding-right:5px;
+}
+.theme-red .ui-radio input{
+	margin-right:0;
+}
+/* --复选框-- */
+.theme-red .ui-checkbox input:checked:before,
+.theme-red .ui-checkbox-s input:checked:before
+{
+	color: #f65246;
+}
+.theme-red .ui-checkbox,.page-style-red .ui-checkbox-s{
+	padding-right:5px;
+}
+.theme-red .ui-checkbox input,.page-style-red .ui-checkbox-s input{
+	margin-right:0;
+}
+/* --开关-- */
+.theme-red .ui-switch input:checked:before{
+	border-color:#f65246;
+	background-color:#f65246;
+	-webkit-box-shadow: #f65246 0px 0px 0px 16px inset;
+}
+/* --获取验证码-- */
+.theme-red .yui-btn-code{
+	color:#fff;
+	background-color: #f65246;
+    border-color: #f65246;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #f65246), to(#f65246));
+}
+.theme-red .yui-btn-code:not(.disabled):not(:disabled):active,.theme-red .yui-btn-code.active{
+	color:#fff;
+	background-color: #18b4ed;
+    border-color: #18b4ed;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #18b4ed), to(#18b4ed));
+}
+/* --勾选框-- */
+.theme-red .ui-checkbox-sq input:checked:before{
+    color: #f65246;
+}
+.theme-red .yui-btn-1:not(.disabled):not(:disabled):active,.theme-red .yui-btn-1.active{
+	background-color: #f65246;
+    border-color: #f65246;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #f65246), to(#f65246));
+}
+.theme-red .ui-txt-success{
+	color: #f65246;
+}
+/* --转账成功-- */
+.theme-red .yui-result-success{
+	color: #f65246;
+}
+.theme-red .ui-radio-s input+span{
+	border:1px solid #f65246;
+	border-radius:4px;
+	color: #f65246;
+}
+.theme-red .ui-radio-s input:checked+span{
+	border:1px solid #f65246;
+	color:#fff;
+	background: #f65246;
+}
+.theme-red .yui-auth-form-item a{
+	color: #f65246;
+}
+.theme-red .ui-letter{
+	color: #f65246;
+}

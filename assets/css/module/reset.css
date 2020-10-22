@@ -1,0 +1,53 @@
+@charset "UTF-8";
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+hgroup,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+span,
+button {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-input-placeholder-color: #aaa;
+}
+
+body {
+  font-size: 14px;
+  background-color: #F2F2F2;
+  /*苹方，思源黑体写法，android默认字体*/
+  font-family: "PingFang SC","Source Han Sans CN","Droid Sans";
+}

@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/***列表排序样式***/
+.yui-sort-warp {
+  position: relative;
+}
+
+.yui-sort-warp .y-sort i {
+  top: 5px;
+  margin-left: 5px;
+}
+
+.yui-sort-warp .y-sort p {
+  color: #454d79;
+  position: relative;
+}
+
+.yui-sort-warp .y-sort i:before, .yui-sort-warp .y-sort i:after {
+  font-family: "iconfont" !important;
+  font-size: 12px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e635";
+  position: absolute;
+  transform: scale(0.6);
+  color: #DEDEDE;
+  top: -5px;
+}
+
+.yui-sort-warp .y-sort i:after {
+  -webkit-transform: rotate(180deg) scale(0.6);
+  transform: rotate(180deg) scale(0.6);
+  top: 3px;
+}
+
+.yui-sort-warp .y-sort.sort-asc i:before {
+  color: #454d79;
+}
+
+.yui-sort-warp .y-sort.sort-desc i:before {
+  color: #DEDEDE;
+}
+
+.yui-sort-warp .y-sort.sort-desc i:after {
+  color: #454D79;
+}

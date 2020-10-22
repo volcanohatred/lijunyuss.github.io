@@ -1,0 +1,42 @@
+@charset "UTF-8";
+/****----range滑块样式----****/
+.ui-progressbar {
+  margin: 20px 50px 0 50px;
+  position: relative;
+}
+
+.ui-progressbar-bg {
+  background-color: #ccc;
+  height: 3px;
+  width: 100%;
+  position: relative;
+}
+
+.ui-progressbar-filled {
+  width: 0;
+  background-color: #0b7bc2;
+  height: 3px;
+}
+
+.ui-progressbar-btn {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: -15px;
+  margin-left: -15px;
+  /*-webkit-transform: translate3D(50px,0,0);*/
+  /*transition-duration: 300ms;*/
+}
+
+.ui-progressbar-btn > div {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  line-height: 25px;
+  background: #117bdd;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: 5px;
+  -webkit-box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
