@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<div id="p_picture_main">
+		<div class="page" data-page="A" title="拍照" data-btnLeft="true|返回|YT.prevPage()" data-btnRight="false||"></div>
+	</div>
+	<script type="text/javascript">
+		var p_picture_main = {}
+		seajs.use("page/sample/picture/main.js", function (main) {
+			main.init(p_picture_main);
+		});
+	</script>
+</body>
+
+</html>

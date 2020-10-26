@@ -30,4 +30,5 @@
 	me["AresOcr"] = "assets/js/extend/widget/ares/AresOcr";// Ocr扫描组件
 	me["AresComfirm"] = "assets/js/extend/widget/ares/AresComfirm";// 交易认证组件
 	me["AresTPwd"] = "assets/js/extend/widget/ares/AresTPwd";// 交易认证组件
+	me["AresCamera"] = "assets/js/extend/widget/ares/AresCamera";
 })();
