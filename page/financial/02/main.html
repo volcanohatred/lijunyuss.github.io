@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="p_financial_02">
+        <div class="page" data-page="A" title="为您推荐" data-btnLeft="false||" data-btnRight="false||">
+            <div class="ui-financial-title">
+                为您推荐
+                <div class="more" data-event="toDetail">更多</div>
+            </div>
+            <div class="ui-recommend-panel">
+                <div class="ui-recommend-item" data-event="toDetail">
+                    <p class="title">五星优选</p>
+                    <p class="info">永赢惠填添平衡4号</p>
+                    <div class="rate-panel">
+                        <i class="rate">49.98</i>
+                        <i class="per">%</i>
+                    </div>
+                    <p class="tips">近一年收益率</p>
+                </div>
+                <div class="ui-recommend-item" data-event="toDetail">
+                    <p class="title">稳健投资</p>
+                    <p class="info">2021益生金01号</p>
+                    <div class="rate-panel">
+                        <i class="rate">4.98</i>
+                        <i class="per">%</i>
+                    </div>
+                    <p class="tips">业绩比较基准</p>
+                </div>
+                <div class="ui-recommend-item" data-event="toDetail">
+                    <p class="title">定投优选</p>
+                    <p class="info">多策略灵活性优选配置A</p>
+                    <div class="rate-panel">
+                        <i class="rate">58.02</i>
+                        <i class="per">%</i>
+                    </div>
+                    <p class="tips">近一年收益率</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var p_financial_02 = {};
+        seajs.use('assets/css/func/financial.css')
+        seajs.use("page/financial/02/main.js", function (main) {
+            main.init();
+        });
+    </script>
+</body>
+
+</html>

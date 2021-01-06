@@ -39,7 +39,7 @@
 		 */
 		initInnerPanel : function(panel, app, json) {
 			// 表单赋值
-			me.setFormJson(panel, json);
+			// me.setFormJson(panel, json);
 			// 初始化-日期相关控件
 			// 1）日期区间快捷设置
 			// 2）日期有效性校验事件设置
@@ -72,7 +72,7 @@
 		 * @example YT.Form.initPanel(panel, app, json);
 		 */
 		initPanel : function(panel, app, json) {
-			// 表单赋值
+			// 表单组件初始化
 			me.initInnerPanel(panel, app, json);
 			// 自定义扩展属性
 			panel.find("[data-extlib]").each(function(index, elem) {
@@ -82,10 +82,31 @@
 				YT.log.info("----init extlib-----", extlib, lib);
 				if (lib == null)
 					return;
-				seajs.use(lib, function(main) {
-					// 初始化控件的事件、值、展现等
-					main.init(widget, panel, app, json);
-				});
+				var items = lib.split(",");
+				for(var i in items){
+					YT.imports(items[i], function(main) {
+						// 初始化控件的事件、值、展现等
+						main.init(widget, panel, app, json);
+					});
+				}
+			});
+		},
+		/**
+		 * 
+		 * @description 再试初始化表单，仅对 data-ready='false' 的控件有效，需梳理初始化的流向，防死循环
+		 * @param {element}
+		 *            panel dom对象 
+		 * @param {Object}
+		 *            selector 重置的对象Selector标识
+		 * @example YT.Form.notices(panel, selector);
+		 */
+		notices:function(panel, selector){
+			panel.find(selector).each(function(){
+				var item = $(this);
+				try {
+					item.trigger("reset");
+				} catch (e) {
+				}
 			});
 		},
 		/**
@@ -106,7 +127,6 @@
 				me.resetWidget(widget, panel, app, json);
 			});
 		},
-
 		/**
 		 * @private
 		 * @description 精确的初始化某控件，可多次执行，需梳理初始化的流向，防死循环
@@ -124,29 +144,109 @@
 			var lib = NS.EXT_LIBS && NS.EXT_LIBS[extlib] || null;
 			YT.log.info("----init extlib-----", extlib, lib);
 			if (lib == null)
-				return;
-			seajs.use(lib, function(main) {
-				// 初始化控件的值、展现等，不含事件
-				main.reset(widget, panel, app, json);
-			});
+				return;  
+			var items = lib.split(",");
+			for(var i in items){
+				YT.imports(items[i], function(main) {
+					// 初始化控件的值、展现等，不含事件
+					main.reset(widget, panel, app, json);
+				});
+			}
 		},
-		dataKeys: function(keystr, json){
+		/**
+		 * 值键生成器
+		 * @param keystr 元素 data-keys="" 的值转译规则；
+		 * @param json 原始值
+		 * 
+		 * 举例1：全值传递data-keys="*"
+		 * var json={A:100,b:'SS',d:'uuuu'};
+		 * var keystr="*"
+		 * var params=YT.Form.dataKeys(keystr,json);
+		 * params内容为{A:100,b:'SS',d:'uuuu'};与 json 一致；
+		 * 
+		 * 举例2：不传递 data-keys=""或无该属性
+		 * var json={A:100,b:'SS',d:'uuuu'};
+		 * var keystr=""
+		 * var params=YT.Form.dataKeys(keystr,json);
+		 * params内容为{};
+		 * 
+		 * 举例3：定制值键生成 data-keys="a=A,b,c:01"
+		 * params内容为{a:100,b:'SS',c:01}
+		 * var keystr="a=A,b,c:01"
+		 * 请求数据
+		 * var params=YT.Form.dataKeys(keystr,json);
+		 * 结果数据
+		 * var json={A:100,b:'SS',d:'uuuu'};
+		 * 
+		 */
+		dataKeys : function(keystr, json) {
 			var params = {};
-			if(YT.isEmpty(keystr)){
-				return {}
+			//	var keystr = widget.attr("data-keys") || "";
+			if (YT.isEmpty(keystr)) {
+				//1、传空值
+				return {};
 			}
-			if(keystr == '*'){
-				return json
+			if(keystr=="*"){
+				//2、全值传递
+				return json;
 			}
-			
-			var keys = keystr.split(',');
-			for(var i = 0; i < keys.length; i ++){
+			//3、定制值键传递
+			var keys = keystr.split(",");
+			YT.log.info('init keys:', keys, " json:", json);
+			for (var i in keys) {
 				var key = keys[i];
 				var items = key.split(/=|:/);
-				var k = items[0], v = items.length > 1 ? items[1] : '';
-				params[k] = key.indexOf('=') > 0 ? json[v] : (key.indexOf(':') > 0 ? v : json[k]);
+				var k = items[0], v = items.length > 1 ? items[1] : "";
+				YT.log.info("key:", key, " v:", v, " index:", i);
+				params[k] = key.indexOf("=") > 0 ? json[v] : (key.indexOf(":") > 0 ? v : json[k]);
 			}
 			return params;
+		},
+		dataNames: function (names, data) {
+			var json = {};
+			if (!YT.isEmpty(names)) {
+				json = YT.JsonEval(names);
+			}
+			var rstData = {}
+			for (var p in json) {
+				var key = json[p];
+				rstData[p] = data[key];
+			}
+			return rstData;
+		},
+		/**
+		 * 组件内元素跳转声明
+		 * @param widget 组件元素
+		 * @param data	 数据
+		 */
+		dataLink : function(widget, data) {
+			// 页面跳转
+			widget.on("click", "[data-link]", function(e) {
+				e.stopPropagation();
+				var ctrlItem = $(this);
+				var url = ctrlItem.data("link");
+				var keys = ctrlItem.attr("data-keys");
+				var params = YT.Form.dataKeys(keys, data);
+				YT.log.debug('link:', url, ',params:', params);
+				YT.nextPage(url, params);
+			});
+		},
+		/**
+		 * 组件内元素事件声明
+		 * @param widget
+		 * @param data
+		 * @param app
+		 */
+		dataListEvent : function(widget, data, app) {
+			widget.on("click", "[data-listEvent]", function(e) {
+				e.stopPropagation();
+				var ctrlItem = $(this);
+				var keys = ctrlItem.attr("data-keys");
+				var params = YT.Form.dataKeys(keys, data);
+				var listEvent = ctrlItem.attr("data-listEvent");
+				YT.log.debug("listEvent:", listEvent, ",params:", params);
+				app[listEvent] && app[listEvent](params, ctrlItem, widget);
+			});
 		},
 		/**
 		 * @description 预初始化,公共事件定义，目前该方法为空，可重写该方法
@@ -166,12 +266,12 @@
 		 * @param {element}
 		 *            panel 页面表单对
 		 * @param {Object}
-		 *            sendObj 装载表单数据的json对象
+		 *            defObj 装载表单数据的json对象
 		 * @returns {*|{}} 表单参数
 		 * @example YT.Form.getFormJson(panel, {});
 		 */
-		getFormJson : function(panel, sendObj) {
-			sendObj = sendObj || {};
+		getFormJson : function(panel,  defObj) {
+			var sendObj = YT.apply({}, defObj);// 覆盖
 			if (!panel)
 				return sendObj;
 			var arr = [];// 定义一个容器，用来存放data-name的值；
@@ -188,14 +288,30 @@
 						}
 						arr.push(name);
 						var type = item.attr("data-type") || this.type;
-						if (type == "checkbox") {
+						if (type == "checkbox") {//多选
 							var tmps = [];
 							item.find("input:checked").each(function() {
 								tmps.push(this.value);
 							});
 							value = tmps.join(",");
-						} else if (type == "radiobox") {
+						} else if (type == "switch") {// 多选
+							if (item.prop("checked")) {
+								value = this.value || "1";
+							}
+						} else if (type == "radiobox") {//单选
 							value = item.find('input[type=radio]:checked').val();
+						} else if (type == "sort") {//服务端排序
+							// 参考示例: "field-amt desc,field-date asc";
+							var tmp = [];
+							// 升序内容
+							item.find(".sort-asc").each(function() {
+								tmp.push($(this).attr("data-value") + " asc");
+							});
+							// 降序内容
+							item.find(".sort-desc").each(function() {
+								tmp.push($(this).attr("data-value") + " desc");
+							});
+							value = tmp.join(",");
 						} else {
 							value = item.attr("data-value") || item.val() || item.text() || "";
 							if (type == "select") {// 自定义下拉框
@@ -204,7 +320,7 @@
 							if (item.is("select")) {// dom节点为select框判断
 								value = item.find('option:selected').val() || "";
 								var text = item.find("option:selected").text();
-								sendObj[name+"_TEXT"] = text;
+//								sendObj[name+"_TEXT"] = text;
 							}
 							// 去逗号
 							if (type == "money" || type == "number") {
@@ -364,7 +480,7 @@
 			if ("checkbox" == dataType) {
 				var isChecked = false;
 				if (item.attr('type') == 'checkbox') {
-					isChecked = item.prop("checked")
+					isChecked = item.prop("checked");
 				} else {
 					isChecked = item.find('input[type=checkbox]').prop("checked");
 				}

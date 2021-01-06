@@ -12,18 +12,18 @@ define(function(require, exports, module) {
 		'</div>';
 	var isLoaded = false, dataArray, timeOut, trackClick = false;
 	var scrollTops = [];//所有标题距离页面顶端的距离
-	var panel, capEle, letter, letterCap;
+	var capEle, letter, letterCap;
 	var touchEvent = {
 		start: YT.touch() ? 'touchstart' : 'mousedown',
 		move: YT.touch() ? 'touchmove' : 'mousemove',
 		end: YT.touch() ? 'touchend' : 'mouseup'
 	};
 	var me = {
-		init : function(ele) {
+		init : function(panel,listEle) {
 			if(!isLoaded){
 				seajs.use('assets/css/func/letter.css',function(){
 					isLoaded = true;
-					me.init(ele)
+					me.init(panel,listEle)
 				});
 				return;
 			}
@@ -33,30 +33,33 @@ define(function(require, exports, module) {
 				LIST : dataArray
 			});
 			var layer = document.createElement("div");
-			ele.append(layer);
-			panel = ele;
+			panel.append(layer);
 			capEle = $(layer);
 			capEle.html(html);
 			letter = capEle.find('.ui-letter');
 			letterCap = capEle.find('.ui-letter-cap');
-			me.initEvent();
+			me.initEvent(panel,listEle);
 		},
-		initEvent : function(){
+		initEvent : function(panel,listEle){
 			var dom = capEle[0];
-			dom.addEventListener(touchEvent.start,YT.bind(me.start, this),false);
-			dom.addEventListener(touchEvent.move,YT.bind(me.move, this),false);
+			dom.addEventListener(touchEvent.start,function(e){
+				me.start(e,panel,listEle);
+			},false);
+			dom.addEventListener(touchEvent.move,function(e){
+				me.move(e,panel,listEle);
+			},false);
 			dom.addEventListener(touchEvent.end,YT.bind(me.end, this),false);
 		},
-		start : function(e){
+		start : function(e,panel,listEle){
 			trackClick = true;
 			letter.find('ul').addClass('current');
 			var cap = me.getCurrentSelect(e);
 			if(!YT.isEmpty(cap)){
 				letterCap.text(cap).show();
-				me.setPoint(cap);
+				me.setPoint(cap,panel,listEle);
 			}
 		},
-		move : function(e){
+		move : function(e,panel,listEle){
 			if(!trackClick){//如果没有触发start则不执行(适配pc)
 				return;
 			}
@@ -64,7 +67,7 @@ define(function(require, exports, module) {
 			var cap = me.getCurrentSelect(e);
 			if(!YT.isEmpty(cap)){
 				letterCap.text(cap).show();
-				me.setPoint(cap);
+				me.setPoint(cap,panel,listEle);
 			}
 		},
 		end : function(e){
@@ -90,21 +93,18 @@ define(function(require, exports, module) {
 			var index = Math.floor(( clientY- top) / lineheight);
 			return dataArray[index];
 		},
-		setPoint : function(cap) {
+		setPoint : function(cap,panel,listEle) {
 			var flg = panel.find('[data-cap=' + cap + ']');
-			if (flg.position()) {
-				var flgTop = flg.position().top*1;
-				if(flgTop == 0){
-					return;
+			if(flg.length> 0){
+				var flgTop = flg.offset().top - listEle.offset().top + listEle.scrollTop();
+				if(flgTop >=0){
+					listEle.animate({scrollTop: (flgTop)+'px'}, 0);
 				}
-				$('#mainBody').animate({scrollTop: (flgTop)+'px'}, 0);
-				$('html,body').animate({scrollTop: (flgTop)+'px'}, 0);
 			}
 		},
 		initStickyCap : function(ele){
 			var caps = ele.find('[data-cap]');
 			var capsList = ele.find('[data-capList]');
-			//caps.eq(0).addClass('ui-letter-fixed');
 			caps.each(function(i,n){
 				scrollTops[i] = $(n).offset().top;
 			});

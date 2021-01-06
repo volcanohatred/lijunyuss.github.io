@@ -1,323 +1,244 @@
-@charset "UTF-8";
 @font-face {
-  font-family: "iconfont";
-  src: url(../../font/iconfont.ttf) format("truetype");
+  font-family: 'iconfont';
+  src: url("../../font/iconfont.ttf") format('truetype');
 }
-@font-face {
-  font-family: "iconfont";
-  src: url("../../font/iconfont.eot?t=1531731085385");
-  /* IE9*/
-  src: url("../../font/iconfont.eot?t=1531731085385#iefix") format("embedded-opentype"), url("data:application/x-font-woff;charset=utf-8;base64,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") format("woff"), url("../../font/iconfont.ttf?t=1531731085385") format("truetype"), url("../../font/iconfont.svg?t=1531731085385#iconfont") format("svg");
-  /* iOS 4.1- */
-}
-.ui-icon, [class^="ui-icon-"] {
-  font-family: "iconfont", serif !important;
+.ui-icon,
+[class^='ui-icon-'] {
+  font-family: 'iconfont', serif !important;
   font-size: 25px;
   line-height: 50px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   display: block;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0,0,0,0.5);
 }
-
 .iconfont {
-  font-family: "iconfont", serif !important;
+  font-family: 'iconfont', serif !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 .ui-icon-phone:before {
   content: '\e688';
 }
-
 .ui-icon-return:before {
   content: '\e629';
 }
-
 .ui-icon-personal:before {
   content: '\e636';
 }
-
 .ui-icon-date-lg:before {
   content: '\e60f';
 }
-
 .ui-icon-date:before {
   content: '\e603';
 }
-
 .ui-icon-history:before {
   content: '\e603';
 }
-
 .ui-icon-calendar:before {
   content: '\e61b';
 }
-
 .ui-icon-back:before {
   content: '\e697';
 }
-
 .ui-icon-category:before {
   content: '\e699';
 }
-
 .ui-icon-close-pithy:before {
   content: '\e69a';
 }
-
 .ui-icon-comments:before {
   content: '\e69b';
 }
-
 .ui-icon-upArrow:before {
   content: '\e6a5';
 }
-
 .ui-icon-downArrow:before {
   content: '\e6a6';
 }
-
 .ui-icon-more:before {
   content: '\e6a7';
 }
-
 .ui-icon-close:before {
   content: '\e62e';
 }
-
 .ui-icon-safe:before {
   content: '\e604';
 }
-
 .ui-icon-sms:before {
   content: '\e6b1';
 }
-
 .ui-icon-cart:before {
   content: '\e605';
 }
-
 .ui-icon-add-cart:before {
   content: '\e606';
 }
-
 .ui-icon-QR-code:before {
   content: '\e608';
 }
-
 .ui-icon-collect:before {
   content: '\e609';
 }
-
 .ui-icon-delete:before {
   content: '\e60a';
 }
-
 .ui-icon-link:before {
   content: '\e60b';
 }
-
 .ui-icon-scan:before {
   content: '\e60c';
 }
-
 .ui-icon-setting:before {
   content: '\e60d';
 }
-
 .ui-icon-play:before {
   content: '\e60e';
 }
-
 .ui-icon-location:before {
   content: '\e610';
 }
-
 .ui-icon-home:before {
   content: '\e611';
 }
-
 .ui-icon-refresh:before {
   content: '\e612';
 }
-
 .ui-icon-search:before {
   content: '\e613';
 }
-
 .ui-icon-lock:before {
   content: '\e614';
 }
-
 .ui-icon-tips:before {
   content: '\e615';
 }
-
 .ui-icon-finish:before {
   content: '\e616';
 }
-
 .ui-icon-order:before {
   content: '\e617';
 }
-
 .ui-icon-feedback:before {
   content: '\e618';
 }
-
 .ui-icon-redPacket:before {
   content: '\e619';
 }
-
 .ui-icon-see:before {
   content: '\e61f';
 }
-
 .ui-icon-opinion:before {
   content: '\e620';
 }
-
 .ui-icon-camera:before {
   content: '\e621';
 }
-
 .ui-icon-message:before {
   content: '\e622';
 }
-
 .ui-icon-share:before {
   content: '\e623';
 }
-
 .ui-icon-new:before {
   content: '\e624';
 }
-
 .ui-icon-add:before {
   content: '\e81a';
 }
-
 .ui-icon-phonebook:before {
   content: '\e625';
 }
-
 .ui-icon-likes:before {
   content: '\e626';
 }
-
 .ui-icon-gift:before {
   content: '\e627';
 }
-
 .ui-icon-voice:before {
   content: '\e62a';
 }
-
 .ui-icon-close-eyes:before {
   content: '\e61d';
 }
-
 .ui-icon-close-progress:before {
   content: '\e62f';
 }
-
 .ui-icon-mail:before {
   content: '\e75a';
 }
-
 .ui-icon-acct-manage:before {
   content: '\e65a';
 }
-
 .ui-icon-load-more-low:before {
   content: '\e635';
 }
-
 .ui-icon-load-more-up:before {
   content: '\e601';
 }
-
 .ui-icon-trans:before {
   content: '\e781';
 }
-
 .ui-icon-bank:before {
   content: '\e62c';
 }
-
 .ui-icon-follow:before {
   content: '\e61e';
 }
-
 .ui-icon-follow-ed:before {
   content: '\e630';
 }
-
 .ui-icon-point:before {
   content: '\e61a';
 }
-
 .ui-icon-counter:before {
   content: '\e657';
 }
-
 .ui-icon-filter:before {
   content: '\e6e5';
 }
-
 .ui-icon-add-progress:before {
   content: '\e602';
 }
-
 .ui-icon-delete:before {
   content: '\e632';
 }
-
 .ui-icon-scan {
   right: 13px;
   font-size: 20px;
 }
-
 .ui-icon-phone {
   font-size: 22px;
   right: 11px;
 }
-
 .ui-icon-base {
   font-size: 20px;
   right: 13px;
 }
-
-/* 加   */
+/* 加 */
 .icon-jia:before {
-  content: "\e6a9";
+  content: '\e6a9';
 }
-
-/* 减  */
+/* 减 */
 .icon-jian:before {
-  content: "\e620";
+  content: '\e620';
 }
-
-/* 指纹  */
+/* 指纹 */
 .icon-zhiwen:before {
-  content: "\e64c";
+  content: '\e64c';
 }
-
-/* 五角星  */
+/* 五角星 */
 .icon-wujiaoxingkong:before {
-  content: "\e646";
+  content: '\e646';
 }
-
-/* 编辑  */
+/* 编辑 */
 .icon-bianji:before {
-  content: "\e669";
+  content: '\e669';
 }
-
-/* 三角  */
+/* 三角 */
 .icon-triangle-top:before {
-  content: "\e635";
+  content: '\e635';
 }

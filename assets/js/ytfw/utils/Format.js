@@ -134,11 +134,11 @@
 			}
 			value = me.removeSpace(value);
 			var tmpStr = "";
-			var start = value.length - 4;
-			if (start < 4) {
-				start = 4;
+			var start = value.length - 2;
+			if (start < 2) {
+				start = 2;
 			}
-			tmpStr = tmpStr + value.substring(0, 4) + " **** **** " + value.substring(start, value.length);
+			tmpStr = tmpStr + value.substring(0, 2) + " **** **** " + value.substring(start, value.length);
 			return tmpStr;
 		},
 		/**
@@ -202,51 +202,6 @@
 			return v.format(format || 'yyyy年MM月dd日');
 		},
 		/**
-	     * 日期格式化
-	     * @param {} v
-	     * @param {} format
-	     * @time 2020-8-21 10:44:02 
-	     * @example 20200202, yyyy-MM-dd ==>> 2020-02-02
-	     */
-	    fmtDateR: function(v, format,parse){
-			if(!v) return null;
-			if (!Fw.isDate(v)) {
-			    if(parse !== false){
-			        var value = v;
-			        v = String(v).replace(/[^0-9.]/gi, '').split('.')[0];
-	                switch(v.length){
-	                    //HHmm 2359
-	                    case 4:
-	                        return YT.Format.fmtDateR('19000101' + v + '00', format || YT.Format.dateFormat['HM'], false);
-	                    //HHmmss 235959
-	                    case 6:
-	                        return YT.Format.fmtDateR('19000101' + v, format || YT.Format.dateFormat['HMS'], false);
-	                    //yyyyMMdd 20151230
-	                    case 8:
-	                        return YT.Format.fmtDateR(v + '000000', format, false);
-	                    //yyyyMMddHHmmss 20151230235959
-	                    case 14:
-	                        return YT.Format.fmtDateR(v, format, false);
-	                    //long || other
-	                    default:
-	                        return YT.Format.fmtDateR(Fw.isNumber(value*1) ? value*1 : Date.parse(value), format, false);
-	                }
-			    }
-			    else{
-			        if(v.length === 14){
-			            //parse
-	                    v = v.substring(0, 4) + '/' + v.substring(4, 6) + '/' + v.substring(6, 8) + ' ' + v.substring(8, 10) + ':' + v.substring(10, 12) + ':' + v.substring(12, 14);
-	                    return YT.Format.fmtDateR(Date.parse(v), format, false);
-			        }
-			        else{
-			            //long
-			            v = new Date(v);
-			        }
-			    }
-			}
-			return v.format(format || "yyyy-MM-dd");
-	    },
-		/**
 		 * @description 格式化金额
 		 * @param {float}
 		 *            v 原始金额
@@ -275,9 +230,6 @@
 			var x = m[1].length > 3 ? m[1].length % 3 : 0;
 			return p + (x ? m[1].substr(0, x) + t : '') + m[1].substr(x).replace(/(\d{3})(?=\d)/g, '$1' + t)
 					+ (c ? d + (+m[2] || 0).toFixed(c).substr(2) : '');
-		},
-		fmtInterNum:function(b){
-			return parseInt(b);
 		},
 
 		/**
@@ -395,148 +347,9 @@
 		 *          2.html中使用juicer渲染: ${v|fmtAddPercent}<br>
 		 */
 		fmtAddPercent : function(b) {
-			var a = Math.floor(b * 100);
+			var a = Math.floor(b * 100) / 100;
 			a = (a.toFixed(2));
 			return a + "%";
-		},
-		/**
-		 * @description 利率格式化,默认四位小数
-		 * @param {*|float}
-		 *            b 初始数据
-		 * @returns {string} 格式后的字符
-		 * @example 1.JS中直接调用:<br>
-		 *          var s = YT.Format.fmtAddPercent(v);<br>
-		 *          2.html中使用juicer渲染: ${v|fmtAddPercent}<br>
-		 */
-		fmtAddPercentFour : function(b) {
-			var a = Math.floor(b * 10000) / 10000;
-			a = (a.toFixed(4));
-			return a + "%";
-		},
-		/**
-		 * @description 利率格式化,两位小数
-		 * @param {*|float}
-		 *            b 初始数据
-		 * @returns {string} 格式后的字符
-		 * @example YT.Format.fmtAddPercentThree("0.019500") ==>> 1.95%
-		 */
-		fmtAddPercentThree : function(b){
-			if(!b){
-				return "0.00%";
-			}
-			var a = Math.floor(b * 1000000) / 10000;
-			a = (a.toFixed(4));
-			return a + "%";
-		},
-		/**
-		 * @description 利率格式化,两位小数
-		 * @param {*|float}
-		 *            b 初始数据
-		 * @returns {string} 格式后的字符
-		 * @example YT.Format.fmtAddPercentTwo("0.019500") ==>> 1.95%
-		 */
-		fmtAddPercentTwo : function(b){
-			if(!b){
-				return "0.00%";
-			}
-			var a = Math.floor(b * 1000000) / 10000;
-			a = (a.toFixed(2));
-			return a + "%";
-		},
-		/**
-		 * 格式化年月的方法，用于存款/大额存单产品期限的转义
-		 * @example YT.Format.fmtAddPercentTwo("YEAR") ==>> 年
-		 */
-		fmtTime : function(b) {
-			if(b === "YEAR"){
-				return "年";
-			}
-			if(b === "MONTH"){
-				return "个月";
-			}
-			return b;
-		},
-		fmtNumber3 : function(b){
-			b = b/10000;
-			return b;
-		},
-		/**
-		 * @description 日期格式化,默认四位小数
-		 * @param {*|float}
-		 *            b 初始数据
-		 * @returns {string} 格式后的字符
-		 * @example 1.JS中直接调用:<br>
-		 *          var s = YT.Format.fmtAddPercent(v);<br>
-		 *          2.html中使用juicer渲染: ${v|fmtAddPercent}<br>
-		 */
-		fmtDateChange : function(b){
-			var a = b.substr(0,4)+"/"+b.substr(4,2)+"/"+b.substr(6);
-			return a;
-		},
-		fmtProductTime : function(b){
-			/*000--活期101--一天103--三天107--七天114--十四天
-			201--一月202--两月203--三月206--六月209--九月
-			218--十八月301--一年302--两年303--三年304--四年
-			305--五年306--六年308--八年330--三十年901--自定义1
-			902--自定义2 903--自定义3 904--自定义4 905--自定义5
-			906--自定义6 907--自定义7 908--自定义8 909--自定义9*/
-			if(b=="000"){
-				return "活期";
-			}else if(b=="101"){
-				return "一天";
-			}else if(b=="103"){
-				return "三天";
-			}else if(b=="107"){
-				return "七天";
-			}else if(b=="114"){
-				return "十四";
-			}else if(b=="201"){
-				return "一个月";
-			}else if(b=="202"){
-				return "两个月";
-			}else if(b=="203"){
-				return "三个月";
-			}else if(b=="206"){
-				return "六个月";
-			}else if(b=="209"){
-				return "九个月";
-			}else if(b=="218"){
-				return "十八个月";
-			}else if(b=="301"){
-				return "一年";
-			}else if(b=="302"){
-				return "两年";
-			}else if(b=="303"){
-				return "三年";
-			}else if(b=="304"){
-				return "四年";
-			}else if(b=="305"){
-				return "五年";
-			}else if(b=="306"){
-				return "六年";
-			}else if(b=="308"){
-				return "八年";
-			}else if(b=="330"){
-				return "三十年";
-			}
-			return b;
-		},
-		fmtInterest : function(b){
-			/*结息方式"结息方式 1--利随本清2--按月结息3--按季结息4--按年结息5--不结息6--其他" */
-			if(b=="1"){
-				return "利随本清"
-			}else if(b=="2"){
-				return "按月结息"
-			}else if(b=="3"){
-				return "按季结息"
-			}else if(b=="4"){
-				return "按年结息"
-			}else if(b=="5"){
-				return "不结息"
-			}else if(b=="6"){
-				return "其他"
-			}
-			return b;
 		},
 		/**
 		 * @description 格式化数字为大写汉字
@@ -566,7 +379,14 @@
 	      
 	        for (var i = 0; i < fraction.length; i++)     
 	        {    
-	            s += (digit[Math.floor(n * 10 * Math.pow(10, i)) % 10] + fraction[i]).replace(/零./, '');    
+	        	var _n = n * 10;
+	        	try{
+	        		// 相乘精度不准问题
+	        		if(_n.toString().split(".")[1].length > 1){
+	        			_n = _n.toFixed(1);
+	        		}
+	        	}catch(e){}
+	            s += (digit[Math.floor(_n * Math.pow(10, i)) % 10] + fraction[i]).replace(/零./, '');    
 	        }    
 	        s = s || '整';    
 	        n = Math.floor(n);    
@@ -626,23 +446,8 @@
 				}
 			}
 			return datas;
-		},
-		/**
-		 * 格式化币种
-		 * @param val 币种代码
-		 * @return 币种中文含义
-		 */
-		fmtCurrency : function(val){
-			if(!val){
-				return val;
-			}
-			if(val == "CNY"){
-				return "人民币";
-			}
-			return "";
 		}
 	};
-
 	/**
 	 * @description 注册到juicer
 	 */

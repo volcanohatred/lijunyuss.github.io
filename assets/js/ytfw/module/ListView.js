@@ -6,36 +6,35 @@
  * @return
  */
 YT.ListView = YT.extend(YT.Component, {
-	pageSize : 5,// 每页条数
-	currentPage : 1,// 当前页
+	pageSize: 5, // 每页条数
+	currentPage: 1, // 当前页
 	// 最大缓存页数
-	maxPages : 6,
-	data0 : null,// 第一页数据
-	cacheDatas : new Array(),// 非第一页数据缓存
-	topPageIndex : 1,
-	bottomPageIndex : 1,
-	trackClick : false,
-	pullText : '下拉可刷新',
-	releaseRefreshText : '释放立即刷新',
-	refreshNow : '正在刷新',
-	refreshComplete : '刷新完成',
-	loadMoreText : '上拉加载更多',
-	loadMoreNow : '加载中...',
-	emptyText : '暂无交易记录',
-	emptyTpl : '${emptyText}',
-	itemCls : 'list-item', //默认点击触发的class
-	pressedCls : 'pressed',
-	disclosureCls : 'disclosure',
-	//pageStartField : "NEXT_KEY",
-	pageStartField : "nextPageNo",
-	pageLimitField : "PAGE_SIZE",
-	dataField : "LIST",
-	loadMore : true,
-	refresh : true, //是否需要刷新功能
-	isRefresh : false, //是否正在刷新
-	isStop : false,
-	finish : false,
-	touchEvent : {
+	maxPages: 6,
+	data0: null, // 第一页数据
+	cacheDatas: new Array(), // 非第一页数据缓存
+	topPageIndex: 1,
+	bottomPageIndex: 1,
+	trackClick: false,
+	pullText: '下拉可刷新',
+	releaseRefreshText: '释放立即刷新',
+	refreshNow: '正在刷新',
+	refreshComplete: '刷新完成',
+	loadMoreText: '上拉加载更多',
+	loadMoreNow: '加载中...',
+	emptyText: '没有数据',
+	emptyTpl: '$${emptyText}',
+	itemCls: 'list-item', //默认点击触发的class
+	pressedCls: 'pressed',
+	disclosureCls: 'disclosure',
+	pageStartField: "NEXT_KEY",
+	pageLimitField: "PAGE_SIZE",
+	dataField: "LIST",
+	loadMore: true,
+	refresh: true, //是否需要刷新功能
+	isRefresh: false, //是否正在刷新
+	isStop: false,
+	finish: false,
+	touchEvent: {
 		start: YT.touch() ? 'touchstart' : 'mousedown',
 		move: YT.touch() ? 'touchmove' : 'mousemove',
 		end: YT.touch() ? 'touchend' : 'mouseup'
@@ -46,12 +45,12 @@ YT.ListView = YT.extend(YT.Component, {
 	 * @name YT.ListView.initComponent
 	 * @function
 	 */
-	initComponent : function() {
+	initComponent: function () {
 		YT.ListView.superclass.initComponent.call(this);
-		this.params = (this.ajax && this.ajax.params) || {};// 原始请求参数
+		this.params = (this.ajax && this.ajax.params) || {}; // 原始请求参数
 		// 新建ajax工具类
 		this.ajax = new YT.Ajax(YT.apply(this.ajax, {
-			autoLoad : false
+			autoLoad: false
 		}));
 		// 初始化滑动翻页
 		if (this.page === false) {
@@ -63,34 +62,38 @@ YT.ListView = YT.extend(YT.Component, {
 	/**
 	 * 初始化事件
 	 */
-	initEvents : function() {
-		this.ajax.on('load', YT.bind(this.onLoadData,this), this);
+	initEvents: function () {
+		this.ajax.on('load', YT.bind(this.onLoadData, this), this);
 		/*if(YT.isEmpty(this.clickItem)){
 			this.body.on('click', '.'+this.itemCls ,YT.bind(this.onItemClick, this));
 		}else{
 			this.body.on('click', '.'+this.clickItem ,YT.bind(this.onItemClick, this));
 		}*/
-		this.body.on('click', '[data-listEvent]' ,YT.bind(this.onItemClick, this));
+		this.body.on('click', '[data-listEvent]', YT.bind(this.onItemClick, this));
+		this.body.on('click', '[data-link]', YT.bind(this.onItemClick, this));
+		this.emptyEl.on('click', '[data-link]', YT.bind(this.onEmptyClick, this));
 		var body = this.body[0];
-		body.addEventListener(this.touchEvent.start,YT.bind(this.onItemTouchStart, this),false);
-		body.addEventListener(this.touchEvent.move,YT.bind(this.onItemTouchMove, this),false);
-		body.addEventListener(this.touchEvent.end,YT.bind(this.onItemTouchEnd, this),false);
-		if(this.refresh){
+		this.body.off([this.touchEvent.start, this.touchEvent.move, this.touchEvent.end].join(" "));
+		body.addEventListener(this.touchEvent.start, YT.bind(this.onItemTouchStart, this), false);
+		body.addEventListener(this.touchEvent.move, YT.bind(this.onItemTouchMove, this), false);
+		body.addEventListener(this.touchEvent.end, YT.bind(this.onItemTouchEnd, this), false);
+		if (this.refresh) {
 			// 加载最新
-			this.on('refresh', YT.bind(this.onRefresh,this));
+			this.on('refresh', YT.bind(this.onRefresh, this));
 		}
 		// 加载更多
-		this.on('loadmore', YT.bind(this.onLoadMore,this));
+		this.on('loadmore', YT.bind(this.onLoadMore, this));
 	},
 	/**
 	 * 初始化HTML模版
 	 */
-	initTpl : function() {
-		var tpl = [], id = YT.id();
+	initTpl: function () {
+		var tpl = [],
+			id = YT.id();
 		var panel = this.el;
 		if (this.page !== false) {
-			tpl.push('<div class="view-pullrefresh pullrefresh hidden">'
-					+ '<div class="pullrefresh-arrow"></div>' + '<div class="pullrefresh-text"></div><div id="listview-up-down" class="view-up-down"/></div>'+ '</div>');
+			tpl.push('<div class="view-pullrefresh pullrefresh hidden">' +
+				'<div class="pullrefresh-arrow"></div>' + '<div class="pullrefresh-text"></div><div id="listview-up-down" class="view-up-down"/></div>' + '</div>');
 		}
 		tpl.push('<div class="load-empty hidden">');
 		tpl.push(this.emptyTpl);
@@ -100,11 +103,11 @@ YT.ListView = YT.extend(YT.Component, {
 			tpl.push('<div class="view-loadmore loadmore ui-center hidden"><span style="background:url(assets/img/common/loading.gif) no-repeat;width:20px;height:20px;"></span>${loadMoreText}</div>');
 		}
 		this.el.html(YT.template(tpl, {
-			emptyText : this.emptyText,
-			loadMoreText : this.loadMoreText
+			emptyText: this.emptyText,
+			loadMoreText: this.loadMoreText
 		}));
 		this.el.css({
-			"position" : "relative"
+			"position": "relative"
 		});
 		this.emptyEl = panel.find('.load-empty');
 		this.body = panel.find('.body.list-view');
@@ -112,19 +115,19 @@ YT.ListView = YT.extend(YT.Component, {
 		this.tpl.push('{@each data as item,index}');
 		this.tpl.push('<div class="${itemCls|fmtItemCls} ${disclosureCls}" _index="${index}" _page="${page}">');
 
-		YT.each(this.itemTpl, function(item) {
+		YT.each(this.itemTpl, function (item) {
 			this.tpl.push(item);
 		}, this);
 
 		this.tpl.push('</div>');
 		this.tpl.push('{@/each}');
 		this.tpl.push({
-			fmtRowNo : YT.bind(function(index) {
+			fmtRowNo: YT.bind(function (index) {
 				var rst = 1 * index + (this.pageSize * (this.currentPage - 1)) + 1;
 				return rst;
 			}, this),
-			onItemAdd : YT.bind(this.onItemAdd, this),
-			fmtItemCls : YT.bind(function() {
+			onItemAdd: YT.bind(this.onItemAdd, this),
+			fmtItemCls: YT.bind(function () {
 				return this.itemCls;
 			}, this)
 		});
@@ -132,12 +135,14 @@ YT.ListView = YT.extend(YT.Component, {
 		if (this.custFmtFuncs) {
 			this.tpl.push(this.custFmtFuncs);
 		}
+
+		//		YT.log.info("list view tpl:",this.tpl);
 		this.tpl = YT.template(this.tpl);
 	},
 	/**
 	 * 初始化滑动翻页
 	 */
-	initScrollable : function() {
+	initScrollable: function () {
 		var panel = this.el;
 		this.pullRefreshEl = panel.find('.pullrefresh');
 		this.pullRefreshArrowEl = this.pullRefreshEl.find(".pullrefresh-arrow");
@@ -148,8 +153,9 @@ YT.ListView = YT.extend(YT.Component, {
 		this.loadMoreEl.on("click", YT.bind(this.onLoadMore, this));
 		YT.apply(this, {
 			// 滚动距离
-			getScrollTop : function() {
-				var bodyScrollTop = 0, documentScrollTop = 0;
+			getScrollTop: function () {
+				var bodyScrollTop = 0,
+					documentScrollTop = 0;
 				if (document.body) {
 					bodyScrollTop = document.body.scrollTop;
 				}
@@ -159,8 +165,9 @@ YT.ListView = YT.extend(YT.Component, {
 				return (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
 			},
 			// 文档高度
-			getScrollHeight : function() {
-				var bodyScrollHeight = 0, documentScrollHeight = 0;
+			getScrollHeight: function () {
+				var bodyScrollHeight = 0,
+					documentScrollHeight = 0;
 				if (document.body) {
 					bodyScrollHeight = document.body.scrollHeight;
 				}
@@ -170,7 +177,7 @@ YT.ListView = YT.extend(YT.Component, {
 				return (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
 			},
 			// 浏览器高度
-			getWindowHeight : function() {
+			getWindowHeight: function () {
 				if (document.compatMode == "CSS1Compat") {
 					return document.documentElement.clientHeight;
 				} else {
@@ -184,7 +191,7 @@ YT.ListView = YT.extend(YT.Component, {
 	/**
 	 * 加载更多，尾部加载更多
 	 */
-	onLoadMore : function() {
+	onLoadMore: function () {
 		this.loadMoreEl.html(this.loadMoreText);
 		delete this.pullEventName;
 		if (this.ajax.isLoading || this.isStop) {
@@ -193,10 +200,13 @@ YT.ListView = YT.extend(YT.Component, {
 		this.loading = true;
 		// 设置页码
 		this.appendflag = "append";
+		if(this.extendLoadMore){
+			this.extendLoadMore(this.data, this.params)
+		}
 		this.loadData(this.bottomPageIndex + 1);
-		
+
 	},
-	onRefresh : function() {
+	onRefresh: function () {
 		this.loading = true;
 		// 设置页码
 		this.appendflag = "append";
@@ -209,8 +219,8 @@ YT.ListView = YT.extend(YT.Component, {
 	 * @param {}
 	 *            page
 	 */
-	loadData : function(page, data) {
-		if(YT.isEmpty(page)){
+	loadData: function (page, data) {
+		if (YT.isEmpty(page)) {
 			this.cacheDatas = [];
 		}
 		page = page || 1;
@@ -222,14 +232,9 @@ YT.ListView = YT.extend(YT.Component, {
 		}
 		this.currentPage = page;
 		this.emptyEl.hide();
-		var params = this.params || {};// 保留原请求参数
-		params[this.pageStartField] = page + "";// (page == 1 ? page : (page - 1) * this.pageSize + 1) + "";
+		var params = this.params || {}; // 保留原请求参数
+		params[this.pageStartField] = page + ""; // (page == 1 ? page : (page - 1) * this.pageSize + 1) + "";
 		params[this.pageLimitField] = this.pageSize + "";
-		//当有pageNo时，更新
-		YT.log.info(params.pageNo)
-		if(params.pageNo){
-			params.pageNo = page + "";
-		}
 		this.ajax.load(params);
 	},
 	/**
@@ -240,25 +245,25 @@ YT.ListView = YT.extend(YT.Component, {
 	 * @param {}
 	 *            data
 	 */
-	onLoadData : function(ajax, rst, noCache) {
+	onLoadData: function (ajax, rst, noCache) {
 		this.pullRefreshTextEl.html(this.refreshComplete);
-		$('#listview-up-down').attr('class','complete');
-		this.el.removeClass('ui-prev-loading');
+		this.el.find('#listview-up-down').attr('class', 'complete');
+		// this.el.removeClass('ui-prev-loading');
 		//this.el.find(".view-up-down").addClass('complete').removeClass('up-down');
 		this.body.css({
-			"top" : "0px",
-			"-webkit-transition-duration" : "1003ms",
+			"top": "0px",
+			"-webkit-transition-duration": "1003ms",
 			"transition-delay": ".3s"
 		});
 		var me = this;
-		if(this.hiddenRefresh){
+		if (this.hiddenRefresh) {
 			clearTimeout(this.hiddenRefresh);
 		}
 		me.isRefresh = false;
-		this.hiddenRefresh = setTimeout(function(){
+		this.hiddenRefresh = setTimeout(function () {
 			me.pullRefreshEl.hide();
-		},1000);
-		
+		}, 1000);
+
 		var hasMore = true;
 		var nextKey = rst[this.pageStartField];
 		if (this.custFunc4NextPage) {
@@ -287,23 +292,14 @@ YT.ListView = YT.extend(YT.Component, {
 				// 将HTML渲染到页面
 				var append = (this.currentPage === 1 && noCache != true) ? 'html' : this.appendflag;
 				var htm = this.tpl.render({
-					itemCls : this.itemCls,
-					disclosureCls : this.disclosure ? this.disclosureCls : '',
-					page : this.currentPage,
-					data : datas,
-					rpdata: rst
+					itemCls: this.itemCls,
+					disclosureCls: this.disclosure ? this.disclosureCls : '',
+					page: this.currentPage,
+					data: datas
 				});
 				this.body[append](htm);
 				this.data = datas;
-				/**
-				 * 如果传了这个参数，回调函数会带返回数据回去
-				 * 2020年8月21日11:53:57 zhangjingyu
-				 */
-				if(this.callbackPara){
-					this.callback && this.callback(rst);//加载页面完成后执行回调
-				}else{
-					this.callback && this.callback();//加载页面完成后执行回调
-				}
+				this.callback && this.callback(); //加载页面完成后执行回调
 			}
 		}
 		if (this.loadMoreEl) {
@@ -313,11 +309,7 @@ YT.ListView = YT.extend(YT.Component, {
 					this.pullRefreshArrowEl.remove();
 				}
 				if (this.hasMore == false) {
-					if(YT.isEmpty(datas)||datas==""){
-						this.loadMoreEl.text(this.wantMoreToLoad ||"暂未发布产品")
-					}else{
-						this.loadMoreEl.text(this.wantMoreToLoad ||"");//|| "数据加载已完成"						
-					}
+					this.loadMoreEl.text("数据加载已完成");
 					this.finish = true;
 					// 加载完成后禁用点击事件
 					this.loadMoreEl.off("click");
@@ -327,34 +319,30 @@ YT.ListView = YT.extend(YT.Component, {
 			} else {
 				if (this.hasMore == false) {
 					this.finish = true;
-					if(YT.isEmpty(datas)||datas==""){
-						this.loadMoreEl.text(this.wantMoreToLoad ||"暂未发布产品")
-					}else{
-					this.loadMoreEl.text(this.wantMoreToLoad ||"");//|| "数据加载已完成"
-					}
+					this.loadMoreEl.text("数据加载已完成");
 					// 加载完成后禁用点击事件
 					this.loadMoreEl.unbind("click");
-				}else{
+				} else {
 					this.finish = false;
 				}
 				this.loadMoreEl.show();
 			}
 		}
 		if (this.currentPage == 1) {
-			this.data0 = datas;// 第一页的缓存单独存储
+			this.data0 = datas; // 第一页的缓存单独存储
 		} else {
 			// 当前页数据缓存（非第一页）
 			this.cacheDatas.push({
-				pageNo : this.currentPage,
-				datas : datas
+				pageNo: this.currentPage,
+				datas: datas
 			});
 		}
 		this.loading = false;
 		this.fireEvent('loadsuccess', rst);
 		this.bottomPageIndex = this.currentPage;
-		
+
 	},
-	getPageData : function(pageNo) {
+	getPageData: function (pageNo) {
 		if (pageNo == 1) {
 			return this.data0;
 		} else {
@@ -374,7 +362,7 @@ YT.ListView = YT.extend(YT.Component, {
 	 * @param index
 	 * @returns
 	 */
-	getItemData : function(pageNo, index) {
+	getItemData: function (pageNo, index) {
 		var data = this.getPageData(pageNo);
 		if (data == null) {
 			data = this.data;
@@ -389,8 +377,21 @@ YT.ListView = YT.extend(YT.Component, {
 	 * @param {}
 	 *            index
 	 */
-	onItemAdd : function(item, index) {
+	onItemAdd: function (item, index) {
 		return this.fireEvent('beforeitemadd', item, index, this);
+	},
+	/**
+	 * 空数据响应
+	 */
+	onEmptyClick: function (e) {
+		var el = $(e.currentTarget);
+		e.stopPropagation();
+		var link = el.attr('data-link');
+		var keys = el.attr("data-keys");
+		var params = YT.Form.dataKeys(keys, this.params);
+		YT.log.debug('link:', link, ',params:', params);
+		YT.nextPage(link, params);
+
 	},
 	/**
 	 * 点击单条记录出发
@@ -398,12 +399,16 @@ YT.ListView = YT.extend(YT.Component, {
 	 * @param e
 	 * @returns {Boolean}
 	 */
-	onItemClick : function(e) {
+	onItemClick: function (e) {
 		var el = $(e.currentTarget);
-		var event = el.attr('data-listEvent');
+		var event = el.attr('data-listevent');
+		var link = el.attr('data-link');
+		var keys = el.attr("data-keys");
+		YT.log.info(" item event:", event, " item link:", link);
 		if (!el.hasClass(this.itemCls) && !(el = el.bubbleByCls(this.itemCls))) {
 			return false;
 		}
+		YT.log.info(" item touch true");
 		var index = el.attr('_index') * 1;
 		var pageNo = el.attr('_page') * 1;
 		var trueIndex = index + (pageNo - 1) * this.pageSize; // 记录序号
@@ -415,12 +420,21 @@ YT.ListView = YT.extend(YT.Component, {
 		if (this.tapItem) {
 			var index = this.tapItem.attr('_index') * 1 + (this.tapItem.attr('_page') - 1) * this.pageSize;
 			this.fireEvent('itemtap', this.$touchItemData, index, this.tapItem, e, this);
-			if(this.itemtap){
+			if (this.itemtap) {
 				this.itemtap(this.$touchItemData, index, this.tapItem, e, this);
 			}
-			if(event){
-				e.stopPropagation();
-				this.application && this.application[event](this.$touchItemData, index, this.tapItem, e, this);
+			e.stopPropagation();
+			if (event) {
+				//				YT.log.info(" item to click");
+				// 点击事件
+				var app = this.application;
+				app && app[event](this.$touchItemData, index, this.tapItem, e, this);
+			} else if (link) {
+				//				YT.log.info(" item to link");
+				// 页面跳转
+				var params = YT.Form.dataKeys(keys, this.$touchItemData);
+				YT.log.debug('link:', link, ',params:', params);
+				YT.nextPage(link, params);
 			}
 			delete this.tapItem;
 		}
@@ -431,11 +445,11 @@ YT.ListView = YT.extend(YT.Component, {
 	 * @param {}
 	 *            e
 	 */
-	onItemTouchStart : function(e) {
+	onItemTouchStart: function (e) {
 		this.trackClick = true;
-		this.$startPageX = this.getPageX(e);// 起始X位置
-		this.$startPageY = this.getPageY(e);// 起始Y位置
-		this.$endPageY = 0;// 移动的Y轴距离
+		this.$startPageX = this.getPageX(e); // 起始X位置
+		this.$startPageY = this.getPageY(e); // 起始Y位置
+		this.$endPageY = 0; // 移动的Y轴距离
 	},
 	/**
 	 * Item Touch Move时触发
@@ -443,23 +457,23 @@ YT.ListView = YT.extend(YT.Component, {
 	 * @param {}
 	 *            e
 	 */
-	onItemTouchMove : function(e) {
-		if(this.trackClick){//如果没有触发start则不执行(适配pc)
+	onItemTouchMove: function (e) {
+		if (this.trackClick) { //如果没有触发start则不执行(适配pc)
 			delete this.pullEventName;
-			if (!this.ajax.isLoading && !this.isStop) {//请求是否加载完成,是否主动停止滑动
+			if (!this.ajax.isLoading && !this.isStop) { //请求是否加载完成,是否主动停止滑动
 				this.$endPageX = this.$startPageX - this.getPageX(e); // 移动的X轴距离
 				this.$endPageY = this.$startPageY - this.getPageY(e); // 移动的X轴距离
 				var absPostX = Math.abs(this.$endPageX);
 				var absPostY = Math.abs(this.$endPageY);
 				if (absPostX > 5 && absPostY < 5) {
 					//return false;
-				}else{
+				} else {
 					this.$endPageY = this.$startPageY - this.getPageY(e); // 移动的Y轴距离
 
 					var scroll = "translateY(" + this.$endPageY + "px)";
 					// 头部
 					if (this.pullRefresh !== false && this.$endPageY < 0) {
-						if(this.refresh && !this.isRefresh){
+						if (this.refresh && !this.isRefresh) {
 							if (this.getScrollTop() <= 5) {
 								e.preventDefault();
 							}
@@ -467,9 +481,9 @@ YT.ListView = YT.extend(YT.Component, {
 							this.pullRefreshArrowEl.removeClass('pullrefresh-release');
 							if (p < 180) {
 								this.body.css({
-									"-webkit-transition-timing-function" : "cubic-bezier(0.1, 0.57, 0.1, 1)",
-									"top" : Math.abs(this.$endPageY * 0.7)+ "px",
-									"-webkit-transition-duration" : "0ms",
+									"-webkit-transition-timing-function": "cubic-bezier(0.1, 0.57, 0.1, 1)",
+									"top": Math.abs(this.$endPageY * 0.7) + "px",
+									"-webkit-transition-duration": "0ms",
 									"transition-delay": "0s"
 								});
 							}
@@ -477,21 +491,21 @@ YT.ListView = YT.extend(YT.Component, {
 							if (p > 30) {
 								this.pullRefreshEl.show();
 								this.pullRefreshTextEl.html(this.pullText);
-								up_down.attr("class","up-down");
+								up_down.attr("class", "up-down");
 							}
 							if (p > 90) {
-								if(!up_down.hasClass('active')){
+								if (!up_down.hasClass('active')) {
 									this.pullRefreshTextEl.html(this.releaseRefreshText);
 									var up_down = this.pullRefreshTextEl.siblings("#listview-up-down");
 									up_down.addClass("active");
 								}
 								this.pullEventName = 'refresh';
-							}else {
+							} else {
 								this.pullRefreshTextEl.html(this.pullText);
 								delete this.pullEventName;
 							}
 						}
-					}else if (this.getScrollTop() + this.getWindowHeight() > (this.getScrollHeight() - 150)) {// 底部
+					} else if (this.getScrollTop() + this.getWindowHeight() > (this.getScrollHeight() - 150)) { // 底部
 						if (!this.finish) { // 数据加载完成
 							e.preventDefault();
 							var p = Math.abs(this.$endPageY);
@@ -503,30 +517,30 @@ YT.ListView = YT.extend(YT.Component, {
 							}
 							if (p < 150) {
 								this.body.css({
-									"-webkit-transition-timing-function" : "cubic-bezier(0.1, 0.57, 0.1, 1)",
-									"top" : "-" + this.$endPageY * 0.6 + "px",
-									"-webkit-transition-duration" : "0ms",
+									"-webkit-transition-timing-function": "cubic-bezier(0.1, 0.57, 0.1, 1)",
+									"top": "-" + this.$endPageY * 0.6 + "px",
+									"-webkit-transition-duration": "0ms",
 									"transition-delay": "0s"
 								});
 							}
 						}
 					}
 				}
-				
+
 			}
 		}
 	},
-	getPageX : function(e){
-		if(YT.touch()){
+	getPageX: function (e) {
+		if (YT.touch()) {
 			return e.targetTouches[0].pageX;
-		}else{
+		} else {
 			return e.pageX;
 		}
 	},
-	getPageY : function(e){
-		if(YT.touch()){
+	getPageY: function (e) {
+		if (YT.touch()) {
 			return e.targetTouches[0].pageY;
-		}else{
+		} else {
 			return e.pageY;
 		}
 	},
@@ -536,40 +550,40 @@ YT.ListView = YT.extend(YT.Component, {
 	 * @param {}
 	 *            e
 	 */
-	onItemTouchEnd : function(e) {
-		this.$endPageY = 0;// 移动的Y轴距离
+	onItemTouchEnd: function (e) {
+		this.$endPageY = 0; // 移动的Y轴距离
 		this.trackClick = false;
 		if (this.pullEventName) {
-			if(this.pullEventName == "refresh"){
+			if (this.pullEventName == "refresh") {
 				this.body.css({
-					"top" : "50px",
-					"-webkit-transition-duration" : "1001ms",
+					"top": "50px",
+					"-webkit-transition-duration": "1001ms",
 					"transition-delay": "0s"
 				});
 				this.pullRefreshTextEl.html(this.refreshNow);
 				var up_down = this.pullRefreshTextEl.siblings("#listview-up-down");
-				up_down.attr("class","loading");
+				up_down.attr("class", "loading");
 				this.isRefresh = true;
 			}
-			if(this.pullEventName == "loadmore"){
+			if (this.pullEventName == "loadmore") {
 				this.loadMoreEl.html(this.loadMoreNow);
 			}
 			this.fireEvent(this.pullEventName, this);
 			delete this.pullEventName;
-		}else{
+		} else {
 			this.body.css({
-				"top" : "0px",
-				"-webkit-transition-duration" : "1002ms",
+				"top": "0px",
+				"-webkit-transition-duration": "1002ms",
 				"transition-delay": "0s"
 			});
 			var me = this;
-			if(this.hiddenRefresh){
+			if (this.hiddenRefresh) {
 				clearTimeout(this.hiddenRefresh);
 			}
-			this.hiddenRefresh = setTimeout(function(){
+			this.hiddenRefresh = setTimeout(function () {
 				me.pullRefreshEl.hide();
-			},800);
+			}, 800);
 		}
-		
+
 	}
 });

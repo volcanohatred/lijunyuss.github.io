@@ -1,206 +1,174 @@
 @charset "utf-8";
-/**理财**/
-.yui-fina-list{
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
+.ui-financial-title{
+   height: 50px;
+   line-height: 50px;
+   padding-left: 20px;
+   padding-right: 20px;
+   box-sizing: border-box;
+   position: relative; 
+   font-size: 18px;
+   font-weight: 500;
 }
-.yui-fina-list .yui-fina-list-item {
-	padding-top: 10px;
+.ui-financial-title .tips{
+    font-size: 12px;
+    color: #999;
+    font-weight: normal;
 }
-.yui-fina-list-item .ui-list-bg,
-.yui-fina-list-item .ui-list-lg{
-	padding-top: 10px;
-	padding-bottom: 5px;
-}
-.yui-fina-list-item [class^="ui-list"]>.ui-list-item{
-	height: 28px;
-	line-height: 28px;
-}
-.yui-fina-list-btn{
-	background-color: #fff;
-	display: -webkit-box;
-	-webkit-box-pack: center;
-    padding-top: 5px;
-	padding-bottom: 12px;
-}
-.yui-fina-list-btn .wrap{
-	display: -webkit-box;
-	width: 300px;
-}
-.yui-fina-list-btn .btn-item{
-	-webkit-box-flex: 1;
-	width: 0;
-	height: 35px;
-	min-width: 150px;
-	text-align: center;
-	line-height: 35px;
-	color: #fff;
-	border-radius: 20px;
-}
-.yui-fina-list-btn .btn-group .btn-item.left{
-	background: url("../../img/fina/btn_left.png") no-repeat;
-	background-size: 150px 35px;
-	border-radius: 0;
-}
-.yui-fina-list-btn .btn-item.left{
-	background-color: #6271de;
-}
-.yui-fina-list-btn .btn-item.right{
-	background-color: #4F5FCE;
-}
-.yui-fina-list-btn .btn-item i{
-	position: relative;
-}
-.yui-fina-list-btn .btn-item.left i:before{
-	content: '';
-	position: absolute;
-	width: 20px;
-	height: 22px;
-	background: url("../../img/fina/icon_reservation@2x.png") no-repeat;
-	background-size: 20px 22px;
-	left: -21px;
-    top: -3px;
-}
-.yui-fina-list-btn .btn-item.right i:before{
-	content: '';
-	position: absolute;
-	width: 20px;
-	height: 22px;
-	background: url("../../img/fina/icon_realTime@2x.png") no-repeat;
-	background-size: 20px 22px;
-	left: -21px;
-    top: -3px;
-}
-.yui-fina-list-btn .btn-group .btn-item.right{
-	background: url("../../img/fina/btn_right.png") no-repeat;
-	background-size: 150px 35px;
-	border-radius: 0;
-}
-.yui-fina-list-item [class^="ui-list"]>.ui-list-item.yui-fina-list-input{
-	height: 50px;
-	padding-top: 7px;
-}
-.yui-fina-list-input input{
-	height: 33px;
-	width: 100%;
-	border: 1px solid #cacaca;
-	border-radius: 6px;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-.yui-fina-date{
-	position: relative;
-}
-.yui-fina-date:after{
-	font-family: "iconfont" !important;
-    font-size: 22px;
-    line-height: 33px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    display: block;
-    color: #909090;
-    content: "\e6a6";
+.ui-financial-title .more{
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
     position: absolute;
-    right: 7px;
+    right: 20px;
     top: 50%;
-    margin-top: -16px;
-    border: 0;
-    z-index: 1;
+    transform: translateY(-50%);
+    color: #666;
+    font-weight: normal;
 }
-
-.yui-fina-panel{
-	background-image: linear-gradient(-135deg, #6E85F6 0%, #4054CF 100%);
-	padding: 16px 16px;
-	color: #fff;
+.ui-financial-panel{
+    padding: 0 16px;
 }
-.yui-fina-panel>div{
-	
+.ui-financial-panel .ad img{
+    width: 100%;
+    height: 100px;
 }
-.yui-fina-panel .header{
-	font-size: 15px;
-	height: 24px;
-	line-height: 24px;
-	position: relative;
+.ui-financial-item{
+    padding-top: 14px;
+    padding-bottom: 14px;
+    display: flex;
 }
-.yui-fina-panel .header .flag{
-	position: absolute;
-	right: 0;
-	top: 2px;
-	border: 1px solid #fff;
-	border-radius: 15px;
-	font-size: 12px;
-    padding: 0 6px;
-    margin: 0;
-    height: 20px;
-    line-height: 20px;
+.ui-financial-rate{
+    width: 120px;
+    font-size: 0;
 }
-.yui-fina-panel .conter{
-	opacity: 0.5;
-	font-size: 13px;
-	padding-top: 3px;
+.ui-financial-rate .rate{
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    font-size: 34px;
+    font-weight: 500;
+    color: #f65246;
 }
-.yui-fina-panel .footer{
-	font-size: 13px;
-	color: #FFFFFF;
-	padding-top: 13px;
-}
-.yui-rate-list{
-	background-color: #fff;
-	display: none;
-}
-.yui-rate-list.show{
-	display: block;
-}
-.yui-rate-list .conter{
-	padding-left: 16px;
-}
-.yui-rate-list .header .item{
-	padding-left: 16px;
-	font-size: 14px;
-}
-.yui-rate-list .item{
-	display: -webkit-box;
-	height: 45px;
-	line-height: 45px;
-	font-size: 15px;
-}
-.yui-rate-list .item.title{
-	height: 35px;
-	line-height: 35px;
-	color: #6068A2;
-	background-color: #EBEEFF;
-}
-.yui-rate-list .item>div{
-	-webkit-box-flex: 1;
-	width: 0;
-}
-.ui-module-tips .more{
-	position: absolute;
-	right: 26px;
-	font-size: 13px;
-	color: #C0C3CE;
-}
-.ui-module-tips .more:after {
-    font-family: "iconfont" !important;
+.ui-financial-rate .per{
     font-size: 18px;
-    line-height: 35px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    display: block;
-    color: #909090;
-    content: "\e6a6";
-    position: absolute;
-    right: -20px;
-    top: 50%;
-    margin-top: -18px;
-    border: 0;
-    z-index: 1;
-	-webkit-transition: all 0.2s;
+    color: #f65246;
+    padding-left: 2px;
 }
-.ui-module-tips.show .more:after{
-	-webkit-transform: rotate(180deg);
+.ui-financial-rate .txt{
+    font-size: 14px;
+    color: #777;
+    padding-top: 8px;
+}
+.ui-financial-content{
+    flex: 1;
+    width: 0;
+    min-width: 100px;
+    padding-left: 10px;
+}
+.ui-financial-content .title{
+    font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.ui-financial-content .info{
+    padding-top: 20px;
+    color: #777;
 }
 
+.ui-financial-content .info i{
+    padding-right: 15px;
+}
+.ui-recommend-panel{
+    display: flex;
+    padding: .05rem .05rem;
+}
+
+.ui-recommend-item{
+    flex: 1;
+    margin: 0 .05rem;
+    padding: .16rem .08rem;
+    box-shadow: 0px 1px 4px -1px #777777;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.ui-recommend-item .title{
+    font-weight: 500;
+    font-size: .17rem;
+    padding-bottom: .1rem;
+}
+.ui-recommend-item .info{
+    font-size: .13rem;
+    color: #888888;
+    padding-bottom: .06rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ui-recommend-item .rate-panel{
+    padding: .05rem 0;
+    color: #f65246;
+    font-size: 0;
+}
+.ui-recommend-item .rate-panel .rate{
+    font-size: .28rem;
+    font-weight: 500;
+}
+
+.ui-recommend-item .rate-panel .per{
+    font-size: .18rem;
+    color: #f65246;
+}
+.ui-recommend-item .tips{
+    font-size: .14rem;
+    color: #f65246;
+}
+.ui-financial-slider-panel{
+    overflow: scroll;
+}
+.ui-financial-slider-panel::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+.ui-financial-slider{
+    display: inline-flex;
+}
+
+.ui-financial-slider .item{
+    width: 300px;
+    height: 140px;
+    border-radius: 4px;
+    background-image: linear-gradient(-225deg, #6e543a 0%, #ffffff 100%);
+    margin: 0 6px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.ui-financial-slider .title{
+    font-size: 12px;
+    font-weight: 500;
+    color: #f2f2f2;
+}
+.ui-financial-slider .content{
+    padding: 10px 0;
+}
+.ui-financial-slider .content .info{
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+}
+.ui-financial-slider .content .tips{
+    padding-top: 10px;
+    font-size: 12px;
+    color: #ffffff;
+}
+.ui-financial-slider .footer{
+    padding-top: 4px;
+}
+
+.ui-financial-slider .footer .btn{
+    padding: 4px 16px;
+    color: #ffffff;
+    font-size: 12px;
+    background-color: #472e0f;
+    border-radius: 20px;
+}

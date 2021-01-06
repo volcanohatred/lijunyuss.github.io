@@ -60,9 +60,6 @@ $(function () {
 	 *	bv : 'BEFORE_VAL',//修改前的值
 	 *	cv : 'CURRENT_VAL',//修改后的值
 	 *	ce : 'COLLECT_EXT'//扩展属性
-	 *	et : 'EVENT_TYPE'//事件分类 01-理财 02-存款 03-贷款
-	 *  pno : ''//产品编号
-	 *  pna : ''//产品名称
 	 */
 	YT.log.debug("init", TAG);
 	/**
@@ -164,29 +161,22 @@ $(function () {
 				var item = $(e.currentTarget);
 				var eventNo = item.data("event");
 				var ext = '';
-				
-				var proData = {}
-				var params = item.data("param");
-				if(!YT.isEmpty(params)){
-					proData = params;
-				}
 				var ce = item.attr('data-collectExt');
-//				var mt = item.attr('data-collectType');
-//				mt = mt ? mt : '2';
-				
+				var mt = item.attr('data-collectType');
+				mt = mt ? mt : '2';
 				if (!YT.isEmpty(ce)) {
 					ext = ce;
 				}
 				var option = {
-//					mt: mt,
+					mt: mt,
 					ce: ext
 				}
-				me.setColl(option, eventNo,proData);
+				me.setColl(option, eventNo);
 			}
 			isMove = false;
 		},
 		//发送操作请求
-		setColl: function (option, eventNo,proData) {
+		setColl: function (option, eventNo) {
 			var curView = pages.find('.page-view.page-on-center');
 			var curPage = curView.find('.page.current');
 			var pageFlag = curPage.attr('data-page') || curPage.attr('class') || '';
@@ -195,42 +185,6 @@ $(function () {
 			YT.apply(collect, option);
 			var title = me.getTitleName();
 			var moduleNo = curPath.substring(curPath.lastIndexOf("/") + 1, curPath.indexOf(".html"));
-			if(moduleNo.indexOf("P04") > -1){
-				collect.mt = '8';
-				collect.et = '01';
-				if(!YT.isEmpty(proData)){
-					if(!YT.isEmpty(proData.PrdCode)){
-						collect.pno = proData.PrdCode;
-					}
-					if(!YT.isEmpty(proData.PrdName)){
-						collect.pna = proData.PrdName;
-					}
-					
-				}
-			}else if(moduleNo.indexOf("P05") > -1){
-				collect.mt = '8';
-				collect.et = '02';
-				if(!YT.isEmpty(proData)){
-					if(!YT.isEmpty(proData.PRODUCT_ID)){
-						collect.pno = proData.PRODUCT_ID;
-					}
-					if(!YT.isEmpty(proData.PRODUCT_NAME)){
-						collect.pna = proData.PRODUCT_NAME;
-					}
-				}
-			}else if(moduleNo.indexOf("P40") > -1){
-				collect.mt = '8';
-				collect.et = '03';
-				if(!YT.isEmpty(proData)){
-					if(!YT.isEmpty(proData.PRODUCT_CODE)){
-						collect.pno = proData.PRODUCT_CODE;
-					}
-					if(!YT.isEmpty(proData.PRODUCT_NAME)){
-						collect.pna = proData.PRODUCT_NAME;
-					}
-					
-				}
-			}
 			var date = new Date();
 			var timeFormat = date.format('yyyyMMddhhmmss');
 			var m = curPath.substring(curPath.indexOf('/') + 1);
@@ -256,14 +210,15 @@ $(function () {
 		 */
 		indexModule: function (url) {
 			var curDate = new Date();
-			var mid = url.substring(url.lastIndexOf("/") + 1, url.indexOf(".html"));
+//			var mid = url.substring(url.lastIndexOf("/") + 1, url.indexOf(".html"));
+			var mid = url.split('/', 2).join('_');
 			var cm = curModule = {};
 			cm.mid = mid; // 功能 ID
 			cm.mt = "2";// 访问
 			cm.st = curDate.getTime();// 初始化时间
 			cm.crt = curDate.format("yyyyMMddhhmmss");// 操作时间
-			cm.ldt = 0+"";// 加载耗时
-			cm.drt = 0+"";// 停留耗时
+			cm.ldt = 0;// 加载耗时
+			cm.drt = 0;// 停留耗时
 		},
 		/**
 		 * 加载下个功能或返回上一功能
@@ -275,14 +230,14 @@ $(function () {
 			// 1、当前页停留时长；
 			if (curPage) {
 				var cp = curPage;
-				cp.drt = (curDate.getTime() - cp.st)+"";// 功能停留时长
+				cp.drt = (curDate.getTime() - cp.st);// 功能停留时长
 				// 2、发送页采集日志
 				cp.pid && YT.Client.setCollection(cp);
 				curPage = null;// 清理页信息
 			}
 			// 3、标记当前功能停留时长,
 			var cm = curModule || {};
-			cm.drt = (curDate.getTime() - cm.st)+"";// 功能停留时长
+			cm.drt = (curDate.getTime() - cm.st);// 功能停留时长
 			cm.pp = curPath;
 			var data = me.getPageDatas(); //获取上一页面信息
 			var prevHome = $('#'+data.PAGE_ID);
@@ -306,7 +261,7 @@ $(function () {
 		endInitModule: function () {
 			me.changeTimeX();// 时点标记
 			var cm = curModule;
-			cm.ldt = (timeX - cm.st)+"";// 初始化耗时=当前时点-起始时点
+			cm.ldt = (timeX - cm.st);// 初始化耗时=当前时点-起始时点
 		},
 		/**
 		 * 请求耗时
@@ -324,7 +279,7 @@ $(function () {
 			cp.mt = "7";// 页面请求
 			cp.st = timeX;// 初始化时间
 			cp.ct = curDate.format("yyyyMMddhhmmss");// 操作时间
-			cp.ldt = (curDate.getTime() - timeX)+"";// 加载耗时
+			cp.ldt = (curDate.getTime() - timeX);// 加载耗时
 			// 发送页采集日志
 			YT.Client.setCollection(cp);
 		},

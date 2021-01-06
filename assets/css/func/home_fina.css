@@ -1,106 +1,93 @@
-@charset "UTF-8";
-/**理财--首页**/
+/* *理财--首页* */
 .yui-home-fina-header {
   position: relative;
   height: 2rem;
-  background-image: linear-gradient(-180deg, #FFF9E6 0%, #785006 100%);
+  background-image: linear-gradient(-180deg, #fff9e6 0%, #785006 100%);
   text-align: center;
   color: #fff;
   font-family: PingFangSC-Regular, serif;
+  overflow: hidden;
 }
-
 .yui-home-fina-header:after {
   content: '';
   position: absolute;
   left: 50%;
-  top: -.5rem;
+  top: -0.5rem;
   width: 2rem;
   height: 1.8rem;
   border-radius: 1.8rem;
   margin-left: -1rem;
-  background-image: linear-gradient(130deg, rgba(194, 129, 28, 0) 40%, #BB9231 100%);
+  background-image: linear-gradient(130deg, rgba(194,129,28,0) 40%, #bb9231 100%);
   z-index: 1;
 }
-
 .yui-home-fina-header .conter {
-  padding-top: .9rem;
+  padding-top: 0.9rem;
   z-index: 2;
   position: relative;
 }
-
 .yui-home-fina-header .footer {
   z-index: 2;
   position: relative;
-  padding-top: .2rem;
+  padding-top: 0.2rem;
 }
-
 .yui-home-fina .yui-fina-wrap {
-  padding-bottom: .1rem;
+  padding-bottom: 0.1rem;
 }
-
 .yui-home-fina-menu {
   background-color: #fff;
-  padding-top: .05rem;
-  padding-bottom: .1rem;
+  padding-top: 0.05rem;
+  padding-bottom: 0.1rem;
 }
-
 .yui-home-fina-menu .ui-row-flex {
   padding: 0;
 }
-
 .yui-home-fina-menu .ui-col a {
-  width: .2rem;
-  height: .2rem;
+  width: 0.2rem;
+  height: 0.2rem;
   display: block;
   margin: 0.17rem auto 0.05rem auto;
 }
-
-.yui-home-fina-menu .ui-col a > img {
+.yui-home-fina-menu .ui-col a>img {
   width: 100%;
   height: 100%;
 }
-
 .yui-home-fina-menu .ui-col i {
   padding: 0.05rem 0;
   display: block;
   text-align: center;
   font-size: 13px;
 }
-
-.yui-home-fina-adv, .yui-home-fina-adv > img {
+.yui-home-fina-adv,
+.yui-home-fina-adv>img {
   height: 1.8rem;
   width: 100%;
 }
-
 .yui-home-fina-list {
   background-color: #fff;
 }
-
 .yui-home-fina-title {
   position: relative;
-  padding: .05rem .1rem .05rem .15rem;
+  padding: 0.05rem 0.1rem 0.05rem 0.15rem;
   font-family: PingFangSC-Medium, serif;
   font-size: 14px;
-  color: #6A7277;
+  color: #6a7277;
   letter-spacing: -0.12px;
   background-color: #fff;
 }
-
 .yui-home-fina-title:after {
   content: '';
   position: absolute;
   width: 3px;
   height: 14px;
-  background: #52B4F4;
+  background: #52b4f4;
   border-radius: 12px;
-  left: .08rem;
+  left: 0.08rem;
   top: 50%;
   margin-top: -7px;
 }
-
 .yui-home-fina-title .more {
   position: absolute;
-  right: .1rem;
+  right: 0.1rem;
   top: 50%;
   height: 18px;
   margin-top: -9px;
@@ -109,199 +96,159 @@
   color: #909090;
   letter-spacing: -0.1px;
 }
-
 .yui-home-fina-title .more:after {
   content: '>';
-  padding-left: .04rem;
+  padding-left: 0.04rem;
 }
-
 .yui-home-fina-list-item {
-  padding: .1rem;
+  padding: 0.1rem;
 }
-
 .yui-home-fina-list-item .ui-row-flex {
   padding: 0;
 }
-
-.yui-home-fina-list-item .header .title > span {
-  color: #6A7277;
+.yui-home-fina-list-item .header .title>span {
+  color: #6a7277;
 }
-
 .yui-home-fina-list-item .interest {
-  color: #F15F5F !important;
+  color: #f15f5f !important;
 }
-
-.yui-home-fina-list-item .header .title > i {
-  padding: .01rem .02rem;
+.yui-home-fina-list-item .header .title>i {
+  padding: 0.01rem 0.02rem;
   font-size: 11px;
   border-radius: 3px;
-  border: 1px solid #9DA6AC;
-  color: #9DA6AC;
+  border: 1px solid #9da6ac;
+  color: #9da6ac;
 }
-
-.yui-home-fina-list-item .header .title > i.exclusive {
-  border: 1px solid #F15F5F;
-  color: #F15F5F;
+.yui-home-fina-list-item .header .title>i.exclusive {
+  border: 1px solid #f15f5f;
+  color: #f15f5f;
 }
-
 .yui-home-fina-list-item .header .tips {
   text-align: right;
-  color: #6A7277;
+  color: #6a7277;
   font-size: 12px;
 }
-
 .yui-home-fina-list-item .conter {
-  padding-top: .1rem;
-  padding-bottom: .1rem;
-  color: #9DA6AC;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  color: #9da6ac;
 }
-
 .yui-home-fina-list-item .conter .t-center {
   text-align: center;
 }
-
 .yui-home-fina-list-item .conter p {
   font-size: 22px;
-  color: #6A7277;
+  color: #6a7277;
 }
-
 .yui-home-fina-list-item .conter i {
   font-size: 12px;
 }
-
 .yui-home-fina-list-item .btn-wrap {
   position: relative;
 }
-
 .yui-home-fina-list-item .btn {
   background-image: linear-gradient(90deg, #fc5451 0%, #ff7656 100%);
-  padding: .06rem .15rem;
+  padding: 0.06rem 0.15rem;
   color: #fff;
   border-radius: 20px;
   position: absolute;
   top: 10px;
   right: 0;
 }
-
-.yui-home-fina-list-item .btn:not(.disabled):not(:disabled):active {
+.yui-home-fina-list-item .btn:not(.disabled ):not(:disabled ):active {
   background-image: linear-gradient(90deg, #f38382 48%, #eaab9d 100%);
 }
-
 .yui-home-fina .insurance {
   background-color: #fff;
-  padding: .1rem;
+  padding: 0.1rem;
 }
-
 .yui-home-fina .ui-row-flex {
   padding: 0;
 }
-
 .yui-home-fina .insurance .ui-row-flex {
   height: 1.38rem;
 }
-
 .yui-home-fina .insurance .ui-col-2 {
   width: 0;
 }
-
 .yui-home-fina .insurance .insurance {
-  padding: .1rem;
+  padding: 0.1rem;
 }
-
 .yui-home-fina .insurance .left {
-  padding-right: .1rem;
+  padding-right: 0.1rem;
 }
-
 .yui-home-fina .insurance .left img {
   width: 100%;
   height: 1.38rem;
 }
-
-.yui-home-fina .insurance .right > div {
-  height: .69rem;
+.yui-home-fina .insurance .right>div {
+  height: 0.69rem;
 }
-
 .yui-home-fina .insurance .right img {
   width: 100%;
-  height: .64rem;
+  height: 0.64rem;
 }
-
-.yui-home-fina .insurance .right > div:first-child {
-  padding-bottom: .05rem;
+.yui-home-fina .insurance .right>div:first-child {
+  padding-bottom: 0.05rem;
 }
-
-.yui-home-fina .insurance .right > div:last-child {
-  padding-top: .05rem;
+.yui-home-fina .insurance .right>div:last-child {
+  padding-top: 0.05rem;
 }
-
 .yui-home-fina .fund {
-  padding: .1rem;
+  padding: 0.1rem;
   background-color: #fff;
 }
-
 .yui-home-fina .fund .ui-col {
-  padding: 0 .05rem;
+  padding: 0 0.05rem;
 }
-
 .yui-home-fina .fund .item {
-  border: 1px solid #E3E4E9;
-  padding: .1rem;
+  border: 1px solid #e3e4e9;
+  padding: 0.1rem;
   text-align: center;
 }
-
 .yui-home-fina .fund .header {
-  color: #6A7277;
+  color: #6a7277;
 }
-
 .yui-home-fina .fund .conter {
-  padding-top: .1rem;
+  padding-top: 0.1rem;
 }
-
 .yui-home-fina .fund .conter .tips {
   font-size: 12px;
-  color: #9DA6AC;
+  color: #9da6ac;
 }
-
 .yui-home-fina .interest {
   font-size: 22px;
-  color: #F15F5F;
+  color: #f15f5f;
 }
-
 .yui-home-fina .fund .footer {
   font-size: 12px;
-  color: #9DA6AC;
-  padding-top: .1rem;
+  color: #9da6ac;
+  padding-top: 0.1rem;
 }
-
 .yui-home-fina .metal {
   background-color: #fff;
   padding: 0.1rem 0;
 }
-
 .yui-home-fina .metal .ui-col {
   text-align: center;
 }
-
 .yui-home-fina .metal a {
   width: 1.2rem;
-  height: .77rem;
+  height: 0.77rem;
   display: block;
   margin: 0.17rem auto 0.2rem auto;
 }
-
-.yui-home-fina .metal a > img {
+.yui-home-fina .metal a>img {
   width: 100%;
   height: 100%;
 }
-
 .yui-home-fina .metal span {
   background-color: #606060;
-  padding: .04rem .15rem;
+  padding: 0.04rem 0.15rem;
   color: #fff;
-  line-height: .24rem;
+  line-height: 0.24rem;
 }
-
 .yui-home-fina .metal p {
-  padding-top: .1rem;
-  color: #DB0000;
+  padding-top: 0.1rem;
+  color: #db0000;
 }

@@ -5,62 +5,48 @@
   width: 3px;
   left: -10px;
   top: 13px;
-  background: #52B4F4;
+  background: #52b4f4;
   border-radius: 12px;
 }
-
 .y-charts-icon-0:before {
-  background: #C1232B;
+  background: #c1232b;
 }
-
 .y-charts-icon-1:before {
-  background: #B5C334;
+  background: #b5c334;
 }
-
 .y-charts-icon-2:before {
-  background: #FCCE10;
+  background: #fcce10;
 }
-
 .y-charts-icon-3:before {
-  background: #E87C25;
+  background: #e87c25;
 }
-
 .y-charts-icon-4:before {
-  background: #FE8463;
+  background: #fe8463;
 }
-
 .y-charts-icon-5:before {
-  background: #9BCA63;
+  background: #9bca63;
 }
-
 .y-charts-icon-6:before {
-  background: #FAD860;
+  background: #fad860;
 }
-
 .y-charts-icon-7:before {
-  background: #F3A43B;
+  background: #f3a43b;
 }
-
 .y-charts-icon-8:before {
-  background: #60C0DD;
+  background: #60c0dd;
 }
-
 .y-charts-icon-9:before {
-  background: #D7504B;
+  background: #d7504b;
 }
-
 .y-charts-icon-10:before {
-  background: #C6E579;
+  background: #c6e579;
 }
-
 .y-charts-icon-11:before {
-  background: #F4E001;
+  background: #f4e001;
 }
-
 .y-charts-icon-12:before {
-  background: #F0805A;
+  background: #f0805a;
 }
-
 .y-charts-icon-13:before {
-  background: #26C0C0;
+  background: #26c0c0;
 }

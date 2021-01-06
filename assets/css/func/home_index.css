@@ -1,5 +1,4 @@
-@charset "UTF-8";
-/**收益以--首页**/
+/* *收益以--首页* */
 .yui-home-index-card {
   height: 200px;
   display: -webkit-box;
@@ -7,7 +6,6 @@
   background: url("../../img/home/index/head_background1.jpg") no-repeat;
   background-size: 100% 100%;
 }
-
 .yui-home-index-card-nav {
   display: -webkit-box;
   height: 168px;
@@ -15,8 +13,7 @@
   overflow-x: scroll;
   overflow-y: hidden;
 }
-
-.yui-home-index-card-nav > li {
+.yui-home-index-card-nav>li {
   height: 168px;
   width: 0;
   -webkit-box-flex: 1;
@@ -26,37 +23,31 @@
   padding-left: 5px;
   padding-right: 5px;
 }
-
-.yui-home-index-card-nav > li > div {
+.yui-home-index-card-nav>li>div {
   height: 100%;
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
   position: relative;
 }
-
 .yui-home-index-card-nav .item0 {
   background: url("../../img/home/index/home_recommend0.png") no-repeat;
   background-size: 100% 168px;
 }
-
 .yui-home-index-card-nav .item1 {
   background: url("../../img/home/index/home_recommend1.png") no-repeat;
   background-size: 100% 168px;
 }
-
 .yui-home-index-card-nav .item2 {
   background: url("../../img/home/index/home_recommend2.png") no-repeat;
   background-size: 100% 168px;
 }
-
 .yui-home-index-card-nav .top {
   font-size: 16px;
   font-weight: bold;
   color: #fff;
   padding-top: 10px;
 }
-
 .yui-home-index-card-nav .top .more {
   position: absolute;
   right: 10px;
@@ -64,144 +55,117 @@
   font-size: 12px;
   text-decoration: underline;
 }
-
 .yui-home-index-card-nav .context {
   padding-top: 10px;
   color: #fff;
 }
-
 .yui-home-index-card-nav .product {
   padding-top: 20px;
   color: #fff;
 }
-
 .yui-home-index-card-nav .product .n {
   font-size: 16px;
 }
-
 .yui-home-index-card-nav .product .rate {
   font-size: 18px;
 }
-
-.yui-home-index-card-nav .product .rate > i {
+.yui-home-index-card-nav .product .rate>i {
   font-size: 12px;
 }
-
 .yui-home-index-card-nav .product .t {
   font-size: 14px;
 }
-
 .yui-home-index-menu {
-  padding-top: .05rem;
-  padding-bottom: .1rem;
+  padding-top: 0.05rem;
+  padding-bottom: 0.1rem;
 }
-
 .yui-home-index .ui-row-flex {
   padding: 0;
 }
-
 .yui-home-index-menu .ui-col a {
-  width: .2rem;
-  height: .2rem;
+  width: 0.2rem;
+  height: 0.2rem;
   display: block;
   margin: 0.17rem auto 0.05rem auto;
 }
-
 .yui-home-index-menu .ui-col i {
   padding: 0.05rem 0;
   display: block;
   text-align: center;
   font-size: 13px;
 }
-
 .yui-home-index-menu .menu-icon {
   background: url("../../img/home/fina/icon-menu-insurance.png") no-repeat;
-  background-size: .2rem .2rem;
+  background-size: 0.2rem 0.2rem;
 }
-
 .yui-home-index-banner,
-.yui-home-index-banner > img {
+.yui-home-index-banner>img {
   height: 100px;
   width: 100%;
 }
-
 .yui-home-index-loan-wrap {
   background-color: #fff;
   padding-top: 5px;
 }
-
 .yui-home-index-loan {
   padding-top: 5px;
   padding-left: 5px;
   padding-right: 5px;
 }
-
 .yui-home-index-loan .yui-home-index-loan-item {
   width: 100%;
   height: 125px;
   color: #fff;
   padding: 15px 20px;
 }
-
 .yui-home-index-loan .yui-home-index-loan-item.bg1 {
   background: url("../../img/home/index/home_loan_background1.png") no-repeat;
   background-size: 100% 100%;
 }
-
 .yui-home-index-loan .yui-home-index-loan-item.bg2 {
   background: url("../../img/home/index/home_loan_background2.png") no-repeat;
   background-size: 100% 100%;
 }
-
 .yui-home-index-loan .title {
   font-size: 16px;
 }
-
 .yui-home-index-loan .title .tips {
   font-size: 12px;
   padding-left: 10px;
 }
-
 .yui-home-index-loan .content {
   padding-top: 5px;
 }
-
 .yui-home-index-loan .content ul {
   display: -webkit-box;
   padding-top: 10px;
 }
-
-.yui-home-index-loan .content ul > li {
+.yui-home-index-loan .content ul>li {
   width: 0;
   -webkit-box-flex: 1;
 }
-
-.yui-home-index-adv, .yui-home-index-adv > img {
+.yui-home-index-adv,
+.yui-home-index-adv>img {
   width: 100%;
   height: 165px;
 }
-
 .yui-home-index-serve-wrap {
   background-color: #fff;
   padding: 10px 5px;
 }
-
 .yui-home-index-serve {
   display: -webkit-box;
   width: 100%;
 }
-
-.yui-home-index-serve > div {
+.yui-home-index-serve>div {
   height: 80px;
   margin-left: 5px;
   margin-right: 5px;
 }
-
-.yui-home-index-serve > div > img {
+.yui-home-index-serve>div>img {
   width: 100%;
   height: 100%;
 }
-
 .yui-home-index-serve .item1 {
   width: 100px;
   background: url("../../img/home/index/home_feature_left_background.png") no-repeat;
@@ -209,16 +173,13 @@
   color: #fff;
   text-align: center;
 }
-
 .yui-home-index-serve .item1 p {
   font-size: 18px;
   padding-top: 19px;
 }
-
 .yui-home-index-serve .item1 i {
   font-size: 14px;
 }
-
 .yui-home-index-serve .item2 {
   width: 0;
   -webkit-box-flex: 1;

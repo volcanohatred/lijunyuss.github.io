@@ -5,8 +5,9 @@
 .yui-payment-home .yui-payment-list {
   padding: 5px;
 }
-.yui-payment-home .yui-payment-list:after, .yui-payment-home .yui-payment-list:before {
-  content: "";
+.yui-payment-home .yui-payment-list:after,
+.yui-payment-home .yui-payment-list:before {
+  content: '';
   display: table;
   clear: both;
 }
@@ -20,27 +21,23 @@
   height: 32px;
   display: inline-block;
 }
-
 .yui-payment-icon-water {
-  background: url(../../img/payment/icon-water.png) no-repeat;
+  background: url("../../img/payment/icon-water.png") no-repeat;
   background-size: 32px 32px;
 }
-
 .yui-payment-icon-power {
-  background: url(../../img/payment/icon-power.png) no-repeat;
+  background: url("../../img/payment/icon-power.png") no-repeat;
   background-size: 32px 32px;
 }
-
 .yui-payment-icon-gas {
-  background: url(../../img/payment/icon-gas.png) no-repeat;
+  background: url("../../img/payment/icon-gas.png") no-repeat;
   background-size: 32px 32px;
 }
-
 .yui-org-item {
   position: relative;
 }
 .yui-org-item.checked:after {
-  content: "";
+  content: '';
   position: absolute;
   right: 10px;
   height: 22px;

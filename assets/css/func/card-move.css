@@ -1,13 +1,11 @@
 .ui-card-slide-warp {
   overflow: hidden;
 }
-
 .ui-card-slide {
   display: -webkit-box;
   padding: 0 37px;
   transition: transform 300ms ease;
 }
-
 .ui-card-slide-item {
   width: 100%;
   margin-right: 20px;

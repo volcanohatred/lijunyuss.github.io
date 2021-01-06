@@ -38,6 +38,8 @@ define(function(require, exports) {
 		YT.log.info('init begin', TAG);
 		// 查找select元素标签
 		var ele = widget.find('.y-select');
+		var notices = widget.attr('data-notices');// 值更变后通知的后续元素Selector
+		var controlled = widget.attr('data-controlled');// 受控元素，当前行为阻断
 		if (ele.length < 1) {
 			YT.log.debug("select ele is empty", ele.length);
 			return;
@@ -59,6 +61,7 @@ define(function(require, exports) {
 				ele.trigger('change');// 模拟选择事件
 			}
 			!YT.isEmpty(callback) && app[callback]();// 执行加载完成的回调函数
+			notices && YT.Form.notices(panel, notices);// 通知后续节点重置
 		}
 		var _optionTpl = me.selectGroupTpl;// 下拉选框的html模板
 		if (!YT.isEmpty(optionTpl) && app[optionTpl]) {
@@ -77,22 +80,18 @@ define(function(require, exports) {
 			YT.alertinfo("未配置下拉选项请求路径");
 			return;
 		}
-		// 过滤请求参数
-		var paramKeys = widget.attr('data-param-key');// 上送参数过滤
-		var params = {};
-		if (!YT.isEmpty(paramKeys)) {
-			var keys = paramKeys.split(',');
-			for (var i = 0; i < keys.length; i++) {
-				var k = keys[i];
-				params[k] = json[k];
-			}
-		}
 		var listKey = widget.attr('data-list-key');// 列表元素主键
 		var lkey = YT.isEmpty(listKey) ? "LIST" : listKey;
 		// ajax请求列表数据
 		ele.attr("data-ready", "false");
 		var url = YT.dataUrl(transUrl);
-		me.querySelectOption(url, params, _optionTpl, initTpl, lkey);
+		(controlled == 'false' || YT.isEmpty(controlled)) && me.querySelectOption(url, json, _optionTpl, initTpl, lkey,widget, panel);
+		widget.on("reset", function(){
+			me.querySelectOption(url, json, _optionTpl, initTpl, lkey,widget, panel);
+		});// 注册重置事件
+		ele.on("change", '.x-p-select', function() {
+			notices && YT.Form.notices(panel, notices);// 通知后续节点重置
+		});
 		YT.log.info('init finish', TAG);
 	};
 	me.initOptionTpl = function() {
@@ -107,7 +106,8 @@ define(function(require, exports) {
 	 * @param lkey 渲染的列表key
 	 * </code>
 	 */
-	me.querySelectOption = function(url, params, tplHtml, callback, lkey) {
+	me.querySelectOption = function(url, json, tplHtml, callback, lkey, widget, panel) {
+		var params = me.filterParam(widget, panel, json);
 		YT.ajaxData(url, params, function(data) {
 			if (data.STATUS == '1') {// 交易成功
 				callback && callback(tplHtml, data[lkey]);
@@ -115,6 +115,20 @@ define(function(require, exports) {
 				YT.alertinfo('列表信息加载失败!');
 			}
 		});
+	};
+	me.filterParam = function(widget,panel,json){
+		// 过滤请求参数
+		json = YT.apply(json,YT.Form.getFormJson(panel));
+		var paramKeys = widget.attr('data-param-key');// 上送参数过滤
+		var params = {};
+		if (!YT.isEmpty(paramKeys)) {
+			var keys = paramKeys.split(',');
+			for (var i = 0; i < keys.length; i++) {
+				var k = keys[i];
+				params[k] = json[k];
+			}
+		}
+		return params;
 	};
 	/**
 	 * <code>
@@ -128,6 +142,7 @@ define(function(require, exports) {
 	 */
 	me.reset = function(widget, panel, app, json) {
 		YT.log.info('reset begin', TAG);
+		widget.trigger("reset");
 		YT.log.info('reset finish', TAG);
 	};
 

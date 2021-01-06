@@ -13,12 +13,13 @@ $(function() {
 		type:'info',
 		callback:function(){}
 	}
+	var body = $("body");
 	var me = YT.Tips = {
 		showTips : function(option){
 			option = YT.apply(defaults,option);
 			var html = YT.template(tpl,option);
 			var self = $(html);
-			self.appendTo("body");
+			self.appendTo(body);
 			var elementHeight = self.height();
 			self.css({
 				"-webkit-transform":"translateY(-"+elementHeight+"px)"

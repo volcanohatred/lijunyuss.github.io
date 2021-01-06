@@ -2,21 +2,18 @@
   padding: 10px;
   background-color: #fff;
 }
-
 .ui-idcard.ui-upload-list {
   padding: 10px;
   background-color: transparent;
   display: -webkit-box;
   -webkit-box-pack: center;
 }
-
 .ui-upload-list:after,
 .ui-upload-list:before {
   content: '';
   display: table;
   clear: both;
 }
-
 .ui-upload-item {
   float: left;
   width: 104px;
@@ -27,23 +24,19 @@
   border: 1px solid #d9d9d9;
   position: relative;
 }
-
 .ui-idcard .ui-upload-item {
   width: 167px;
   height: 135px;
   border: 0;
   background-color: #fff;
 }
-
-.ui-upload-item input[type="file"] {
+.ui-upload-item input[type='file'] {
   opacity: 0;
 }
-
 .ui-upload-item .ui-upload-loding {
   font-size: 35px;
   color: #999;
 }
-
 .ui-upload-item .ui-upload-loding:before {
   content: '\e6c0';
   font-family: 'iconfont', serif !important;
@@ -51,7 +44,6 @@
   -webkit-animation: loadingCircle 1s infinite linear;
   animation: loadingCircle 1s infinite linear;
 }
-
 .ui-upload-item .ui-upload-close {
   font-size: 17px;
   position: absolute;
@@ -61,38 +53,31 @@
   width: 20px;
   z-index: 10;
 }
-
 .ui-upload-item .ui-upload-close:before {
   content: '\e632';
   font-family: 'iconfont', serif !important;
 }
-
 .ui-upload-item .ui-upload-text {
   color: #666;
 }
-
 .ui-upload-item .ui-upload-info {
   width: 100%;
   height: 100%;
   position: relative;
 }
-
-.ui-upload-item .ui-upload-info > img {
+.ui-upload-item .ui-upload-info>img {
   width: 100%;
   height: 100%;
 }
-
 .ui-upload-select {
   cursor: pointer;
   border: 1px dashed #d9d9d9;
   -webkit-transition: border-color 0.3s ease;
   transition: border-color 0.3s ease;
 }
-
 .ui-upload-select:hover {
   border-color: #1890ff;
 }
-
 .ui-upload-item .ui-upload {
   text-align: center;
   vertical-align: middle;
@@ -100,8 +85,7 @@
   height: 100%;
   padding: 10px;
 }
-
-.ui-upload-select .ui-upload input[type="file"] {
+.ui-upload-select .ui-upload input[type='file'] {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -110,73 +94,37 @@
   opacity: 0;
   cursor: pointer;
 }
-
 .ui-upload-select .ui-upload .ui-upload-plus {
   display: inline-block;
   font-size: 25px;
   color: #999;
 }
-
 .ui-upload-select .ui-upload .ui-upload-facade {
   display: inline-block;
   width: 107px;
   height: 73px;
 }
-
 .ui-upload-select .ui-upload .ui-upload-facade,
 .ui-upload-select .ui-upload .ui-upload-identity {
   display: inline-block;
   width: 107px;
   height: 73px;
 }
-
 .ui-upload-select .ui-upload .ui-upload-facade {
   background: url("../../img/upload/icon-idcard-facade.png") no-repeat;
   background-size: 107px 73px;
 }
-
 .ui-upload-select .ui-upload .ui-upload-identity {
   background: url("../../img/upload/icon-idcard-identity.png") no-repeat;
   background-size: 107px 73px;
 }
-
 .ui-upload-select .ui-upload .ui-upload-plus:before {
   content: '\e81a';
   font-family: 'iconfont', serif !important;
 }
-
 .ui-upload-select .ui-upload .ui-upload-text {
   color: #666;
   padding-top: 5px;
-}
-
-@-webkit-keyframes loadingCircle {
-  0% {
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes loadingCircle {
-  0% {
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
 }
 .ui-upload-preview {
   position: absolute;
@@ -184,16 +132,14 @@
   width: 100%;
   height: 100%;
 }
-
 .ui-upload-preview .ui-upload-preview-mask {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0,0,0,0.7);
   z-index: 15;
 }
-
 .ui-upload-preview .ui-upload-preview-img {
   width: 320px;
   height: 400px;
@@ -204,12 +150,10 @@
   margin-left: -160px;
   z-index: 20;
 }
-
-.ui-upload-preview .ui-upload-preview-img > img {
+.ui-upload-preview .ui-upload-preview-img>img {
   width: 100%;
   height: 100%;
 }
-
 .ui-upload-preview .ui-upload-preview-img .close {
   position: absolute;
   top: -30px;
@@ -218,7 +162,6 @@
   height: 30px;
   color: #fff;
 }
-
 .ui-upload-preview .ui-upload-preview-img .close:before {
   content: '\e632';
   font-family: 'iconfont', serif !important;
@@ -227,7 +170,6 @@
   width: 30px;
   text-align: center;
 }
-
 @media screen and (max-width: 320px) {
   .ui-upload-preview .ui-upload-preview-img {
     width: 300px;

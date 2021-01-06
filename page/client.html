@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+	<title>手机银行</title>
+	<link rel="shortcut icon" href="assets/ico/fav32.png" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/core/frozen.css" class="frozenOld" />
+	<link type="text/css" rel="stylesheet" href="../assets/css/core/core.css" class="coreCss" />
+</head>
+
+<body id="mainBody">
+	<div class="ui-view-overlay"></div>
+	<div class="ui-view-left ui-layout-view"></div>
+	<div class="ui-view-right ui-layout-view"></div>
+	<div class="views navbar-views">
+		<div class="ui-toolbar"></div>
+		<div class="navbar-pages pages ui-navbar-through"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	var DEBUG = 0; //0:非档板; 1:全挡板; 2:半档板;
+	var LOG_DEBUG = false;//判断是否打印日志
+	var OFFLINE_PACKAGE = false; //是否开启离线包
+	var OFFLINE_PACKAGE_DEV = true; //离线包是否为开发模式(开发模式不调用客户端方法)
+</script>
+<script type="text/javascript" src="../assets/js/plugin/jquery/jquery-2.1.1.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/all/plugin.1.0.1.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/boot.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/ns/NS.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/core/YT.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/Observable.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/AjaxUtil.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/Form.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/utils/NavUtilHash.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/device/client/client.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/ytfw/widget/Component.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/extend/ns/NS_EXT_LIBS.js" charset="utf-8"></script>
+<script type="text/javascript" src="../assets/js/extend/ns/NS_EXT_TYPE.js" charset="utf-8"></script>
+<script type="text/javascript" src="index.js" charset="utf-8"></script>
+
+</html>

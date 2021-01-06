@@ -1,6 +1,5 @@
-@charset "UTF-8";
 .ui-select:after {
-  font-family: "iconfont", serif !important;
+  font-family: 'iconfont', serif !important;
   font-size: 30px;
   line-height: 44px;
   font-style: normal;
@@ -8,7 +7,7 @@
   -webkit-text-stroke-width: 0.2px;
   display: block;
   color: #909090;
-  content: "\e6a6";
+  content: '\e6a6';
   position: absolute;
   right: -11px;
   top: 50%;
@@ -16,67 +15,50 @@
   border: 0;
   z-index: 1;
 }
-
 .yui-select-group {
   display: -webkit-box;
 }
-
 .yui-select-group .ui-select-input {
   box-flex: 1;
   -webkit-box-flex: 1;
   padding-right: 0.15rem;
 }
-
 .yui-select-group .ui-select {
   width: 35px;
 }
-
 .ui-select select {
-  /*direction: rtl;
-	padding: 0 20px 0 0; 右对齐*/
   padding: 0 0 0 5px;
   position: relative;
   z-index: 2;
-  /* color: #eb9500;
-	height: 35px; */
 }
-
 .ui-select select option {
   direction: ltr;
 }
-
 .ui-switch-more {
   position: relative;
   display: -webkit-box;
 }
-
 .ui-switch-more > i {
   padding-right: 55px;
 }
-
 .ui-switch-more .ui-switch {
   right: 0;
   margin-top: -13px;
 }
-
 .yui-select-group .ui-select-input input {
   padding-right: 0;
 }
-
 .yui-select-group .ui-select select {
   width: 35px;
   height: 35px;
   padding-right: 30px;
 }
-
 .ui-amt-area {
   padding: 15px 15px 5px 0;
 }
-
 .ui-amt-ares-title {
   font-size: 18px;
 }
-
 .ui-amt-area-input {
   padding-top: 5px;
   display: -webkit-box;
@@ -109,7 +91,6 @@
 .ui-amt-area-input input::placeholder {
   font-size: 15px;
 }
-
 .ui-amt-area-big {
   padding-top: 7px;
   padding-bottom: 5px;

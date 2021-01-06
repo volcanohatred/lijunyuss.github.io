@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="p_financial_01">
+        <div class="page" data-page="A" title="理财优选" data-btnLeft="false||" data-btnRight="false||">
+            <div class="ui-financial-title">
+                理财优选
+                <div class="more" data-event="toDetail">更多</div>
+            </div>
+            <div class="ui-financial-panel">
+                <div class="ui-financial-item ui-border-b" data-event="toDetail">
+                    <div class="ui-financial-rate">
+                        <i class="rate">3.6</i>
+                        <i class="per">%</i>
+                        <p class="txt">预计年化收益率</p>
+                    </div>
+                    <div class="ui-financial-content">
+                        <p class="title">远见鑫益盈金21号(TG01191213)</p>
+                        <div class="info">
+                            <i>1万元起购</i>
+                            <i>平衡性</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-financial-item" data-event="toDetail">
+                    <div class="ui-financial-rate">
+                        <i class="rate">3.9</i>
+                        <i class="per">%</i>
+                        <p class="txt">预计年化收益率</p>
+                    </div>
+                    <div class="ui-financial-content">
+                        <p class="title">远见鑫益盈金22号(TG01191214)</p>
+                        <div class="info">
+                            <i>5万元起购</i>
+                            <i>平衡性</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var p_home_fina_main = {};
+        seajs.use('assets/css/func/financial.css')
+        seajs.use("page/financial/01/main.js", function (main) {
+            main.init();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,18 +1,15 @@
-@charset "UTF-8";
-/****----图标样式----****/
-[class*="yui-bank-icon-"] {
+/* ***----图标样式----*** */
+[class*='yui-bank-icon-'] {
   width: 36px;
   height: 36px;
   border-radius: 50%;
 }
-
 .yui-bank-icon {
   width: 36px;
   height: 36px;
   font-family: 'iconfont', serif;
   position: relative;
 }
-
 .yui-bank-icon:before {
   content: '\e62c';
   position: absolute;
@@ -20,16 +17,15 @@
   font-size: 29px;
   color: #116bde;
 }
-
-[class*="yui-icon-"] {
+[class*='yui-icon-'] {
   width: 30px;
   height: 30px;
   position: absolute;
   right: 10px;
   top: 5px;
 }
-
-.ui-icon, [class^="ui-icon-"] {
+.ui-icon,
+[class^='ui-icon-'] {
   position: absolute;
   top: 0;
   right: 10px;

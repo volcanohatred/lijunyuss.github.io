@@ -1,4 +1,3 @@
-@charset "UTF-8";
 body,
 div,
 dl,
@@ -41,13 +40,12 @@ button {
   outline: none;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-input-placeholder-color: #aaa;
 }
-
 body {
   font-size: 14px;
-  background-color: #F2F2F2;
-  /*苹方，思源黑体写法，android默认字体*/
-  font-family: "PingFang SC","Source Han Sans CN","Droid Sans";
+  background-color: #f2f2f2;
+/* 苹方，思源黑体写法，android默认字体 */
+  font-family: 'PingFang SC', 'Source Han Sans CN', 'Droid Sans';
 }

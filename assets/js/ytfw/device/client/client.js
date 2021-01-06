@@ -44,9 +44,9 @@
  * 
  * 18.Ajax请求 post post
  * 
- * 19.返回首页 gotoIndex gotoIndex
+ * 19.返回首页 gotoClientIndex gotoIndex
  * 
- * 20.返回上一页 gotoBack gotoBack
+ * 20.返回上一页 gotoClientBack gotoBack
  * 
  * 21.返回登录页 gotoLogin gotoLogin
  * 
@@ -148,6 +148,22 @@
 	 */
 	_connectWebViewJavascriptBridge(_nativeCall);
 
+	var ICONS = {
+		"返回": "back",
+		"查询": "query",
+		"筛选": "filter",
+		"列表": "list",
+		"收藏": "collect",
+		"已收藏": "collected",
+		"头像": "head",
+		"分享": "share",
+		"新增": "add",
+		"首页": "home",
+		"搜索": "search",
+		"通讯录": "book",
+		"我的预约": "myOrder",
+		"事件": "remindData"
+	};
 	/**
 	 * @private
 	 * @description 标题按钮json配置生成
@@ -164,11 +180,11 @@
 				if (name && func) {
 					var name = cfg[i];
 					ary.push({
-						exist : "true",
-						name : name,
-						icon : "back",
-						sort : ((i - 1) / 2),
-						func : func
+						exist: "true",
+						name: name,
+						icon: ICONS[name] || "",
+						sort: ((i - 1) / 2),
+						func: func
 					});
 				} else {
 					break;
@@ -178,7 +194,7 @@
 			return ary[0];
 		}
 		return {
-			exist : "false"
+			exist: "false"
 		};
 	}
 
@@ -194,14 +210,14 @@
 		 * @param {json}
 		 *            jsonData 传递参数
 		 */
-		callHandler : function(funcName, jsonData) {
+		callHandler: function(funcName, jsonData) {
 			_callHandler(funcName, jsonData);
 		},
 		/**
 		 * @final
 		 * @description 判断是否为浏览器进入
 		 */
-		isWeb : false,
+		isWeb: false,
 		/**
 		 * @private
 		 * @description 获取页面标题
@@ -210,10 +226,10 @@
 		 *            pageId 页面唯一标识
 		 * @returns {*} 页面标题配置项
 		 */
-		_getPageTitle : function(pageId) {
+		_getPageTitle: function(pageId) {
 			var page = $(pageId);
 			var cfg = {
-				title : page.attr("title")
+				title: page.attr("title")
 			};
 			var leftCfg = page.attr("data-btnLeft").split("|");
 			cfg.leftButton = generyTitleConf(leftCfg);
@@ -226,11 +242,12 @@
 		/**
 		 * @description 初始化页标题栏<br>
 		 *              接口名称：initPageTitle <br>
-		 * @param {string}
-		 *            pageId 初始化的页面的DOM节点
-		 * @example YT.Client.initPageTitle(pageA);
+		 * @param {element}
+		 *            page 需要初始化的元素节点
+		 * @example pageA.attr('data-btnRight','true|完成|demo_case_list_10.finish()');
+		 *          YT.Client.initPageTitle(pageA);
 		 */
-		initPageTitle : function(pageId) {
+		initPageTitle: function(pageId) {
 			try {
 				var json = this._getPageTitle(pageId);
 				_callHandler("initPageTitle", JSON.stringify(json));
@@ -251,7 +268,7 @@
 		 *            okName 确认按钮名称
 		 * @example YT.Client.alertinfo('我是通知内容','标题');
 		 */
-		alertinfo : function(msg, title, okAct, okName) {
+		alertinfo: function(msg, title, okAct, okName) {
 			try {
 				okAct = YT.getFunctionName(okAct);
 				if (okAct && okAct.substr(okAct.length - 1) != ")") {
@@ -260,11 +277,11 @@
 				title = title || "温馨提示";
 				okName = okName || "确定";
 				var cfg = {
-					title : title,
-					msg : msg,
-					ok_text : okName,
-					ok_func : okAct || "",
-					type : "ALERT"
+					title: title,
+					msg: msg,
+					ok_text: okName,
+					ok_func: okAct || "",
+					type: "ALERT"
 				};
 				_callHandler("alertinfo", JSON.stringify(cfg));
 			} catch (e) {
@@ -288,7 +305,7 @@
 		 *            cancleName 取消按钮的名称
 		 * @example YT.Client.confirm("我是通知内容","标题","alert(2)")
 		 */
-		confirm : function(msg, title, okAct, cancleAct, okName, cancleName) {
+		confirm: function(msg, title, okAct, cancleAct, okName, cancleName) {
 			try {
 				okAct = YT.getFunctionName(okAct);
 				if (okAct && okAct.substr(okAct.length - 1) != ")") {
@@ -302,13 +319,13 @@
 				okName = okName || "确定";
 				cancleName = cancleName || "取消";
 				var cfg = {
-					title : title,
-					msg : msg,
-					ok_text : okName,
-					ok_func : okAct || "",
-					cancel_text : cancleName,
-					cancel_func : cancleAct || "",
-					type : "CONFIRM"
+					title: title,
+					msg: msg,
+					ok_text: okName,
+					ok_func: okAct || "",
+					cancel_text: cancleName,
+					cancel_func: cancleAct || "",
+					type: "CONFIRM"
 				};
 				_callHandler("alertinfo", JSON.stringify(cfg));
 			} catch (e) {
@@ -322,12 +339,12 @@
 		 *            msg 显示内容
 		 * @example YT.Client.openWaitPanel('正在拼命加载中。。。');
 		 */
-		openWaitPanel : function(msg) {
+		openWaitPanel: function(msg) {
 			try {
 				var cfg = {
-					msg : msg,
-					touchable : 'false',
-					type : 'OPEN'
+					msg: msg,
+					touchable: 'false',
+					type: 'OPEN'
 				};
 				_callHandler("openWaitPanel", JSON.stringify(cfg));
 			} catch (e) {
@@ -341,10 +358,10 @@
 		 *            timeout 延时关闭时间(毫秒)
 		 * @example YT.Client.hideWaitPanel(200);
 		 */
-		hideWaitPanel : function(timeout) {
+		hideWaitPanel: function(timeout) {
 			try {
 				var cfg = {
-					type : 'CLOSE'
+					type: 'CLOSE'
 				};
 				setTimeout(function() {
 					_callHandler("hideWaitPanel", JSON.stringify(cfg));
@@ -354,13 +371,15 @@
 			}
 		},
 		/**
-		 * @description 显示金额键盘(调用方法不需要在input里面加入)<br>
-		 *              接口名称：showMoneyKeyboard <br>
-		 * @param {element}
-		 *            handle dom对象
-		 * @example YT.Client.showMoneyPicker($ele);
+		 * @private
+		 * @description 显示金额键盘(调用方法不需要在input里面加入)
+		 * @param {Object}
+		 *            $obj input的dom对象
+		 * @example &lt; input type="money" type-keyboard="Money" id="amt"
+		 *          data-maxlength="10" readOnly>; input里面的id必填 readonly必填 data-min
+		 *          最小值 data-max 最大值 type-keyboard="Money"x
 		 */
-		showMoneyPicker : function($obj) {
+		showMoneyPicker: function($obj) {
 			try {
 				var input_val = YT.Format.unfmtAmt($obj.val());
 				if (input_val != "0.00" && input_val != "") {
@@ -369,16 +388,16 @@
 					input_val = "";
 				}
 				var cfg = {
-					text : input_val,
-					len : $obj.attr("data-maxlength") || '9',
-					type : "MONEY",
-					callback : "_saveMoney"
+					text: input_val,
+					len: $obj.attr("data-maxlength") || '9',
+					type: "MONEY",
+					callback: "_saveMoney"
 				};
 				// 调用键盘页面上滑处理
 				YT.Client.showKeyBoard($obj);
 				_callHandler("showMoneyKeyboard", cfg);
 				var wk = {
-					ele : $obj
+					ele: $obj
 				};
 				_WK_DATAS["moneyPick"] = YT.apply(wk, cfg);
 			} catch (e) {
@@ -386,28 +405,30 @@
 			}
 		},
 		/**
-		 * @description 显示交易密码安全键盘(调用方法不需要在input里面加入)<br>
-		 *              接口名称：showTPwdKeyboard <br>
-		 * @param {element}
-		 *            handle dom对象
-		 * @example YT.Client.showTPwdPicker($ele);
+		 * @private
+		 * @description 显示交易密码安全键盘(调用方法不需要在input里面加入) 密码键盘 1. 16位加密因子 2.
+		 *              回调方法需要传递2个参数，在不隐藏键盘时调用回调函数不需要密文，写死为“1”，为了前端做判断用，隐藏键盘时回调需要返回密文与星号。
+		 *              3. 密码加密规则为一输入一次迭代加密一次，在隐藏键盘时，客户端瞬间解密再进行AES加密
+		 * @param {dom}
+		 *            $obj input的dom对象
+		 * @example <input type="password" data-keyboard="TPWD" id="pwd" readOnly/>;
+		 *          readonly必填 data-keyboard="TPWD"
 		 */
-		showTPwdPicker : function($obj) {
+		showTPwdPicker: function($obj) {
 			try {
 				var rdm = Fw.getRandom(16);
 				var cfg = {
-					len : $obj.attr("data-len") || '6',
-					transAuth : $obj.attr("data-transAuth"),
-					transAuthLj : $obj.attr("data-transAuthLj"),
-					random : rdm,
-					type : "TPWD",
-					callback : "_savePwd"
+					len: $obj.attr("data-len") || '6',
+					transAuth: $obj.attr("data-transAuth"),
+					random: rdm,
+					type: "TPWD",
+					callback: "_savePwd"
 				}
 				// 调用键盘页面上滑处理
 				YT.Client.showKeyBoard($obj);
 				_callHandler("showTPwdKeyboard", cfg);
 				var wk = {
-					ele : $obj
+					ele: $obj
 				};
 				_WK_DATAS["PwdPick"] = YT.apply(wk, cfg);
 			} catch (e) {
@@ -415,24 +436,32 @@
 			}
 		},
 		/**
-		 * @description 显示日期键盘(调用方法不需要在input里面加入)<br>
-		 *              接口名称：showCalendarView <br>
-		 * @param {element}
-		 *            handle dom对象
-		 * @example YT.Client.showDatePicker($ele);
+		 * @private
+		 * @description 显示日期键盘(调用方法不需要在input里面加入)
+		 * @param {Object}
+		 *            $obj input的dom对象
+		 * @example &lt; input type="date" id="startDate" data-min="2014-11-13"
+		 *          data-max="2015-11-13" data-format="yyyy-MM-dd"
+		 *          type-keyboard="Date" data-endId="endDate" value="2014-11-15"
+		 *          readOnly>; &lt; input type="date" id="endDate"
+		 *          data-min="2014-11-13" data-max="2015-11-13"
+		 *          data-format="yyyy-MM-dd" type-keyboard="Date"
+		 *          data-startId="startDate" value="2014-11-15" readOnly>;
+		 *          input里面的id必填 readonly必填 type="date" data-min 最小日期 data-max 最大日期
+		 *          data-format 日期格式化 type-keyboard="Date"x
 		 */
-		showDatePicker : function($obj) {
+		showDatePicker: function($obj) {
 			try {
 				var val = $obj.val() || new Date().format("yyyy-MM-dd");
 				var format = $obj.attr("data-format") || "yyyy-MM-dd";
 				var min = new Date(val.substring(0, 4) * 1 - 99 + "-01-01").format(format);
 				var max = new Date(val.substring(0, 4) * 1 + 99 + "-12-31").format(format);
 				var cfg = {
-					text : val,
-					format : $obj.attr("data-format") || "yyyy-MM-dd",
-					min : min,
-					max : max,
-					callback : "_saveDate"
+					text: val,
+					format: $obj.attr("data-format") || "yyyy-MM-dd",
+					min: min,
+					max: max,
+					callback: "_saveDate"
 				};
 				var min = $obj.attr("data-min");
 				var max = $obj.attr("data-max");
@@ -454,7 +483,7 @@
 				YT.Client.showKeyBoard($obj);
 				_callHandler("showCalendarView", cfg);
 				var wk = {
-					ele : $obj
+					ele: $obj
 				};
 				_WK_DATAS["datePick"] = YT.apply(wk, cfg);
 			} catch (e) {
@@ -462,25 +491,27 @@
 			}
 		},
 		/**
-		 * @description 显示纯数字键盘(调用方法不需要在input里面加入)<br>
-		 *              接口名称：showNumberKeyboard <br>
-		 * @param {element}
-		 *            handle dom对象
-		 * @example YT.Client.showNumPicker($ele);
+		 * @private
+		 * @description 显示纯数字键盘(调用方法不需要在input里面加入)
+		 * @param {Object}
+		 *            $obj input的dom对象
+		 * @example &lt; input type="text" type-keyboard="Number" id="mobile"
+		 *          data-len="11" readOnly>; input里面的id必填 readonly必填
+		 *          type-keyboard="Number"
 		 */
-		showNumPicker : function($obj, cfg) {
+		showNumPicker: function($obj, cfg) {
 			try {
 				var cfg = {
-					text : $obj.val(),
-					len : $obj.attr("data-maxlength") || '19',
-					type : "NUMBER",
-					callback : "_saveNumber"
+					text: $obj.val(),
+					len: $obj.attr("data-maxlength") || '19',
+					type: "NUMBER",
+					callback: "_saveNumber"
 				}
 				// 调用键盘页面上滑处理
 				YT.Client.showKeyBoard($obj);
 				_callHandler("showNumberKeyboard", cfg);
 				var wk = {
-					ele : $obj
+					ele: $obj
 				};
 				_WK_DATAS["numberPick"] = YT.apply(wk, cfg);
 			} catch (e) {
@@ -488,26 +519,28 @@
 			}
 		},
 		/**
-		 * @description 显示身份证键盘(调用方法不需要在input里面加入)<br>
-		 *              接口名称：showIDCKeyboard <br>
-		 * @param {element}
-		 *            handle dom对象
-		 * @example YT.Client.showIDCPicker($ele);
+		 * @private
+		 * @description 显示身份证键盘(调用方法不需要在input里面加入)
+		 * @param {Object}
+		 *            $obj input的dom对象
+		 * @example &lt; input type="text" id="identity" data-keyboard="IDC"
+		 *          data-minlength="16" data-maxlength="18" readOnly>; input里面的id必填
+		 *          readonly必填 type-keyboard="IDC"
 		 */
-		showIDCPicker : function($obj, cfg) {
+		showIDCPicker: function($obj, cfg) {
 			try {
 				var cfg = {
-					id : $obj.attr("id"),
-					text : $obj.val(),
-					len : $obj.attr("data-maxlength") || '18',
-					type : "IDC",
-					callback : "_saveIDC"
+					id: $obj.attr("id"),
+					text: $obj.val(),
+					len: $obj.attr("data-maxlength") || '18',
+					type: "IDC",
+					callback: "_saveIDC"
 				}
 				// 调用键盘页面上滑处理
 				YT.Client.showKeyBoard($obj);
 				_callHandler("showIDCKeyboard", cfg);
 				var wk = {
-					ele : $obj
+					ele: $obj
 				};
 				_WK_DATAS["IDCPick"] = YT.apply(wk, cfg);
 			} catch (e) {
@@ -515,27 +548,30 @@
 			}
 		},
 		/**
-		 * @description 显示登录密码安全键盘(调用方法不需要在input里面加入)<br>
-		 *              接口名称：showLPwdKeyboard <br>
-		 * @param {element}
-		 *            handle dom对象
-		 * @example YT.Client.showLPwdPicker($ele);
+		 * @private
+		 * @description 显示登录密码安全键盘(调用方法不需要在input里面加入) 密码键盘 1. 16位加密因子 2.
+		 *              回调方法需要传递2个参数，在不隐藏键盘时调用回调函数不需要密文，写死为“1”，为了前端做判断用，隐藏键盘时回调需要返回密文与星号。
+		 *              3. 密码加密规则为一输入一次迭代加密一次，在隐藏键盘时，客户端瞬间解密再进行AES加密
+		 * @param {dom}
+		 *            $obj input的dom对象
+		 * @example &lt;input type="password" data-keyboard="LPWD" id="pwd"
+		 *          readOnly>; input里面的id必填 readonly必填 data-keyboard="LPWD"
 		 */
-		showLPwdPicker : function($obj) {
+		showLPwdPicker: function($obj) {
 			try {
 				var rdm = Fw.getRandom(16);
 				var cfg = {
-					id : $obj.attr("id"),
-					len : $obj.attr("data-maxlength") || '16',
-					random : rdm,
-					type : "LPWD",
-					callback : "_savePwd"
+					id: $obj.attr("id"),
+					len: $obj.attr("data-maxlength") || '16',
+					random: rdm,
+					type: "LPWD",
+					callback: "_savePwd"
 				};
 				// 调用键盘页面上滑处理
 				YT.Client.showKeyBoard($obj);
 				_callHandler("showLPwdKeyboard", cfg);
 				var wk = {
-					ele : $obj
+					ele: $obj
 				};
 				_WK_DATAS["PwdPick"] = YT.apply(wk, cfg);
 			} catch (e) {
@@ -548,7 +584,7 @@
 		 *            thizz dom对象
 		 * @example YT.Client.showKeyBoard($ele);
 		 */
-		showKeyBoard : function(thizz) {
+		showKeyBoard: function(thizz) {
 			YT._preShowKeyBoard(thizz);
 		},
 		/**
@@ -558,11 +594,11 @@
 		 *            callback 回调函数名称
 		 * @example YT.Client.openPhoneBook(callback);
 		 */
-		openPhoneBook : function(callback) {
+		openPhoneBook: function(callback) {
 			try {
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					'callback' : callback
+					'callback': callback
 				};
 				_callHandler("showAddressBook", JSON.stringify(cfg));
 			} catch (e) {
@@ -576,10 +612,10 @@
 		 *            phoneNo 手机号码
 		 * @example YT.Client.sendSms(phoneNo);
 		 */
-		sendSms : function(phoneNo) {
+		sendSms: function(phoneNo) {
 			try {
 				var cfg = {
-					phoneNo : phoneNo
+					phoneNo: phoneNo
 				}
 				_callHandler("sendSms", JSON.stringify(cfg));
 			} catch (e) {
@@ -593,10 +629,10 @@
 		 *            phoneNo 手机号码
 		 * @example YT.Client.callPhone(phoneNo);
 		 */
-		callPhone : function(phoneNo) {
+		callPhone: function(phoneNo) {
 			try {
 				var cfg = {
-					phoneNo : phoneNo
+					phoneNo: phoneNo
 				}
 				_callHandler("callPhone", JSON.stringify(cfg));
 			} catch (e) {
@@ -614,16 +650,16 @@
 		 *            okName 确认按钮名称
 		 * @example YT.Client.sessionTimeout('会话超时，请重新登录！','标题');
 		 */
-		sessionTimeout : function(msg, title, okName) {
+		sessionTimeout: function(msg, title, okName) {
 			try {
 				title = title || "温馨提示";
 				msg = msg || "会话超时，请重新登录";
 				okName = okName || "确定";
 				var cfg = {
-					title : title,
-					msg : msg,
-					ok_text : okName,
-					type : "TIMEOUT"
+					title: title,
+					msg: msg,
+					ok_text: okName,
+					type: "TIMEOUT"
 				};
 				_callHandler("sessionTimeout", JSON.stringify(cfg));
 			} catch (e) {
@@ -633,19 +669,19 @@
 		/**
 		 * @description 重置客户端用户登录信息<br>
 		 *              接口名称：backSession <br>
-		 * @param {json}
+		 * @param {Object}
 		 *            user 登录用户信息
 		 * @param {function}
 		 *            callback 回调函数
-		 * @example YT.Client.resetLoginSession({'USER_ID':'11'},callback);
+		 * @example YT.resetLoginSession({CUST_NO:'1'},function(rst){// 设置成功后的回调});
 		 */
-		resetLoginSession : function(user, callback) {
+		resetLoginSession: function(user, callback) {
 			try {
 				// 获取回调函数方法名
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					"SESS_LOGIN" : user,
-					callback : callback
+					"SESS_LOGIN": user,
+					callback: callback
 				};
 				_callHandler("backSession", JSON.stringify(cfg));
 			} catch (e) {
@@ -662,14 +698,14 @@
 		 * @example YT.getSession('final','me.getSession');
 		 *          me.getSession=function(data){ console.log(data); }
 		 */
-		getSession : function(sessKey, callback, cacheType) {
+		getSession: function(sessKey, callback, cacheType) {
 			try {
 				// 获取回调函数方法名
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					"SESS_KEY" : sessKey,
-					callback : callback,
-					"cacheType" : cacheType
+					"SESS_KEY": sessKey,
+					callback: callback,
+					"cacheType": cacheType
 				};
 				_callHandler("getSession", JSON.stringify(cfg));
 			} catch (e) {
@@ -685,12 +721,12 @@
 		 *            sessData 会话数据 例如。{key1:'',key2:''}
 		 * @example YT.setSession('final',{key1:'',key2:''});
 		 */
-		setSession : function(sessKey, sessData, cacheType) {
+		setSession: function(sessKey, sessData, cacheType) {
 			try {
 				var cfg = {
-					"SESS_KEY" : sessKey,
-					"SESS_DATA" : sessData,
-					"cacheType" : cacheType
+					"SESS_KEY": sessKey,
+					"SESS_DATA": sessData,
+					"cacheType": cacheType
 				}
 				_callHandler("setSession", JSON.stringify(cfg));
 			} catch (e) {
@@ -709,7 +745,7 @@
 		 * @param {function}
 		 *            failFuncName 失败回调函数名称
 		 */
-		post : function(url, params, success, failure) {
+		post: function(url, params, success, failure) {
 			YT.log.debug(params);
 			try {
 				if (YT.isEmpty(failure) || !YT.isFunction(failure)) {
@@ -724,31 +760,30 @@
 					}
 				}
 				var cfg = {
-					url : url,
-					params : params,
-					success : function(rpdata) {
+					url: url,
+					params: params,
+					success: function(rpdata) {
 						YT.log.debug(rpdata);
 						if (rpdata.STATUS == '1') {
+							YT._SESSION_TIMEOUT = false;
 							success && success(rpdata);
-							YT.Collection.timeUrl(url, rpdata ? (rpdata.STATUS || '120') : '120');
 						} else {
-							$('#mainBody').find('.ui-prev-loading').removeClass('ui-prev-loading');
-							if (rpdata.STATUS == '005') {// 判断用户session是否超时
-								YT.hideWaitPanel();
-//								YT.sessionTimeout();
-								YT.Collection.timeUrl(url, rpdata ? (rpdata.STATUS || '120') : '120');
+							if (rpdata.STATUS == '005') { // 判断用户session是否超时
+								if (YT._SESSION_TIMEOUT !== true) { // 多个请求一起发送时，只提示一个sessionTimeout
+									YT.hideWaitPanel();
+									YT.Client.sessionTimeout();
+									YT._SESSION_TIMEOUT = true;
+								}
 							} else if (rpdata.STATUS == '006') { // 重复提交
 								YT.hideWaitPanel();
 								YT.alertinfo('' + rpdata.MSG);
-								YT.Collection.timeUrl(url, rpdata ? (rpdata.STATUS || '120') : '120');
 							} else { // 状态码非成功状态
 								failure && failure(rpdata);
-								YT.Collection.timeUrl(url, rpdata ? (rpdata.STATUS || '120') : '120');
 							}
 						}
+						YT.Collection.timeUrl(url, rpdata ? (rpdata.STATUS || '120') : '120');
 					},
-					failure : function(rpdata) {
-						$('#mainBody').find('.ui-prev-loading').removeClass('ui-prev-loading');
+					failure: function(rpdata) {
 						failure && failure(rpdata);
 						YT.Collection.timeUrl(url, rpdata ? (rpdata.STATUS || '120') : '120');
 					}
@@ -770,7 +805,7 @@
 		 * @param {json}
 		 *            cfg 请求配置参数
 		 */
-		mock : function(cfg) {
+		mock: function(cfg) {
 			$.getScript(cfg.url).done(function(data) {
 				cfg.success(Mock.mock(YT.JsonEval(data)));
 			}).fail(function() {
@@ -780,38 +815,38 @@
 		},
 		/**
 		 * @description 返回系统首页<br>
-		 *              接口名称：gotoIndex <br>
-		 * @example YT.Client.gotoIndex();
+		 *              接口名称：gotoClientIndex <br>
+		 * @example YT.Client.gotoClientIndex();
 		 */
-		gotoIndex : function() {
+		gotoClientIndex: function() {
 			try {
 				_callHandler("gotoIndex", {});
 			} catch (e) {
-				YT.alertinfo('返回系统首页异常', 'gotoIndex:' + e);
+				YT.alertinfo('返回系统首页异常', 'gotoClientIndex:' + e);
 			}
 		},
 		/**
 		 * @description 返回上一页<br>
-		 *              接口名称：gotoBack <br>
-		 * @example YT.Client.gotoIndex();
+		 * 				接口名称： gotoClientBack < br >
+		 * @example YT.Client.gotoClientBack();
 		 */
-		gotoBack : function() {
+		gotoClientBack: function() {
 			try {
 				_callHandler("gotoBack", {});
 			} catch (e) {
-				YT.alertinfo('返回上一页异常', 'gotoBack:' + e);
+				YT.alertinfo('返回上一页异常', 'gotoClientBack:' + e);
 			}
 		},
 		/**
 		 * @description 返回登录页<br>
-		 *              接口名称：gotoLogin <br>
-		 * @example YT.Client.gotoLogin();
+		 * 				接口名称： gotoClientLogin < br >
+		 * @example YT.Client.gotoClientLogin();
 		 */
-		gotoLogin : function(callback) {
+		gotoClientLogin: function(callback) {
 			try {
 				_callHandler("gotoLogin", {});
 			} catch (e) {
-				YT.alertinfo('返回登录页异常', 'gotoLogin:' + e);
+				YT.alertinfo('返回登录页异常', 'gotoClientLogin:' + e);
 			}
 		},
 		/**
@@ -823,18 +858,45 @@
 		 *            callback 回调函数名称
 		 * @example YT.Client.geneQRC(data,callback);
 		 */
-		geneQRC : function(data, callback) {
+		geneQRC: function(data, callback) {
 			try {
 				// 获取回调函数方法名
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					data : JSON.stringify(data),
-					callback : callback,
+					data: JSON.stringify(data),
+					callback: callback,
 				};
 				_callHandler("geneQRC", JSON.stringify(cfg));
 			} catch (e) {
 				YT.alertinfo('二维码生成异常', 'geneQRC:' + e);
 			}
+		},
+		/**
+		 * @description 显示头部菜单
+		 * @param {Object[]}
+		 *            cfg 选择项的数组对象,每个元素包含 name ,func
+		 * @param {string}
+		 *            cfg[].name 显示名称
+		 * @param {function}
+		 *            cfg[].func 回调函数
+		 * @param {element}
+		 *            panel 当前显示的页面元素节点
+		 * @param {Object}
+		 *            app 当前JS对象
+		 * @example YT.showPopuMenus([{ name: "修改别名", func:"App.modify()" }, {name: "删除账户", func: "App.updateAlias()" }, { name: "设为默认账户",func:"App.innerTrans()" }],pageA,me);
+		 */
+		showPopuMenus: function(cfg, panel, app) {
+			var list = [];
+			$.each(cfg, function(i) {
+				var map = {};
+				var m = cfg[i];
+				map.name = m.name;
+				var func = m.func;
+				func = YT.getFunctionName(func);
+				map.func = func;
+				list.push(map);
+			});
+			YT.Popup.initPopuMenus(panel, app, list);
 		},
 		/**
 		 * @description 二维码扫一扫<br>
@@ -843,12 +905,12 @@
 		 *            callback 回调函数名称
 		 * @example YT.Client.sweepQRC(callback);
 		 */
-		sweepQRC : function(callback) {
+		sweepQRC: function(callback) {
 			try {
 				// 获取回调函数方法名
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					callback : callback,
+					callback: callback,
 				};
 				_callHandler("sweepQRC", JSON.stringify(cfg));
 			} catch (e) {
@@ -864,18 +926,18 @@
 		 *            callback 回调函数名称
 		 * @example YT.Client.sharePages(data,callback);
 		 */
-		sharePages : function(data, callback) {
+		sharePages: function(data, callback) {
 			try {
 				// 获取回调函数方法名
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					type : data.type,// 分享渠道
+					type: data.type, // 分享渠道
 					// WX-微信，PYQ-朋友圈，QQ-qq，WB-微博，DX-短信，YX-邮箱
-					title : data.title,// 分享标题
-					content : data.content,// 分享摘要
-					hrefUrl : data.hrefUrl,// 分享url地址
-					imgUrl : data.imgUrl,// 分享图片url地址
-					callback : callback,// 回调函数
+					title: data.title, // 分享标题
+					content: data.content, // 分享摘要
+					hrefUrl: data.hrefUrl, // 分享url地址
+					imgUrl: data.imgUrl, // 分享图片url地址
+					callback: callback, // 回调函数
 				}
 				_callHandler("sharePages", JSON.stringify(cfg));
 			} catch (e) {
@@ -891,13 +953,13 @@
 		 *            callback 回调函数名称
 		 * @example YT.Client.shareReceipt(data,callback);
 		 */
-		shareReceipt : function(type, callback) {
+		shareReceipt: function(type, callback) {
 			try {
 				// 获取回调函数方法名
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					type : type,
-					callback : callback
+					type: type,
+					callback: callback
 				}
 				_callHandler("shareReceipt", JSON.stringify(cfg));
 			} catch (e) {
@@ -911,7 +973,7 @@
 		 *            data 收集信息
 		 * @example YT.Client.setCollection(data);
 		 */
-		setCollection : function(data) {
+		setCollection: function(data) {
 			if (!YT.isEmpty(data)) {
 				try {
 					_callHandler("BehaviorCollection", JSON.stringify(data));
@@ -929,15 +991,15 @@
 		 *            callback 回调函数名称
 		 * @example YT.Client.openMobilePhoto(data,callback);
 		 */
-		openMobilePhoto : function(data, callback) {
+		openMobilePhoto: function(data, callback) {
 			try {
-				data.type = 'photo';// 相册的type值
-				data.COMP_RATE = data.COMP_RATE ? data.COMP_RATE : '0.5';// 默认值
+				data.type = 'photo'; // 相册的type值
+				data.COMP_RATE = data.COMP_RATE ? data.COMP_RATE : '0.5'; // 默认值
 				// 获取回调函数方法名
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					data : data,
-					callback : callback
+					data: data,
+					callback: callback
 				};
 				_callHandler("openMobileCamera", JSON.stringify(cfg));
 			} catch (e) {
@@ -953,15 +1015,15 @@
 		 *            callback 回调函数名称
 		 * @example YT.Client.openMobileCamera(data,callback);
 		 */
-		openMobileCamera : function(data, callback) {
+		openMobileCamera: function(data, callback) {
 			try {
-				data.type = 'camera';// 相册和拍照的type值
-				data.COMP_RATE = data.COMP_RATE ? data.COMP_RATE : '0.5';// 默认值
+				data.type = 'camera'; // 相册和拍照的type值
+				data.COMP_RATE = data.COMP_RATE ? data.COMP_RATE : '0.5'; // 默认值
 				// 获取回调函数方法名
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					data : data,
-					callback : callback
+					data: data,
+					callback: callback
 				};
 				_callHandler("openMobileCamera", JSON.stringify(cfg));
 			} catch (e) {
@@ -978,15 +1040,15 @@
 		 *            callback 回调函数名称
 		 * @example YT.Client.openMobilePhotoAlbum(data, callback);
 		 */
-		openMobilePhotoAlbum : function(data, callback) {
+		openMobilePhotoAlbum: function(data, callback) {
 			try {
-				data.type = 'photoAlbum';// 相册和拍照的type值
-				data.COMP_RATE = data.COMP_RATE ? data.COMP_RATE : '0.5';// 默认值
+				data.type = 'photoAlbum'; // 相册和拍照的type值
+				data.COMP_RATE = data.COMP_RATE ? data.COMP_RATE : '0.5'; // 默认值
 				// 获取回调函数方法名
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					data : data,
-					callback : callback
+					data: data,
+					callback: callback
 				};
 				_callHandler("openMobileCamera", JSON.stringify(cfg));
 			} catch (e) {
@@ -1000,11 +1062,11 @@
 		 *            callback 回调函数名称
 		 * @example YT.Client.location(callback);
 		 */
-		location : function(callback) {
+		location: function(callback) {
 			try {
 				callback = YT.getFunctionName(callback);
 				var json = {
-					"callback" : callback
+					"callback": callback
 				};
 				_callHandler("location", JSON.stringify(json));
 			} catch (e) {
@@ -1019,7 +1081,7 @@
 		 *            conf = { callback : function(rsp){} }
 		 * 
 		 */
-		fingerOpenState : function(conf) {
+		fingerOpenState: function(conf) {
 			try {
 				conf.callback = YT.getFunctionName(conf.callback);
 				_callHandler("fingerOpenState", JSON.stringify(conf));
@@ -1034,7 +1096,7 @@
 		 *            conf = { type: 0, //type:0 关闭 type:1开启 callback :
 		 *            function(rsp){} }
 		 */
-		setFinger : function(conf) {
+		setFinger: function(conf) {
 			try {
 				conf.callback = YT.getFunctionName(conf.callback);
 				_callHandler("setFinger", JSON.stringify(conf));
@@ -1048,7 +1110,7 @@
 		 * @param {}
 		 *            conf = { callback : function(rsp){} }
 		 */
-		checkFinger : function(conf) {
+		checkFinger: function(conf) {
 			try {
 				conf.callback = YT.getFunctionName(conf.callback);
 				_callHandler("checkFinger", JSON.stringify(conf));
@@ -1064,7 +1126,7 @@
 		 *            function(rsp){} }
 		 * 
 		 */
-		setGesture : function(conf) {
+		setGesture: function(conf) {
 			try {
 				conf.callback = YT.getFunctionName(conf.callback);
 				_callHandler("setGesture", JSON.stringify(conf));
@@ -1078,7 +1140,7 @@
 		 * @param {}
 		 *            conf = { callback : function(rsp){} }
 		 */
-		checkGesture : function(conf) {
+		checkGesture: function(conf) {
 			try {
 				conf.callback = YT.getFunctionName(conf.callback);
 				_callHandler("checkGesture", JSON.stringify(conf));
@@ -1096,7 +1158,7 @@
 		 *          name: "删除账户", func: "App.updateAlias()" }, { name: "设为默认账户",
 		 *          func:"App.innerTrans()" } ]);
 		 */
-		showPopupWindow : function(cfg, panel, app) {
+		showPopupWindow: function(cfg, panel, app) {
 			var list = [];
 			$.each(cfg, function(i) {
 				var map = {};
@@ -1132,7 +1194,7 @@
 		 *            failure 失败回调函数名称
 		 * @example YT.Client.getNativeCache('/mbank/login/login.do','1.1','finance',{p1:'x'},'success');
 		 */
-		getNativeCache : function(url, version, type, cacheType, params, success, failure) {
+		getNativeCache: function(url, version, type, cacheType, params, success, failure) {
 			try {
 				if (YT.isEmpty(failure) || !YT.isFunction(failure)) {
 					failure = function(rsp) {
@@ -1146,14 +1208,14 @@
 					}
 				}
 				var cfg = {
-					url : url,
-					version : version,
-					type : type,
-					cacheType : cacheType,
-					params : params,
-					success : function(rpdata) {
-						if (rpdata.STATUS == '005') {// 判断用户session是否超时
-//							YT.sessionTimeout();
+					url: url,
+					version: version,
+					type: type,
+					cacheType: cacheType,
+					params: params,
+					success: function(rpdata) {
+						if (rpdata.STATUS == '005') { // 判断用户session是否超时
+							YT.Client.sessionTimeout();
 							return false;
 						} else if (rpdata.STATUS == '006') { // 重复提交
 							YT.hideWaitPanel();
@@ -1167,7 +1229,7 @@
 						}
 						success && success(rpdata);
 					},
-					failure : failure
+					failure: failure
 				}
 				cfg.success = YT.getFunctionName(cfg.success);
 				cfg.failure = YT.getFunctionName(cfg.failure);
@@ -1189,7 +1251,7 @@
 		 *            cfg.url 跳转地址，type为“H”时，必需，H5跳转页面的半地址
 		 * @example YT.Client.openMenuPage(cfg);
 		 */
-		openMenuPage : function(cfg) {
+		openMenuPage: function(cfg) {
 			try {
 				if (YT.isEmpty(cfg.type)) {
 					YT.alertinfo('菜单未配置！', '提示');
@@ -1207,12 +1269,12 @@
 		 *            callback 回调函数
 		 * @example YT.Client.scanBankCardOCR(callback);
 		 */
-		scanBankCardOCR : function(callback) {
+		scanBankCardOCR: function(callback) {
 			try {
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					ocrType : 'scanBankCard',
-					callback : callback,
+					ocrType: 'scanBankCard',
+					callback: callback,
 				};
 				_callHandler("clientOcr", JSON.stringify(cfg));
 			} catch (e) {
@@ -1224,14 +1286,23 @@
 		 *              接口名称：clientOcr <br>
 		 * @param {function}
 		 *            callback 回调函数
-		 * @example YT.Client.scanIDCardFrontOCR(callback);
+		 * @example YT.scanIDCardFrontOCR(function(rst){...},event,{});
+		 * 回调函数参数属性配置：
+		 * rst.OCR_INFO.IDN_NO 身份证号码
+		 * rst.OCR_INFO.NAME 姓名
+		 * rst.OCR_INFO.SEX 性别
+		 * rst.OCR_INFO.NATION_CODE 民族
+		 * rst.OCR_INFO.BIRTH_DAY 出生日期
+		 * rst.OCR_INFO.ADDR 地址
+		 * rst.img1Base64 身份证正面照片
+		 * rst.img2Base64 身份证头像照片
 		 */
-		scanIDCardFrontOCR : function(callback) {
+		scanIDCardFrontOCR: function(callback) {
 			try {
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					ocrType : 'scanIDCardFront',
-					callback : callback,
+					ocrType: 'scanIDCardFront',
+					callback: callback,
 				};
 				_callHandler("clientOcr", JSON.stringify(cfg));
 			} catch (e) {
@@ -1243,14 +1314,18 @@
 		 *              接口名称：clientOcr <br>
 		 * @param {function}
 		 *            callback 回调函数
-		 * @example YT.Client.scanIDCardBackOCR(callback);
+		 * @example YT.scanIDCardBackOCR(function(rst){...},event,{});
+		 * 回调函数参数属性配置：
+		 * rst.OCR_INFO.ORG 签发机构
+		 * rst.OCR_INFO.IDN_DATE 证件有限期
+		 * rst.img1Base64 身份证背面照片
 		 */
-		scanIDCardBackOCR : function(callback) {
+		scanIDCardBackOCR: function(callback) {
 			try {
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					ocrType : 'scanIDCardBack',
-					callback : callback,
+					ocrType: 'scanIDCardBack',
+					callback: callback,
 				};
 				_callHandler("clientOcr", JSON.stringify(cfg));
 			} catch (e) {
@@ -1262,14 +1337,26 @@
 		 *              接口名称：clientOcr <br>
 		 * @param {function}
 		 *            callback 回调函数
-		 * @example YT.Client.scanVehicleLicenceFrontOCR(callback);
+		 * @example YT.scanVehicleLicenceFrontOCR(function(rst){...},event,{});
+		 * 回调函数参数属性配置：
+		 * rst.OCR_INFO.PLATE_NO 车牌号
+		 * rst.OCR_INFO.VEHICLE_TYPE  车辆类型
+		 * rst.OCR_INFO.OWNER 所有人
+		 * rst.OCR_INFO.ADDR 地址
+		 * rst.OCR_INFO.MODEL 品牌类型
+		 * rst.OCR_INFO.VIN 车辆识别代号
+		 * rst.OCR_INFO.ENGINE_NO 发动机号码
+		 * rst.OCR_INFO.REGI_DATE 注册日期
+		 * rst.OCR_INFO.ISSUE_DATE 发证日期
+		 * rst.OCR_INFO.USE_CHAR 使用性质
+		 * rst.img1Base64 行驶证正面照片
 		 */
-		scanVehicleLicenceFrontOCR : function(callback) {
+		scanVehicleLicenceFrontOCR: function(callback) {
 			try {
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					ocrType : 'scanVehicleLicenceFront',
-					callback : callback,
+					ocrType: 'scanVehicleLicenceFront',
+					callback: callback,
 				};
 				_callHandler("clientOcr", JSON.stringify(cfg));
 			} catch (e) {
@@ -1281,14 +1368,17 @@
 		 *              接口名称：clientOcr <br>
 		 * @param {function}
 		 *            callback 回调函数
-		 * @example YT.Client.scanVehicleLicenceBackOCR(callback);
+		 * @example YT.scanVehicleLicenceBackOCR(function(rst){...},event,{});
+		 * 回调函数参数属性配置：
+		 * rst.OCR_INFO 车牌号
+		 * rst.img1Base64 行驶证背面照片
 		 */
-		scanVehicleLicenceBackOCR : function(callback) {
+		scanVehicleLicenceBackOCR: function(callback) {
 			try {
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					ocrType : 'scanVehicleLicenceBack',
-					callback : callback,
+					ocrType: 'scanVehicleLicenceBack',
+					callback: callback,
 				};
 				_callHandler("clientOcr", JSON.stringify(cfg));
 			} catch (e) {
@@ -1300,14 +1390,16 @@
 		 *              接口名称：clientOcr <br>
 		 * @param {function}
 		 *            callback 回调函数
-		 * @example YT.Client.scanBusinessLicenceOCR(callback);
+		 * @example YT.scanBusinessLicenceOCR(function(rst){...},event,{});
+		 * 回调函数参数属性配置：
+		 * rst.OCR_INFO 统一社会信用代码识别
 		 */
-		scanBusinessLicenceOCR : function(callback) {
+		scanBusinessLicenceOCR: function(callback) {
 			try {
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					ocrType : 'scanBusinessLicence',
-					callback : callback,
+					ocrType: 'scanBusinessLicence',
+					callback: callback,
 				};
 				_callHandler("clientOcr", JSON.stringify(cfg));
 			} catch (e) {
@@ -1321,11 +1413,11 @@
 		 *            callback 回调函数
 		 * @example YT.Client.getClientInfo(callback);
 		 */
-		getClientInfo : function(callback) {
+		getClientInfo: function(callback) {
 			try {
 				callback = YT.getFunctionName(callback);
 				var cfg = {
-					callback : callback,
+					callback: callback,
 				};
 				_callHandler("getClientInfo", JSON.stringify(cfg));
 			} catch (e) {
@@ -1333,17 +1425,150 @@
 			}
 		},
 
-		getImageCode : function(url, callback) {
+		getImageCode: function(url, callback) {
 			try {
 				var funcName = YT.getFunctionName(callback);
 				var cfg = {
-					url : url,
-					callback : funcName
+					url: url,
+					callback: funcName
 				};
 				_callHandler("imageCode", JSON.stringify(cfg));
 			} catch (e) {
 				YT.alertinfo('调用客户端获取验证码组件异常', '_getImageCode:' + e);
 			}
+		},
+		// 加载离线包内容
+		getModuleContent: function(params, callback) {
+			var cfg = YT.Client.buildOflCfg(params, callback);
+			_callHandler("getModuleContent", JSON.stringify(cfg));
+		},
+		// 离线包跳转
+		nextPageNative: function(params, callback) {
+			var cfg = YT.Client.buildOflCfg(params, callback);
+			if (Device.os == 'android') {
+				_callHandler("getModuleContent", JSON.stringify(cfg));
+			} else {
+				_callHandler("nextPageNative", JSON.stringify(cfg));
+			}
+		},
+		// 构建离线包所需参数
+		buildOflCfg: function(params, callback) {
+			var path = params.url;
+			var OFF_LINE = params.OFF_LINE;
+			if (YT.isEmpty(path)) {
+				return;
+			}
+			var end = path.indexOf('?');
+			end = end > -1 ? end : path.length;
+			path = path.substr(0, end);
+			var moduleId = path.split('/', 2).join('_')
+			var fileName = path.replace(/(.+)\//, '')
+			var funcName = YT.getFunctionName(callback);
+			return {
+				MODULE_ID: moduleId, // page_02
+				OFF_LINE: OFF_LINE,
+				APP_NAME: YT.APP_NAME || 'ares-web-h5', // ares-web-h5
+				FILE_NAME: fileName, // 01_tpl_input.html
+				FILE_PATH: path, // page/02/0203/01_tpl_input.html
+				CALLBACK: funcName
+			}
+		},
+		// 异步设置值
+		setStorage(cfg) {
+			var key = cfg.key || '__storageItem__'; // 公共key
+			var data = cfg.data;
+			var callback = cfg.callback;
+			YT.Client.setStorageSync(key, data).then(rst => {
+				callback && callback(rst)
+			})
+		},
+		// 同步设置值
+		setStorageSync(key, data) {
+			if (YT.isObject(data) || YT.isArray(data)) { // 数组或对象
+				for (let key in data) {
+					var item = data[key];
+					if (YT.isFunction(item)) {
+						var funcName = YT.getFunctionNameCross(item);
+						delete data[item];
+						data[key] = funcName;
+					}
+				}
+				data = JSON.stringify(data);
+			}
+			return new Promise((resolve, reject) => {
+				if (YT.isEmpty(key) || YT.isEmpty(data)) {
+					reject('error')
+				}
+				if (Device.YiTong !== true) {
+					sessionStorage.setItem(key, data);
+					resolve('success')
+				} else {
+					var func = function() {
+						resolve('success')
+					}
+					var funcName = YT.getFunctionName(func);
+					var cfg = {
+						key,
+						data,
+						callback: funcName
+					}
+					_callHandler("setStorage", JSON.stringify(cfg));
+				}
+
+			})
+		},
+		// 异步取值
+		getStorage(cfg) {
+			var key = cfg.key || '__storageItem__'; // 公共key
+			var callback = cfg.callback;
+			var clear = cfg.clear || false;
+
+			YT.Client.getStorageSync(key, clear).then(rst => {
+				callback && callback(rst)
+			})
+		},
+		// 同步取值
+		getStorageSync(key, clear) {
+			return new Promise((resolve, reject) => {
+				if (Device.YiTong !== true) {
+					var datas = sessionStorage.getItem(key) || '{}';
+					if (clear === true) {
+						sessionStorage.removeItem(key)
+					}
+					try {
+						datas = JSON.parse(datas)
+					} catch (e) {
+						YT.log.error(e)
+					}
+					resolve(datas)
+				} else {
+					var func = function(datas) {
+						datas = YT.isEmpty(datas) ? '{}' : datas;
+						if (clear === true) {
+							YT.Client.removeStorage(key)
+						}
+						try{
+							datas = JSON.parse(datas)
+						}catch(e){
+							YT.log.error(e)
+						}
+						resolve(datas)
+					}
+					var funcName = YT.getFunctionName(func);
+					var cfg = {
+						key,
+						callback: funcName
+					}
+					_callHandler("getStorage", JSON.stringify(cfg));
+				}
+			})
+		},
+		// 根据key，清理存储
+		removeStorage(key) {
+			var cfg = {
+				key
+			}
+			_callHandler("removeStorage", JSON.stringify(cfg));
 		}
 	};
 
@@ -1355,8 +1580,7 @@
 		return YT.getFunctionName(function(data) {
 			callback && callback(YT.isString(data) ? YT.evalJson(data) : data);
 		});
-	}
-	;
+	};
 	/**
 	 * @private
 	 * @description 回显密码
@@ -1374,15 +1598,11 @@
 			var cfg = _WK_DATAS["PwdPick"];
 			var curObj = cfg.ele;
 			var transAuth = cfg.transAuth;
-			var transAuthLj = cfg.transAuthLj;
 			if (YT.isEmpty(passVal) || YT.isEmpty(showVal)) {
 				curObj.attr("data-value", "").attr("data-passMd5", "").val("");
 				// 交易认证专用
 				if (!YT.isEmpty(transAuth) && transAuth == "true") {
 					YT.AuthBox.TPwdCallBack(curObj);
-				}
-				if (!YT.isEmpty(transAuthLj) && transAuthLj == "true") {
-					YT.AuthBoxLj.TPwdCallBack(curObj);
 				}
 				return;
 			}
@@ -1393,9 +1613,6 @@
 			// 交易认证专用
 			if (!YT.isEmpty(transAuth) && transAuth == "true") {
 				YT.AuthBox.TPwdCallBack(curObj);
-			}
-			if (!YT.isEmpty(transAuthLj) && transAuthLj == "true") {
-				YT.AuthBoxLj.TPwdCallBack(curObj);
 			}
 		} catch (e) {
 			YT.alertinfo("回显密码", "PwdPick，" + e);

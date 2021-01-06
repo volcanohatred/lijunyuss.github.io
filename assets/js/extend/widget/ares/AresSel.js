@@ -43,7 +43,8 @@ define(function(require, exports) {
 		var paramFunc = widget.attr('data-paramFunc');// 查询参数
 		var callback = widget.attr('data-callback');// 查询参数
 		var widgetId = widget.attr('data-widgetId');// 下拉选项唯一标识
-		var itemKey = widget.attr('data-itemKey');// 下拉选项value对应的key值
+		var itemKey = widget.attr('data-itemKey');// 下拉选项文本对应的key值
+		var itemValue = widget.attr('data-itemValue');// 下拉选项value对应的key值
 		// 查询参数分析
 		var params = json;
 		if (!YT.isEmpty(paramFunc) && app[paramFunc]) {
@@ -58,6 +59,7 @@ define(function(require, exports) {
 			itemTpl : itemTpl,
 			title : title,
 			itemKey : itemKey,
+			itemValue : itemValue,
 			widgetId : widgetId
 		};
 		if (!YT.isEmpty(cache)) {
@@ -115,11 +117,8 @@ define(function(require, exports) {
 					function() {
 						var _index = $(this).attr("_index");
 						var info = list[_index];
-						if (opt.itemKey && opt.widget) {
-							var _v = info[opt.itemKey];
-							opt.widget.attr('data-value', _v);
-							opt.widget.find('.x-select-value').html(_v);
-						}
+						opt.widget.attr('data-value', info[opt.itemValue]);
+						opt.widget.find('.x-select-value').html(info[opt.itemKey]);
 						me.hideSelect(opt.widgetId, opt.panel);
 						if (opt.app && opt.callback && opt.app[opt.callback]) {// 执行回调函数
 							opt.app[opt.callback](info);

@@ -1,11 +1,28 @@
-@charset "UTF-8";
+.yui-bcg-fff {
+  background-color: #fff;
+}
+.yui-pdg-btm-10 {
+  padding-bottom: 10px;
+}
+.yui-pdg-top-10 {
+  padding-top: 10px;
+}
+.yui-mgn-btm-10 {
+  margin-bottom: 10px;
+}
+.yui-mgn-top-10 {
+  margin-top: 10px;
+}
+.yui-text-center {
+  text-align: center;
+}
 .yui-result {
   text-align: center;
   background-color: #fff;
 }
 .yui-result .yui-result-title {
   font-size: 20px;
-  color: #484B57;
+  color: #484b57;
 }
 .yui-result .yui-result-header2 {
   text-align: center;
@@ -17,18 +34,15 @@
   background: url("../../img/result-split.png") repeat-x top;
   background-size: 18px;
 }
-
 .yui-result2 {
   background-color: #fff;
 }
-
 .yui-result,
 .yui-result2 .yui-result-header {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
 .yui-result-success {
   background-size: 35px;
   width: 150px;
@@ -41,7 +55,6 @@
   margin: auto;
   color: #156be4;
 }
-
 .yui-result-success2 {
   background-size: 100%;
   width: 165px;
@@ -49,7 +62,6 @@
   background: url("../../img/wx-success.png") no-repeat 0;
   margin: auto;
 }
-
 .yui-result-invalid {
   background-size: 100%;
   width: 165px;
@@ -57,12 +69,10 @@
   background: url("../../img/400.png") no-repeat 0;
   margin: auto;
 }
-
 .yui-warn {
   padding: 0 15px;
   font-size: 0.14rem;
 }
-
 .yui-warn-header {
   background: url("../../img/success.png") left no-repeat;
   background-size: 25px;
@@ -71,7 +81,6 @@
   line-height: 30px;
   margin-top: 10px;
 }
-
 .yui-guess {
   bottom: 0;
   position: fixed;
@@ -79,59 +88,49 @@
   z-index: 100;
   left: 0;
 }
-
 .yui-guess-header {
   padding: 10px 15px;
   font-size: 0.14rem;
 }
-
 .yui-guess-content {
   height: 40px;
   line-height: 40px;
   background: #fff;
   color: #156be4;
 }
-
 .yui-guess .yui-btn-split {
   height: 30px;
-  border-left: 1px solid #aaaaaa;
+  border-left: 1px solid #aaa;
 }
-
-/*结果页面样式*/
+/* 结果页面样式 */
 .trans-success {
-  background: url(../../img/common/trans-success.png) center no-repeat;
+  background: url("../../img/common/trans-success.png") center no-repeat;
   background-size: 65px 65px;
 }
-
 .trans-error {
-  background: url(../../img/common/trans-error.png) center no-repeat;
+  background: url("../../img/common/trans-error.png") center no-repeat;
   background-size: 65px 65px;
 }
-
-/*注册结果页面样式*/
+/* 注册结果页面样式 */
 .reg-success {
-  background: url(../../img/reg-success.png) center no-repeat;
+  background: url("../../img/reg-success.png") center no-repeat;
   background-size: 100px;
 }
-
 .reg-error {
-  background: url(../../img/reg-success.png) center no-repeat;
+  background: url("../../img/reg-success.png") center no-repeat;
   background-size: 100px;
 }
-
 .yui-result-img {
   width: 100%;
   height: 100px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
-
 .yui-result-img-reg {
   height: 135px;
   margin-top: 0;
   margin-bottom: 0;
 }
-
 .reg-msg {
   color: #166ae4;
   font-size: 14px;

@@ -1,5 +1,6 @@
 /**
  * <code>
+ * **************** 已弃用
  * AresPicker picker相关工具类 
  * </code>
  */
@@ -20,30 +21,16 @@ define(function(require, exports) {
 	 */
 	me.init = function(widget, panel, app, json) {
 		YT.log.info('init begin');
-		var xclazz = widget.attr('data-x-clazz');
-		var elem = widget.find(".x-picker-name");
-		if (!YT.isEmpty(xclazz)) {
-			elem = widget.find(xclazz);
+		var url = widget.data("goto");
+		if(YT.isEmpty(url)){
+			return false;
 		}
-		if (elem.length < 1) {
-			return;
-		}
-		var url = elem.data("goto");
-		elem.on("click", function() {
-			var sendStr = $(this).attr('data-send-data');
-			var formJson = {};
-			if(!YT.isEmpty(sendStr)){
-				formJson = YT.JsonEval(sendStr);
-			}
-			
-			var func = elem.attr('data-callback');
-			func = YT.getFunctionName(app[func]);
-			elem.attr('data-func', func);
+		widget.on("click", function() {
 			var params = {
 				panel : panel,
-				params : formJson
+				widget : widget,
+				me : me
 			}
-			
 			YT.nextPage(url, params);
 		});
 		YT.log.info('init finish', TAG);

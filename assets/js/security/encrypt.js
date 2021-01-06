@@ -24,7 +24,7 @@ define(function(require) {
 			var result = encrypted.ciphertext.toString(aes.enc.Base64);
 			return result;
 		},
-		aesDecrypt : function(data, aeskey) {
+		decrypt : function(data, aeskey) {
 			var iv = aes.enc.Utf8.parse("SHYTBASESHYTBASE");
 			var text = aes.AES.decrypt(data, aes.enc.Utf8.parse(aeskey), {
 				iv : iv,
@@ -64,7 +64,7 @@ define(function(require) {
 					.fromCharCode(29));
 			return result;
 		},
-		getAesKey : function() {
+		getEncryptKey : function() {
 			return me.uuid(16, 16);
 		},
 		uuid : function(len, radix) {

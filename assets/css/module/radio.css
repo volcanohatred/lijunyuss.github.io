@@ -3,40 +3,34 @@
   display: inline-block;
   position: relative;
 }
-
 .ui-radio-s input {
   position: absolute;
   height: 100%;
   width: 100%;
   opacity: 0;
 }
-
-.ui-radio-s input + span {
-  /* border: 1px solid #156be4; */
-  border: 1px solid #F5AB3F;
+.ui-radio-s input+span {
+  border: 1px solid #156be4;
   padding: 0.03rem 0.08rem;
-  color: #F5AB3F;
+  color: #156be4;
   border-radius: 5px;
   font-size: 0.1rem;
   margin-left: 4px;
 }
-
-.ui-radio-s input:checked + span {
-  background: #F5AB3F;
-  border: 1px solid #F5AB3F;
+.ui-radio-s input:checked+span {
+  background: #156be4;
+  border: 1px solid #156be4;
   color: #fff;
 }
-
-.ui-form-item.ui-form-item-checkbox-group > p, .ui-form-item.ui-form-item-radio-group > p {
+.ui-form-item.ui-form-item-checkbox-group>p,
+.ui-form-item.ui-form-item-radio-group>p {
   float: right;
 }
-
 .ui-form-item-radio .ui-radio-s {
   position: absolute;
   right: 3px;
   top: -5px;
 }
-
 .ui-form-item-radio .ui-radio-s input {
   display: inline-block;
   width: 25px;
@@ -50,7 +44,6 @@
   margin-right: 8px;
   vertical-align: middle;
 }
-
 .ui-radio-s input:before {
   content: '';
   display: block;
@@ -63,11 +56,10 @@
   left: 0.06rem;
   top: 0.06rem;
 }
-
 .ui-radio-s input:checked:after {
-  font-family: "iconfont", serif !important;
+  font-family: 'iconfont', serif !important;
   color: #09a991;
-  content: "\f601";
+  content: '\f601';
   display: block;
   width: 0.14rem;
   height: 0.14rem;
@@ -75,29 +67,25 @@
   position: absolute;
   left: 0.045rem;
   top: 0.03rem;
-  font-size: 0.20rem;
+  font-size: 0.2rem;
 }
-
 .ui-radio input:before {
   width: 19px;
   height: 19px;
   left: 8px;
   top: 2px;
-  border: 1px solid #5170C7;
+  border: 1px solid #5170c7;
 }
-
 .ui-radio input:disabled:before {
   border: 1px solid #666;
 }
-
 .ui-radio input:checked:after {
   width: 11px;
   height: 11px;
   left: 13px;
   top: 7px;
-  background: #5170C7;
+  background: #5170c7;
 }
-
 .ui-radio input:disabled:after {
   background: #666;
 }

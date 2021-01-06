@@ -4,40 +4,33 @@
   padding: 10px 0 8px 10px;
   border-radius: 5px;
 }
-
 .ui-padding-acct .yui-acct-panel {
   border: 1px solid #e0e0e0;
   border-radius: 5px;
 }
-
 .yui-acct-panel .ui-form-item {
   height: 20px;
   line-height: 20px;
   padding-right: 0.05rem;
   margin: 3px 0;
 }
-
 .yui-acct-panel .ui-form-item label {
   width: 75px !important;
   text-align: left !important;
 }
-
 .yui-acct-panel .ui-form-item > .ui-select {
   margin-left: 75px !important;
 }
-
 .yui-acct-panel .ui-form-item .ui-display-field {
   text-align: left;
   padding-left: 72px;
 }
-
 .yui-edit-panel input {
   border: 0;
   font-size: 0.24rem;
   width: 180px;
   text-align: center;
 }
-
 .yui-edit-panel-img {
   height: 25px;
   width: 20px;
@@ -46,7 +39,6 @@
   background-size: 18px 18px;
   margin-left: 10px;
 }
-
 .yui-edit-panel {
   width: 215px;
   height: 30px;
@@ -55,36 +47,30 @@
   position: relative;
   display: inline-block;
 }
-
 .yui-edit-panel input::-webkit-input-placeholder {
-  color: #92D8CD;
+  color: #92d8cd;
 }
-
 .yui-content {
   color: #fff;
   position: relative;
 }
-
 .yui-content.yui-content-bg {
   background: #09a991;
 }
-
 .yui-content a {
   text-decoration: underline;
   color: #fff;
 }
-
 .yui-content .yui-header {
   display: -webkit-box;
   padding-left: 10px;
   height: 30px;
   line-height: 30px;
 }
-
 .yui-content .yui-header .yui-header-item {
   padding-right: 10px;
 }
-
+.yui-content .yui-section,
 .yui-section .yui-section-icon {
   display: inline-block;
   height: 15px;
@@ -92,46 +78,37 @@
   margin-top: 0;
   margin-right: 8px;
 }
-
 .yui-content .yui-section.yui-section-body {
   height: 100px;
   text-align: center;
   padding-top: 15px;
 }
-
 .yui-content .yui-section.yui-section-body3 {
   height: 70px;
   text-align: center;
   padding-top: 15px;
 }
-
 .yui-content .yui-footer {
   height: 44px;
 }
-
 .yui-content .yui-footer2 {
   height: 55px;
 }
-
 .yui-content .yui-footer3 {
   height: 85px;
 }
-
 .yui-content .yui-footer ul,
 .yui-content .yui-footer2 ul {
   height: 45px;
   display: -webkit-box;
 }
-
 .yui-content .yui-footer3 ul {
   height: 85px;
   display: -webkit-box;
 }
-
 .yui-content .footer-bg {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0,0,0,0.1);
 }
-
 .yui-content .yui-footer li,
 .yui-content .yui-footer2 li,
 .yui-content .yui-footer3 li {
@@ -144,47 +121,39 @@
   font-size: 0.13rem;
   text-align: center;
 }
-
 .yui-content .yui-footer2 li,
 .yui-content .yui-footer3 li {
   line-height: normal;
 }
-
 .yui-content .yui-footer li.verLen:before,
 .yui-content .yui-footer2 li.verLen:before {
   content: '';
   position: absolute;
   height: 19px;
   width: 1px;
-  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255,255,255,0.5);
   right: 0;
   top: 14px;
 }
-
 .yui-content .yui-footer2 li.verLen:before {
   height: 36px;
   top: 3px;
 }
-
 .yui-content .yui-footer.yui-align-l {
   padding-left: 15px;
 }
-
 .yui-content .yui-footer.yui-align-l li {
   text-align: left;
 }
-
 .yui-content .yui-footer.yui-align-l li i {
   margin-left: 10px;
 }
-
 .yui-section .yui-dis-box {
   height: 60px;
   display: -webkit-box;
   padding-top: 20px;
   position: relative;
 }
-
 .yui-section .yui-sxxh-icon-white {
   background: url("../demo/img/sxxh-icon-white.png") no-repeat;
   background-size: 30px 30px;
@@ -192,11 +161,10 @@
   width: 30px;
   margin: 0 15px;
 }
-
 .yui-section .yui-status {
   position: absolute;
   right: 20px;
   top: 20px;
   font-size: 0.12rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255,255,255,0.7);
 }

@@ -1,33 +1,41 @@
-@charset "UTF-8";
 .ui-txt-default {
-  color: #333333;
+  color: #000;
 }
-
 .ui-txt-white {
-  color: white;
+  color: #fff;
 }
-
 .ui-txt-muted {
-  color: #aaaaaa;
+  color: #999;
 }
-
-.ui-txt-warning, .ui-txt-red {
-  color: #ff4222;
+.ui-txt-info {
+  color: #666;
 }
-
+.ui-txt-warning,
+.ui-txt-red {
+  color: #f1ba4e;
+}
+.ui-txt-danger {
+  color: #ff7252;
+}
 .yui-txt-amt {
-  color: #ff4222;
+  color: #f1ba4e;
 }
-
 .ui-txt-feeds {
   color: #314c83;
 }
-
-.ui-txt-success {
-  color: #156be4;
+.ui-txt-primary {
+  color: #378bf3;
 }
-
+.ui-txt-success {
+  color: #09a991;
+}
+.ui-txt-disabled {
+  color: #ababab;
+}
 /* 同em */
 .ui-txt-highlight {
-  color: #f1ba4e;
+  color: #378bf3;
+}
+.ui-txt-deepInfo {
+  color: #666;
 }

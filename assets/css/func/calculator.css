@@ -13,7 +13,7 @@
   border-radius: 20px;
   border: 1px solid #fff;
 }
-.yui-calc-panel .yui-calc-header .yui-calc-tab > li {
+.yui-calc-panel .yui-calc-header .yui-calc-tab >li {
   -webkit-box-flex: 1;
   width: 0;
   min-width: 100px;
@@ -22,14 +22,14 @@
   color: #fff;
   font-size: 16px;
 }
-.yui-calc-panel .yui-calc-header .yui-calc-tab > li.current {
+.yui-calc-panel .yui-calc-header .yui-calc-tab >li.current {
   background: #fff;
   color: #3d6ac3;
 }
-.yui-calc-panel .yui-calc-header .yui-calc-tab > li:first-child {
+.yui-calc-panel .yui-calc-header .yui-calc-tab >li:first-child {
   border-radius: 16px 0 0 16px;
 }
-.yui-calc-panel .yui-calc-header .yui-calc-tab > li:last-child {
+.yui-calc-panel .yui-calc-header .yui-calc-tab >li:last-child {
   border-radius: 0 16px 16px 0;
 }
 .yui-calc-panel .yui-calc-footer {
@@ -37,44 +37,41 @@
   display: -webkit-box;
   color: #fff;
 }
-.yui-calc-panel .yui-calc-footer > div {
+.yui-calc-panel .yui-calc-footer >div {
   -webkit-box-flex: 1;
   width: 0;
   min-width: 100px;
   text-align: center;
   position: relative;
 }
-.yui-calc-panel .yui-calc-footer > div > i {
+.yui-calc-panel .yui-calc-footer >div >i {
   font-size: 16px;
-  opacity: .6;
+  opacity: 0.6;
 }
-.yui-calc-panel .yui-calc-footer > div > p {
+.yui-calc-panel .yui-calc-footer >div >p {
   font-size: 22px;
   padding-top: 13px;
 }
-.yui-calc-panel .yui-calc-footer > div:first-child:before {
+.yui-calc-panel .yui-calc-footer >div:first-child:before {
   content: '';
   width: 1px;
   height: 50px;
   position: absolute;
   right: 0;
   top: 30px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255,255,255,0.2);
 }
-
 .yui-calc-percent {
   position: absolute;
   right: 17px;
   top: 0;
 }
-
 .yui-calc-form .ui-form-item label:not(.ui-switch):not(.ui-checkbox):not(.ui-checkbox-s):not(.ui-radio):not(.ui-radio-s),
 .yui-calc-form .ui-form-item select,
 .yui-calc-form .ui-form-item input,
 .yui-calc-form .ui-form-item .ui-radio {
   font-size: 18px;
 }
-
 table.ui-calc-list {
   width: 100%;
 }
@@ -97,7 +94,6 @@ table.ui-calc-list tbody tr td {
 table.ui-calc-list tbody tr:nth-child(2n) {
   background-color: #f6f6f8;
 }
-
 .yui-calc-tips {
   height: 35px;
   line-height: 35px;
@@ -106,7 +102,6 @@ table.ui-calc-list tbody tr:nth-child(2n) {
   padding-left: 15px;
   padding-right: 15px;
 }
-
 .yui-calc-repayment-list {
   background-color: #fff;
   padding-left: 20px;

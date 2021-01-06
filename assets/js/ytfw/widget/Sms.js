@@ -30,10 +30,6 @@
 				return;
 			}
 			var xelem = elem.find(".x-sms-send");// 内部组件区域
-			//点击获取验证码清空输入框的值
-			if(elem.find("#SMS")){
-				$("#SMS").val("");				
-			}
 			if (xelem.length < 1) {
 				YT.log.error("---YT.Sms---", "not found 'x-sms-send' define");
 				return;
@@ -45,7 +41,7 @@
 				var clazz = elem.data("send-clazz");
 				var callback = elem.data("callback");// 回调函数
 				var preCheck = function() {
-					if (YT.isEmpty(callback)) {// 存在回调函数
+					if (!YT.isEmpty(callback)) {// 存在回调函数
 						return app[callback]();
 					} else {// 获取默认的接口信息
 						// 页面元素校验
@@ -56,22 +52,13 @@
 						// 获取页面元素值
 						var params = YT.Form.getFormJson(form);
 						var tranCode = elem.attr('data-tranCode');
-						var sendType = elem.attr('data-sendType');//上送类型
-						var messageTransCode = elem.attr('data-messageTransCode');//场景码
-						var mobilePhone = elem.attr('data-mobilePhone');//手机号
-						var accountNo = elem.attr('data-accountNo');//账号
 						params.SMS_TYPE = 'CHKCODE';
 						params.TRAN_CODE = tranCode;
-						params.sendType = sendType;
-						params.messageTransCode = messageTransCode;
-						params.mobilePhone = mobilePhone;
-						params.accountNo = accountNo;
 						return params;
 					}
 				}
 				me.timer = me.counttime = elem.data("timer") || 60;
-				me.openTimerListener(xelem, {}, preCheck, function(data) {
-					app[callback](data);
+				me.openTimerListener(xelem, {}, preCheck, function() {
 					YT.log.info("---sms.callback---");
 				}, url);
 			}
@@ -80,19 +67,12 @@
 		 * 获取短信验证码
 		 */
 		getSmsCode : function(ele, param, callback, url) {
-			YT.log.info("#SMS======"+$("#SMS"))
-			//点击清空验证码
-			if($("#SMS")){
-				$("#SMS").val("");				
-			}
 			var me = this;
 			url = YT.dataUrl(url);
 			YT.ajaxData(url, param, function(rsp) {
 				YT.hideWaitPanel();
 				if (rsp.STATUS == '1') {
 					YT.showTips('短信已发送!');
-					
-					
 					if (me.relem && me.relem.length > 0) {
 						// 外部组件往短信流水号区域写入流水号字段
 						if (me.relem.data("flow-no-name") < 1) {
@@ -100,7 +80,7 @@
 						}
 						me.relem.find("input").val(rsp[me.relem.data("flow-no-name") || "SMS_FLOW_NO"]);
 					}
-					callback && callback(rsp);
+					callback && callback();
 				} else {
 					YT.alertinfo(rsp.MSG);
 				}
@@ -124,9 +104,8 @@
 				}
 				me._initTime = new Date().getTime() - 1000;
 				me._sumTime = me.counttime;
-				me.getSmsCode(ele, param, function(data) {
+				me.getSmsCode(ele, param, function() {
 					me._startTimerListener(ele);
-					callback&&callback(data);
 				}, url);
 				//me._startTimerListener(ele);
 			});
@@ -138,12 +117,10 @@
 		_startTimerListener : function(ele) {
 			var me = this;
 			if (me.timer > 0) {
-				
 				var time = me._getTimer();
 				me.timer = me._sumTime - time;
 				if (me.timer > 0) {
-					//ele.text(me.timer + '秒');
-					ele.val(me.timer + '秒');
+					ele.text(me.timer + '秒');
 					ele.attr("disabled", true);
 				} else {
 					me._closeTimerListener(ele);
@@ -172,8 +149,7 @@
 			if (me.intervalID) { // 当intervalID存在时，清空
 				clearTimeout(me.intervalID);
 				ele.removeAttr("disabled");// 启用按钮
-				//ele.text("重新发送");
-				ele.val("重新发送");
+				ele.text("重新发送");
 				me.timer = me.counttime;
 				me.intervalID = null;
 			}

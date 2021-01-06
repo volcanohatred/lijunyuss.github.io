@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* 收益计算器css */
 .ui-counter {
   width: 90%;
@@ -7,12 +6,10 @@
   top: 50px;
   left: 5%;
 }
-
 .ui-counter .desc {
   text-align: center;
   margin-bottom: 30px;
 }
-
 .ui-container {
   height: 100%;
   padding: 0;
@@ -24,31 +21,26 @@
   background-color: #131112;
   min-width: 300px;
 }
-
 .ui-counter .buy-amt-tlt {
   color: #fff;
   padding: 8% 0 5% 5%;
-  background-color: black;
+  background-color: #000;
   font-size: 18px;
 }
-
 .ui-counter .buyafter-amt-tlt {
   color: #fff;
   background-color: #949494;
   padding: 5% 0 3% 5%;
   font-size: 18px;
 }
-
 .ui-counter .position-right {
   position: absolute;
   right: 5%;
 }
-
 .ui-counter .ui-line {
   width: 100%;
   height: 50%;
 }
-
 .ui-counter .ui-line .row {
   height: 55px;
   width: 100%;
@@ -57,19 +49,16 @@
   margin-bottom: -1px;
   background: #fff;
 }
-
 .ui-line .row span:first-child {
   border-left: 0;
 }
-
 .ui-line .row:last-child span {
   border-bottom: 0;
 }
-
 .ui-line .row span {
   height: 100%;
   width: 24%;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0,0,0,0.3);
   border-right: 0;
   color: #3c2a2a;
   font-size: 16px;
@@ -80,18 +69,15 @@
   align-items: center;
   justify-content: center;
 }
-
 #win-tool span:active,
 .ui-line .row span:active,
 .ui-line .row span.tool:active {
-  background-color: red;
+  background-color: #f00;
   color: #fff;
 }
-
 .ui-line .row span.tool {
-  background-color: #F5923E;
+  background-color: #f5923e;
 }
-
 .ui-line .row span.cheng,
 .ui-line .row span.chu,
 .ui-line .row span.add,
@@ -100,7 +86,6 @@
   text-align: center;
   width: 28%;
 }
-
 .ui-line .row span.zero {
   width: 71.4%;
   box-sizing: border-box;
@@ -109,28 +94,24 @@
   justify-content: flex-start;
   padding-left: 11%;
 }
-
 .ui-line .row span.cheng,
 .ui-line .row span.jiang {
-  background-color: #E0E0E0;
+  background-color: #e0e0e0;
 }
-
 .ui-line .row span.add {
   color: #fff;
 }
-
 .ui-btn-wrap .ui-btn-counter {
   height: 40px;
   width: 30%;
   max-width: 107px;
   display: inline-block;
   font-size: 12px;
-  background: url(../../img/common/counter.png) no-repeat;
+  background: url("../../img/common/counter.png") no-repeat;
   background-position-x: center;
   background-size: 25px 25px;
   line-height: 60px;
 }
-
 .ui-btn-wrap .ui-btn-counter-r {
   height: 40px;
   width: 62%;
@@ -140,9 +121,8 @@
   color: #fff;
   position: absolute;
 }
-
 .align-left {
   text-align: left;
-  background: #FFF;
+  background: #fff;
   margin-top: 10px;
 }

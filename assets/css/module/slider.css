@@ -1,16 +1,13 @@
-@charset "UTF-8";
-/****侧滑删除样式****/
+/* ***侧滑删除样式*** */
 .ui-silder-cell {
   position: relative;
   overflow: hidden;
   -webkit-touch-callout: none;
   background-color: #fff;
 }
-
 .ui-silder-cell.ui-silder-cell-swap {
   padding: 0 15px;
 }
-
 .ui-silder-right {
   position: absolute;
   right: 0;
@@ -24,11 +21,9 @@
   display: flex;
   height: 100%;
 }
-
 .ui-silder-handle {
   transition: transform 300ms ease;
 }
-
 .ui-silder-btn {
   position: relative;
   left: 0;
@@ -44,24 +39,18 @@
   align-items: center;
   transition: transform 300ms ease;
 }
-
 .ui-silder-btn.del {
   background-color: #dd524d;
 }
-
 .ui-silder-btn.setting {
-  background-color: #FB850C;
+  background-color: #fb850c;
 }
-
 .ui-silder-btn.cancel {
-  background-color: #D0D0D0;
+  background-color: #d0d0d0;
 }
-
 .ui-swiper-containe {
   overflow: hidden;
-  position: relative;
 }
-
 .ui-swiper-wrapper {
   position: relative;
   width: 100%;
@@ -69,48 +58,29 @@
   z-index: 1;
   display: -webkit-box;
 }
-
 .ui-swiper-containe .swiper-lazy {
   display: none;
 }
-
 .ui-swiper-containe .swiper-slide {
   position: relative;
 }
-
 .ui-swiper-containe .ui-swiper-title {
   position: absolute;
   bottom: 0;
   height: 30px;
   line-height: 30px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0,0,0,0.4);
   color: #fff;
   padding-left: 15px;
 }
-
 .ui-swiper-containe .swiper-lazy.swiper-lazy-loaded {
   display: block;
 }
-
 .ui-swiper-containe .swiper-lazy-preloader {
   width: 100%;
-  /* background-color: #000; */
+  background-color: #000;
   position: relative;
-  animation: none;
-  margin-left: 0;
-  margin-top: 0;
-  left: 0;
-}
-.ui-swiper-containe .swiper-pagination-bullet.swiper-pagination-bullet-active {
-    background: #FFAB43;
-}
-.ui-swiper-containe .swiper-pagination-bullet{
-	background-color: #ffffff;
-	opacity: .9;
-}
-.ui-swiper-containe .swiper-lazy-preloader:after{
-	background-image: none;
 }
 .ui-swiper-containe .swiper-lazy-preloader-loadding {
   position: absolute;
@@ -121,7 +91,6 @@
   margin-left: -20px;
   margin-top: -30px;
 }
-
 .ui-swiper-containe .swiper-lazy-preloader-loadding:after {
   font-family: 'iconfont' !important;
   content: '\e77f';
@@ -131,8 +100,91 @@
   font-size: 40px;
   color: #999;
 }
-
+@-moz-keyframes loadingCircle {
+  0% {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 @-webkit-keyframes loadingCircle {
+  0% {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes loadingCircle {
+  0% {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loadingCircle {
+  0% {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes loadingCircle {
+  0% {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes loadingCircle {
+  0% {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes loadingCircle {
   0% {
     -webkit-transform-origin: 50% 50%;
     transform-origin: 50% 50%;

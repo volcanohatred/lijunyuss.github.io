@@ -4,7 +4,6 @@
   line-height: 25px;
   font-size: 12px;
 }
-
 .ui-btn {
   height: 30px;
   line-height: 30px;
@@ -13,7 +12,6 @@
   display: inline-block;
   font-size: 12px;
 }
-
 .ui-btn-lg {
   font-size: 14px;
   height: 40px;
@@ -21,145 +19,173 @@
   display: block;
   width: 100%;
 }
-
 .ui-btn-s,
 .ui-btn,
 .ui-btn-lg {
   border-radius: 4px;
+  background: #fff;
+  color: #378bf3;
+  border: 1px solid #378bf3;
 }
-
 .ui-btn:not(.disabled):not(:disabled):active,
 .ui-btn.active,
 .ui-btn-lg:not(.disabled):not(:disabled):active,
 .ui-btn-lg.active,
 .ui-btn-s:not(.disabled):not(:disabled):active,
 .ui-btn-s.active {
-  background: #f2f2f2;
   color: #1660cc;
-  -webkit-background-clip: padding-box;
+  border: 1px solid #1660cc;
+  background: #e9ebec;
 }
-
+.ui-btn.disabled,
+.ui-btn:disabled,
+.ui-btn-lg.disabled,
+.ui-btn-lg:disabled,
+.ui-btn-s.disabled,
+.ui-btn-s:disabled {
+  background: #e9ebec;
+  color: #ababab;
+}
 .ui-btn-primary {
+  color: #fff;
   border-color: #378bf3;
-  background-image: linear-gradient(-129deg, #378bf3 3%, #0a70f0 88%);
+  background-image: linear-gradient(-129deg, #378bf3 3%, #378bf3 88%);
 }
-.ui-btn-primary:not(.disabled):not(:disabled):active, .ui-btn-primary.active {
-  border-color: #1f7cf0;
-  background-image: linear-gradient(-129deg, #3079d4 3%, #0860cf 88%);
+.ui-btn-primary:not(.disabled):not(:disabled):active,
+.ui-btn-primary.active {
   color: #fff;
+  border-color: #0860cf;
+  background-image: linear-gradient(-129deg, #0860cf 3%, #0860cf 88%);
 }
-.ui-btn-primary:disabled, .ui-btn-primary.disabled {
-  border-color: rgba(31, 124, 240, 0.5);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, rgba(31, 124, 240, 0.5)), to(rgba(31, 124, 240, 0.5)));
+.ui-btn-primary:disabled,
+.ui-btn-primary.disabled {
+  color: #fff;
+  border-color: rgba(55,139,243,0.5);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1, rgba(55,139,243,0.5)), to(rgba(55,139,243,0.5)));
 }
-
 .ui-btn-warning {
+  color: #fff;
   border-color: #f1ba4e;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #f1ba4e), to(#f1ba4e));
+  background-image: linear-gradient(-129deg, #f1ba4e 3%, #f1ba4e 88%);
 }
-.ui-btn-warning:not(.disabled):not(:disabled):active, .ui-btn-warning.active {
+.ui-btn-warning:not(.disabled):not(:disabled):active,
+.ui-btn-warning.active {
+  color: #fff;
   border-color: #e2a939;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #e2a939), to(#e2a939));
+  background-image: linear-gradient(-129deg, #e2a939 3%, #e2a939 88%);
+}
+.ui-btn-warning:disabled,
+.ui-btn-warning.disabled {
   color: #fff;
+  border-color: rgba(226,169,57,0.5);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1, rgba(226,169,57,0.5)), to(rgba(226,169,57,0.5)));
 }
-.ui-btn-warning:disabled, .ui-btn-warning.disabled {
-  border-color: rgba(241, 186, 78, 0.5);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, rgba(241, 186, 78, 0.5)), to(rgba(241, 186, 78, 0.5)));
-}
-
 .ui-btn-danger {
+  color: #fff;
   border-color: #ff7252;
-  background-image: linear-gradient(-129deg, #ff7252 3%, #ef5d5d 88%);
+  background-image: linear-gradient(-129deg, #ff7252 3%, #ff7252 88%);
 }
-.ui-btn-danger:not(.disabled):not(:disabled):active, .ui-btn-danger.active {
-  border-color: #e26549;
-  background-image: linear-gradient(-129deg, #e26549 3%, #d05151 88%);
+.ui-btn-danger:not(.disabled):not(:disabled):active,
+.ui-btn-danger.active {
   color: #fff;
+  border-color: #d05151;
+  background-image: linear-gradient(-129deg, #d05151 3%, #d05151 88%);
 }
-.ui-btn-danger:disabled, .ui-btn-danger.disabled {
-  border-color: rgba(246, 82, 70, 0.5);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, rgba(246, 82, 70, 0.5)), to(rgba(246, 82, 70, 0.5)));
+.ui-btn-danger:disabled,
+.ui-btn-danger.disabled {
+  color: #fff;
+  border-color: rgba(255,114,82,0.5);
+  background-image: linear-gradient(-129deg, rgba(255,114,82,0.5) 3%, rgba(255,114,82,0.5) 88%);
 }
-
 .ui-btn-success {
-  border-color: #5bb75b;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #5bb75b), to(#5bb75b));
+  color: #fff;
+  border-color: #09a991;
+  background-image: linear-gradient(-129deg, #09a991 3%, #09a991 88%);
 }
-.ui-btn-success:not(.disabled):not(:disabled):active, .ui-btn-success.active {
+.ui-btn-success:not(.disabled):not(:disabled):active,
+.ui-btn-success.active {
+  color: #fff;
   border-color: #4da74d;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #4da74d), to(#4da74d));
+  background-image: linear-gradient(-129deg, #4da74d 3%, #4da74d 88%);
+}
+.ui-btn-success:disabled,
+.ui-btn-success.disabled {
   color: #fff;
+  border-color: rgba(9,169,145,0.5);
+  background-image: linear-gradient(-129deg, rgba(9,169,145,0.5) 3%, rgba(9,169,145,0.5) 88%);
 }
-.ui-btn-success:disabled, .ui-btn-success.disabled {
-  border-color: rgba(77, 167, 77, 0.5);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, rgba(77, 167, 77, 0.5)), to(rgba(77, 167, 77, 0.5)));
-}
-
 .ui-btn-info {
+  color: #fff;
   border-color: #419eb9;
-  color: #fff;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #419eb9), to(#419eb9));
+  background-image: linear-gradient(-129deg, #419eb9 3%, #419eb9 88%);
 }
-.ui-btn-info:not(.disabled):not(:disabled):active, .ui-btn-info.active {
+.ui-btn-info:not(.disabled):not(:disabled):active,
+.ui-btn-info.active {
+  color: #fff;
   border-color: #1a8daf;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #1a8daf), to(#1a8daf));
+  background-image: linear-gradient(-129deg, #1a8daf 3%, #1a8daf 88%);
+}
+.ui-btn-info:disabled,
+.ui-btn-info.disabled {
   color: #fff;
+  border-color: rgba(65,158,185,0.5);
+  background-image: linear-gradient(-129deg, rgba(65,158,185,0.5) 3%, rgba(65,158,185,0.5) 88%);
 }
-.ui-btn-info:disabled, .ui-btn-info.disabled {
-  border-color: rgba(47, 150, 180, 0.5);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, rgba(47, 150, 180, 0.5)), to(rgba(47, 150, 180, 0.5)));
-}
-
 .ui-btn.ui-btn-outlined {
   background-color: transparent;
   background-image: none;
+  color: #378bf3;
 }
-.ui-btn.ui-btn-outlined:disabled, .ui-btn.ui-btn-outlined.disabled {
+.ui-btn.ui-btn-outlined:disabled,
+.ui-btn.ui-btn-outlined.disabled {
   border-color: #e9ebec;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #e9ebec), to(#e9ebec));
 }
-
 .ui-btn-outlined.ui-btn-primary {
   color: #378bf3;
 }
-.ui-btn-outlined.ui-btn-primary:not(.disabled):not(:disabled):active, .ui-btn-outlined.ui-btn-primary.active {
+.ui-btn-outlined.ui-btn-primary:not(.disabled):not(:disabled):active,
+.ui-btn-outlined.ui-btn-primary.active {
   border-color: #378bf3;
-  background-image: linear-gradient(-129deg, #378bf3 3%, #0a70f0 88%);
+  background-image: linear-gradient(-129deg, #378bf3 3%, #378bf3 88%);
   color: #fff;
 }
 .ui-btn-outlined.ui-btn-info {
   color: #419eb9;
 }
-.ui-btn-outlined.ui-btn-info:not(.disabled):not(:disabled):active, .ui-btn-outlined.ui-btn-info.active {
-  border-color: #1a8daf;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #1a8daf), to(#1a8daf));
+.ui-btn-outlined.ui-btn-info:not(.disabled):not(:disabled):active,
+.ui-btn-outlined.ui-btn-info.active {
+  border-color: #419eb9;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #419eb9), to(#419eb9));
   color: #fff;
 }
 .ui-btn-outlined.ui-btn-success {
-  color: #5bb75b;
+  color: #09a991;
 }
-.ui-btn-outlined.ui-btn-success:not(.disabled):not(:disabled):active, .ui-btn-outlined.ui-btn-success.active {
-  border-color: #4da74d;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #4da74d), to(#4da74d));
+.ui-btn-outlined.ui-btn-success:not(.disabled):not(:disabled):active,
+.ui-btn-outlined.ui-btn-success.active {
+  border-color: #09a991;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #09a991), to(#09a991));
   color: #fff;
 }
 .ui-btn-outlined.ui-btn-warning {
   color: #f1ba4e;
 }
-.ui-btn-outlined.ui-btn-warning:not(.disabled):not(:disabled):active, .ui-btn-outlined.ui-btn-warning.active {
-  border-color: #e2a939;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #e2a939), to(#e2a939));
+.ui-btn-outlined.ui-btn-warning:not(.disabled):not(:disabled):active,
+.ui-btn-outlined.ui-btn-warning.active {
+  border-color: #f1ba4e;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #f1ba4e), to(#f1ba4e));
   color: #fff;
 }
 .ui-btn-outlined.ui-btn-danger {
   color: #ff7252;
 }
-.ui-btn-outlined.ui-btn-danger:not(.disabled):not(:disabled):active, .ui-btn-outlined.ui-btn-danger.active {
-  border-color: #e26549;
-  background-image: linear-gradient(-129deg, #e26549 3%, #d05151 88%);
+.ui-btn-outlined.ui-btn-danger:not(.disabled):not(:disabled):active,
+.ui-btn-outlined.ui-btn-danger.active {
+  border-color: #ff7252;
+  background-image: linear-gradient(-129deg, #ff7252 3%, #ff7252 88%);
   color: #fff;
 }
-
 .ui-form-item-r button {
   height: 22px;
   line-height: 22px;

@@ -6,7 +6,7 @@
 	var pathname = loc.pathname;
 	window.urls=document.location.href;
     window.basePath =(function(){
-		var pagePath=location.href.match(/[a-zA-Z0-9:_./\-]*\/page\//)[0];
+		var pagePath=location.href.match(/[a-zA-Z0-9:_./\-\[\]]*\/page\//)[0];
         return pagePath.replace('/page/','');
     })();
 
@@ -15,10 +15,6 @@
 		var value = String(location || loc).match(new RegExp('[?&]' + name + '=([^&]*)(&?)', 'i')); 
 		return value ? value[1] : null;
 	}; 
-	
-    // 返回URL中的参数
-    var _param = window['_getParameter'];
-    var _pp = window['__pageParam'];
 
     window.FAST = true;
     // 兼容库代码
@@ -31,7 +27,10 @@
         var ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
         var ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/);
         var iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
-
+        if(/YiTong/.test(ua)){ // 客户端是否支持离线包标记
+        	device.YiTong = true;
+        	device.YiTongVer = ua.match(/YiTong.([\d.]+)/)[1];
+        }
         device.ios = device.android = device.iphone = device.ipad = false;
 
         device.os = 'web';
