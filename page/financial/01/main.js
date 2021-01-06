@@ -7,6 +7,8 @@ define(function (require, exports) {
             panel = $(PID);
             pageA = panel.find('[data-page="A"]');
             me.showPageA();
+            var pageHeight = pageA.height();
+            $('html,body').css('height', pageHeight);
             YT.initPageEvent(panel, me);
         },
         toDetail: function () {
