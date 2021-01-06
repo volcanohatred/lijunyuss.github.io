@@ -124,7 +124,7 @@
 			$.ajax({
 				url: url,
 				type: 'get',
-				cache: false,
+				// cache: false,
 				success: function (txt) {
 					success && success(txt);
 				},
@@ -165,10 +165,10 @@
 				if (rst.STATUS == '1') {
 					var s = rst.DATA || '';
 					s = decodeURIComponent(s);
-//					s = s.replace(/&quot;/g, '"');
-//					s = s.replace(/&#39;/g, '\'');
-//					s = s.replace(/&lt;/g, '<');
-//					s = s.replace(/&gt;/g, '>');
+					//					s = s.replace(/&quot;/g, '"');
+					//					s = s.replace(/&#39;/g, '\'');
+					//					s = s.replace(/&lt;/g, '<');
+					//					s = s.replace(/&gt;/g, '>');
 					rst.DATA = s;
 					success && success(rst);
 				} else {
@@ -208,10 +208,10 @@
 				if (rst.STATUS == '1') {
 					var s = rst.DATA || '';
 					s = decodeURIComponent(s);
-//					s = s.replace(/&quot;/g, '"');
-//					s = s.replace(/&#39;/g, '\'');
-//					s = s.replace(/&lt;/g, '<');
-//					s = s.replace(/&gt;/g, '>');
+					//					s = s.replace(/&quot;/g, '"');
+					//					s = s.replace(/&#39;/g, '\'');
+					//					s = s.replace(/&lt;/g, '<');
+					//					s = s.replace(/&gt;/g, '>');
 					rst.DATA = s;
 					success && success(rst);
 				} else {

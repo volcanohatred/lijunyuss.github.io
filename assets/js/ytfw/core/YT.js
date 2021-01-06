@@ -354,7 +354,7 @@ var YT = {
 	 * @example YT.setParameters({STATUS:'1'});
 	 */
 	setParameters: function (data) {
-//		 YT._data = data;
+		//		 YT._data = data;
 		YT.setStorage({
 			data
 		})
@@ -379,7 +379,7 @@ var YT = {
 	 */
 	setStorage: function (cfg) {
 		if (Device.YiTong !== true || !cfg.callback) {
-			cfg.data = YT.isString(cfg.data) ? JSON.parse(cfg.data): cfg.data;
+			cfg.data = YT.isString(cfg.data) ? JSON.parse(cfg.data) : cfg.data;
 			if (cfg.callback) {
 				YT._data = cfg.data;
 				cfg.callback('success');
@@ -434,11 +434,11 @@ var YT = {
 	 * 执行window中方法
 	 * 跨包传值使用
 	 */
-	execWindowFunc: function(funcName, params){
-		if(!YT.isEmpty(funcName)){
-			if(window[funcName]){
+	execWindowFunc: function (funcName, params) {
+		if (!YT.isEmpty(funcName)) {
+			if (window[funcName]) {
 				window[funcName](params);
-			}else{
+			} else {
 				YT.log.info('跨包了......');
 				var config = {
 					func: funcName,

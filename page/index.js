@@ -10,9 +10,9 @@ $(function () {
 	seajs.config({
 		base: basePath,
 		alias: libs,
-		map: [
-			[/^(.*\.(?:css|js))(?:.*)$/i, '$1?v=' + (SID)]
-		]
+		// map: [
+		// 	[/^(.*\.(?:css|js))(?:.*)$/i, '$1?v=' + (SID)]
+		// ]
 	});
 
 	YT.log.info("-----init---index----2----", libs);
@@ -29,26 +29,9 @@ $(function () {
 				var hash = location.hash;
 				path = hash.substring(1);
 			}
-			var encryptType = YT.Client.encryptType; // 报文加密方式
-			if (!YT.isEmpty(encryptType) && encryptType != 0) {
-				if (encryptType == 1) { // 国际
-					YT.imports('assets/js/security/encrypt.js', function () {
-						YT.loadIndexPage(path || indexUrl, function () {
-							YT.Collection.init();
-						});
-					})
-				} else { // 国密
-					YT.imports('assets/js/security/encrypt-sm.js', function () {
-						YT.loadIndexPage(path || indexUrl, function () {
-							YT.Collection.init();
-						});
-					})
-				}
-			} else {
-				YT.loadIndexPage(path || indexUrl, function () {
-					//YT.Collection.init();
-				});
-			}
+			YT.loadIndexPage(path || indexUrl, function () {
+				//YT.Collection.init();
+			});
 			//			if (YT.isWeb()) { // web页面请求初始化
 			//				seajs.use('assets/js/ytfw/module/OpenApp.js');
 			//			}
